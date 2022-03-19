@@ -26,7 +26,8 @@ public class Pitch implements Comparable<Pitch>{
     int noteNumber = pitchClass.getPitchNumber();
     if (noteNumber < 0) throw new IllegalArgumentException("Valid Pitch Numbers are 0-11");
 
-    if (pitchClass.getPitchLetter().getLetter() < 'C') {
+    if (pitchClass.getPitchLetter().getLetter().equals("A") ||
+        pitchClass.getPitchLetter().getLetter().equals("B")) {
       noteNumber -= 9;
       if (octave == 0) return noteNumber;
     } else {
@@ -89,23 +90,10 @@ public class Pitch implements Comparable<Pitch>{
   public int getNoteNumber() {
     return noteNumber;
   }
-//  public Pitch(PitchClass pitchClass, int noteNumber) {
-//    this.pitchClass = pitchClass;
-//    this.noteNumber = noteNumber;
-//    this.octave = findOctave(noteNumber);
-//  }
-//
-//  private int findOctave(int noteNumber) {
-//    // A0 = 0, C1 = 3, A1 = 12, C2 = 15
-//    if (noteNumber < 3) return 0;
-//
-//    int octave = 1;
-//    int maxNoteInOctave = 14;
-//
-//    while (noteNumber > maxNoteInOctave) {
-//      maxNoteInOctave += 12;
-//      octave++;
-//    }
-//    return octave;
-//  }
+
+  @Override
+  public String toString() {
+    return pitchClass.toString() + this.octave;
+  }
+
 }

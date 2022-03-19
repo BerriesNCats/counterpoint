@@ -1,19 +1,19 @@
 package core.entity.pitch;
 
 public enum PitchLetter {
-  A('A'),
-  B('B'),
-  C('C'),
-  D('D'),
-  E('E'),
-  F('F'),
-  G('G');
+  A("A"),
+  B("B"),
+  C("C"),
+  D("D"),
+  E("E"),
+  F("F"),
+  G("G");
 
-  private final char letter;
+  private final String letter;
 
-  PitchLetter(char letter) { this.letter = letter; }
+  PitchLetter(String letter) { this.letter = letter; }
 
-  public char getLetter() {
+  public String getLetter() {
     return this.letter;
   }
 }

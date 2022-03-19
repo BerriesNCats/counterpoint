@@ -2,6 +2,10 @@ package core.entity.pitch;
 
 import java.util.HashMap;
 import java.util.Map;
+import org.jetbrains.annotations.Contract;
+
+import static core.entity.pitch.PitchLetter.*;
+import static core.entity.pitch.Accidental.*;
 
 public class PitchClass {
 
@@ -22,30 +26,33 @@ public class PitchClass {
     return PITCH_NUMBERS.get(pitchName);
   }
 
+  @Contract(" -> new")
   private static Map<String, Integer> loadPitchNumbers() {
-    return new HashMap<String, Integer>() {{
-      put("Cb", 11);
-      put("C",  0);
-      put("C#", 1);
-      put("Db", 1);
-      put("D",  2);
-      put("D#", 3);
-      put("Eb", 3);
-      put("E",  4);
-      put("Fb", 4);
-      put("E#", 5);
-      put("F",  5);
-      put("F#", 6);
-      put("Gb", 6);
-      put("G",  7);
-      put("G#", 8);
-      put("Ab", 8);
-      put("A",  9);
-      put("A#", 10);
-      put("Bb", 10);
-      put("B",  11);
-      put("B#", 0);
-    }};
+    return new HashMap<String, Integer>() {
+      {
+        put(C.getLetter() + FLAT.getAccidental(), 11);
+        put(C.getLetter() + NATURAL.getAccidental(), 0);
+        put(C.getLetter() + SHARP.getAccidental(), 1);
+        put(D.getLetter() + FLAT.getAccidental(), 1);
+        put(D.getLetter() + NATURAL.getAccidental(), 2);
+        put(D.getLetter() + SHARP.getAccidental(), 3);
+        put(E.getLetter() + FLAT.getAccidental(), 3);
+        put(E.getLetter() + NATURAL.getAccidental(), 4);
+        put(F.getLetter() + FLAT.getAccidental(), 4);
+        put(E.getLetter() + SHARP.getAccidental(), 5);
+        put(F.getLetter() + NATURAL.getAccidental(), 5);
+        put(F.getLetter() + SHARP.getAccidental(), 6);
+        put(G.getLetter() + FLAT.getAccidental(), 6);
+        put(G.getLetter() + NATURAL.getAccidental(), 7);
+        put(G.getLetter() + SHARP.getAccidental(), 8);
+        put(A.getLetter() + FLAT.getAccidental(), 8);
+        put(A.getLetter() + NATURAL.getAccidental(), 9);
+        put(A.getLetter() + SHARP.getAccidental(), 10);
+        put(B.getLetter() + FLAT.getAccidental(), 10);
+        put(B.getLetter() + NATURAL.getAccidental(), 11);
+        put(B.getLetter() + SHARP.getAccidental(), 0);
+      }
+    };
   }
 
   public PitchLetter getPitchLetter() {
