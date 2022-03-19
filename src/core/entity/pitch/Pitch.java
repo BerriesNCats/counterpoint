@@ -14,15 +14,6 @@ public class Pitch implements Comparable<Pitch>{
 
   //TODO TEST
   private int findNoteNumber(PitchClass pitchClass, int octave) {
-    // 1. Adjust pitch number so pitch class number and note number are in line
-      // Example octave = 0 pitchClass = "A" pitchClassNumber = 9
-      // Output should be 0
-      // Example octave = 1 pitchClass = "C" pitchClassNumber = 0
-      // Output should be 3
-      // Example octave = 1 pitchClass = "A" pitchClassNumber = 9
-      // Output should be 12
-      // Example octave = 1 pitchClass = "C" pitchClassNumber = 0
-      // Output should be 15
     int noteNumber = pitchClass.getPitchNumber();
     if (noteNumber < 0) throw new IllegalArgumentException("Valid Pitch Numbers are 0-11");
 
