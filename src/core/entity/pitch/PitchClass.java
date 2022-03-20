@@ -22,7 +22,7 @@ public class PitchClass {
   }
 
   private int findPitchNumber(NoteLetter noteLetter, Accidental accidental) {
-    String pitchName = noteLetter.getLetter() + accidental.getAccidental();
+    String pitchName = noteLetter.name() + accidental.getAccidental();
     return PITCH_NUMBERS.get(pitchName);
   }
 
@@ -30,41 +30,41 @@ public class PitchClass {
   private static Map<String, Integer> loadPitchNumbers() {
     return new HashMap<String, Integer>() {
       {
-        put(C.getLetter() + FLAT.getAccidental(), 11);
-        put(C.getLetter() + NATURAL.getAccidental(), 0);
-        put(C.getLetter() + SHARP.getAccidental(), 1);
-        put(D.getLetter() + FLAT.getAccidental(), 1);
-        put(D.getLetter() + NATURAL.getAccidental(), 2);
-        put(D.getLetter() + SHARP.getAccidental(), 3);
-        put(E.getLetter() + FLAT.getAccidental(), 3);
-        put(E.getLetter() + NATURAL.getAccidental(), 4);
-        put(F.getLetter() + FLAT.getAccidental(), 4);
-        put(E.getLetter() + SHARP.getAccidental(), 5);
-        put(F.getLetter() + NATURAL.getAccidental(), 5);
-        put(F.getLetter() + SHARP.getAccidental(), 6);
-        put(G.getLetter() + FLAT.getAccidental(), 6);
-        put(G.getLetter() + NATURAL.getAccidental(), 7);
-        put(G.getLetter() + SHARP.getAccidental(), 8);
-        put(A.getLetter() + FLAT.getAccidental(), 8);
-        put(A.getLetter() + NATURAL.getAccidental(), 9);
-        put(A.getLetter() + SHARP.getAccidental(), 10);
-        put(B.getLetter() + FLAT.getAccidental(), 10);
-        put(B.getLetter() + NATURAL.getAccidental(), 11);
-        put(B.getLetter() + SHARP.getAccidental(), 0);
+        put(C.name() + FLAT.getAccidental(), 11);
+        put(C.name() + NATURAL.getAccidental(), 0);
+        put(C.name() + SHARP.getAccidental(), 1);
+        put(D.name() + FLAT.getAccidental(), 1);
+        put(D.name() + NATURAL.getAccidental(), 2);
+        put(D.name() + SHARP.getAccidental(), 3);
+        put(E.name() + FLAT.getAccidental(), 3);
+        put(E.name() + NATURAL.getAccidental(), 4);
+        put(F.name() + FLAT.getAccidental(), 4);
+        put(E.name() + SHARP.getAccidental(), 5);
+        put(F.name() + NATURAL.getAccidental(), 5);
+        put(F.name() + SHARP.getAccidental(), 6);
+        put(G.name() + FLAT.getAccidental(), 6);
+        put(G.name() + NATURAL.getAccidental(), 7);
+        put(G.name() + SHARP.getAccidental(), 8);
+        put(A.name() + FLAT.getAccidental(), 8);
+        put(A.name() + NATURAL.getAccidental(), 9);
+        put(A.name() + SHARP.getAccidental(), 10);
+        put(B.name() + FLAT.getAccidental(), 10);
+        put(B.name() + NATURAL.getAccidental(), 11);
+        put(B.name() + SHARP.getAccidental(), 0);
       }
     };
   }
 
   public NoteLetter getPitchLetter() {
-    return noteLetter;
+    return this.noteLetter;
   }
   public Accidental getAccidental() {
-    return accidental;
+    return this.accidental;
   }
   public int getPitchNumber() { return this.pitchNumber; }
 
   @Override
   public String toString() {
-    return noteLetter.getLetter() + accidental.getAccidental();
+    return noteLetter.name() + accidental.getAccidental();
   }
 }

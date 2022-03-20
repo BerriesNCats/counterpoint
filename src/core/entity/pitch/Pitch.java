@@ -17,8 +17,8 @@ public class Pitch implements Comparable<Pitch>{
     int noteNumber = pitchClass.getPitchNumber();
     if (noteNumber < 0) throw new IllegalArgumentException("Valid Pitch Numbers are 0-11");
 
-    if (pitchClass.getPitchLetter().getLetter().equals("A") ||
-        pitchClass.getPitchLetter().getLetter().equals("B")) {
+    if (pitchClass.getPitchLetter().name().equals("A") ||
+        pitchClass.getPitchLetter().name().equals("B")) {
       noteNumber -= 9;
       if (octave == 0) return noteNumber;
     } else {
