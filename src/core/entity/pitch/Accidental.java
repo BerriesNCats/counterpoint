@@ -3,9 +3,7 @@ package core.entity.pitch;
 public enum Accidental {
   NATURAL(""),
   SHARP("#"),
-  FLAT("b"),
-  DOUBLE_SHARP("##"),
-  DOUBLE_FLAT("bb");
+  FLAT("b");
 
   private final String accidental;
 

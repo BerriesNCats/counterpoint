@@ -4,25 +4,25 @@ import java.util.HashMap;
 import java.util.Map;
 import org.jetbrains.annotations.Contract;
 
-import static core.entity.pitch.PitchLetter.*;
+import static core.entity.pitch.NoteLetter.*;
 import static core.entity.pitch.Accidental.*;
 
 public class PitchClass {
 
-  private static final Map<String, Integer> PITCH_NUMBERS = loadPitchNumbers();
+  public static final Map<String, Integer> PITCH_NUMBERS = loadPitchNumbers();
 
-  private final PitchLetter pitchLetter;
+  private final NoteLetter noteLetter;
   private final Accidental accidental;
   private final int pitchNumber;
 
-  public PitchClass(PitchLetter pitchLetter, Accidental accidental) {
-    this.pitchLetter = pitchLetter;
+  public PitchClass(NoteLetter noteLetter, Accidental accidental) {
+    this.noteLetter = noteLetter;
     this.accidental = accidental;
-    this.pitchNumber = findPitchNumber(pitchLetter, accidental);
+    this.pitchNumber = findPitchNumber(noteLetter, accidental);
   }
 
-  private int findPitchNumber(PitchLetter pitchLetter, Accidental accidental) {
-    String pitchName = pitchLetter.getLetter() + accidental.getAccidental();
+  private int findPitchNumber(NoteLetter noteLetter, Accidental accidental) {
+    String pitchName = noteLetter.getLetter() + accidental.getAccidental();
     return PITCH_NUMBERS.get(pitchName);
   }
 
@@ -55,8 +55,8 @@ public class PitchClass {
     };
   }
 
-  public PitchLetter getPitchLetter() {
-    return pitchLetter;
+  public NoteLetter getPitchLetter() {
+    return noteLetter;
   }
   public Accidental getAccidental() {
     return accidental;
@@ -65,6 +65,6 @@ public class PitchClass {
 
   @Override
   public String toString() {
-    return pitchLetter.getLetter() + accidental.getAccidental();
+    return noteLetter.getLetter() + accidental.getAccidental();
   }
 }

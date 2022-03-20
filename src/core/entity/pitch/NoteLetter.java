@@ -1,6 +1,6 @@
 package core.entity.pitch;
 
-public enum PitchLetter {
+public enum NoteLetter {
   A("A"),
   B("B"),
   C("C"),
@@ -11,7 +11,7 @@ public enum PitchLetter {
 
   private final String letter;
 
-  PitchLetter(String letter) { this.letter = letter; }
+  NoteLetter(String letter) { this.letter = letter; }
 
   public String getLetter() {
     return this.letter;
