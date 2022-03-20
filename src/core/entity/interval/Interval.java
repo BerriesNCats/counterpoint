@@ -1,13 +1,15 @@
 package core.entity.interval;
 
 import java.util.HashMap;
+import java.util.List;
 
-import static core.entity.interval.IntervalStep.*;
-import static core.entity.interval.IntervalQuality.*;
+import static core.entity.interval.IntervalUtils.*;
 
 public class Interval {
 
-  public static final HashMap<IntervalStep, IntervalQuality> INTERVAL_QUALITIES = loadIntervalQualities();
+  public static final HashMap<IntervalStep, IntervalQuality> INTERVAL_QUALITIES_MAP = loadIntervalQualities();
+  public static final List<IntervalStep> CONSONANCES = loadConsonantIntervals();
+  public static final List<IntervalStep> DISSONANCES = loadDissonantIntervals();
 
   private final IntervalQuality quality;
   private final IntervalStep step;
@@ -17,30 +19,19 @@ public class Interval {
     this.step = step;
   }
 
-  private IntervalQuality findQuality(IntervalStep step) {
-    return INTERVAL_QUALITIES.get(step);
+  public boolean isConsonance() {
+    return CONSONANCES.contains(step);
   }
 
-  private static HashMap<IntervalStep, IntervalQuality> loadIntervalQualities() {
-    return new HashMap<IntervalStep, IntervalQuality>() {
-      {
-        put(UNISON, PERFECT_CONSONANCE);
-        put(MINOR_SECOND, DISSONANCE);
-        put(MAJOR_SECOND, DISSONANCE);
-        put(MINOR_THIRD, IMPERFECT_CONSONANCE);
-        put(MAJOR_THIRD, IMPERFECT_CONSONANCE);
-        put(PERFECT_FOURTH, DISSONANCE);
-        put(AUGMENTED_FOURTH, DISSONANCE);
-        put(DIMINISHED_FIFTH, DISSONANCE);
-        put(PERFECT_FIFTH, PERFECT_CONSONANCE);
-        put(MINOR_SIXTH, IMPERFECT_CONSONANCE);
-        put(MAJOR_SIXTH, IMPERFECT_CONSONANCE);
-        put(MINOR_SEVENTH, DISSONANCE);
-        put(MAJOR_SEVENTH, DISSONANCE);
-        put(OCTAVE, PERFECT_CONSONANCE);
-      }
-    };
+  public boolean isDissonant() {
+    return DISSONANCES.contains(step);
   }
 
+  public boolean isTritone() {
+    return step.getStepInSemitones() == 6;
+  }
 
+  public static IntervalQuality findQuality(IntervalStep step) {
+    return INTERVAL_QUALITIES_MAP.get(step);
+  }
 }

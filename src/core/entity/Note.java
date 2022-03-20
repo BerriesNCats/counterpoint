@@ -5,10 +5,10 @@ import core.entity.pitch.Pitch;
 public class Note {
 
   private final Pitch pitch;
-  private final Duration duration;
+  private final NoteDurationCommonTime duration;
 
 
-  public Note(Pitch pitch, Duration duration) {
+  public Note(Pitch pitch, NoteDurationCommonTime duration) {
     this.pitch = pitch;
     this.duration = duration;
   }
@@ -17,7 +17,7 @@ public class Note {
     return pitch;
   }
 
-  public Duration getDuration() {
+  public NoteDurationCommonTime getDuration() {
     return duration;
   }
 }
