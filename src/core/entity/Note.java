@@ -20,4 +20,9 @@ public class Note {
   public NoteDurationCommonTime getDuration() {
     return duration;
   }
+
+  @Override
+  public String toString() {
+    return pitch.getPitchClass().toString();
+  }
 }
