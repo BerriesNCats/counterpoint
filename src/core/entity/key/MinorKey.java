@@ -1,6 +1,6 @@
 package core.entity.key;
 
-public class MinorKey extends Key{
+public class MinorKey extends Key {
 
   private final KeyScale melodicMinorScale;
 
@@ -10,7 +10,7 @@ public class MinorKey extends Key{
   }
 
   private KeyScale findMelodicMinorScale() {
-    //TODO
+    // TODO
     return null;
   }
 }

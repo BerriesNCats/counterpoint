@@ -4,13 +4,11 @@ import static core.entity.key.KeyUtils.*;
 
 import core.entity.pitch.PitchClass;
 import java.util.HashMap;
-import java.util.List;
 
 public class Key {
 
   public static final HashMap<String, PitchClass> PITCH_CLASSES = loadPitchClasses();
   public static final HashMap<KeyName, KeyScale> SCALES = loadScales();
-
 
   private final KeyName keyName;
   private final PitchClass tonic;
@@ -30,5 +28,4 @@ public class Key {
   public String toString() {
     return tonic.toString() + keyName.getQuality().name();
   }
-
 }

@@ -1,6 +1,6 @@
 package core.entity.pitch;
 
-public class Pitch implements Comparable<Pitch>{
+public class Pitch implements Comparable<Pitch> {
 
   private final PitchClass pitchClass;
   private final int octave;
@@ -12,13 +12,13 @@ public class Pitch implements Comparable<Pitch>{
     this.noteNumber = findNoteNumber(pitchClass, octave);
   }
 
-  //TODO TEST
+  // TODO TEST
   private int findNoteNumber(PitchClass pitchClass, int octave) {
     int noteNumber = pitchClass.getPitchNumber();
     if (noteNumber < 0) throw new IllegalArgumentException("Valid Pitch Numbers are 0-11");
 
-    if (pitchClass.getPitchLetter().name().equals("A") ||
-        pitchClass.getPitchLetter().name().equals("B")) {
+    if (pitchClass.getNoteLetter().name().equals("A")
+        || pitchClass.getNoteLetter().name().equals("B")) {
       noteNumber -= 9;
       if (octave == 0) return noteNumber;
     } else {
@@ -36,9 +36,7 @@ public class Pitch implements Comparable<Pitch>{
     return this.noteNumber < that.noteNumber;
   }
 
-  /**
-   * @return The distance in semitones between pitches.
-   */
+  /** @return The distance in semitones between pitches. */
   @Override
   public int compareTo(Pitch that) {
     return this.noteNumber - that.noteNumber;
@@ -75,9 +73,11 @@ public class Pitch implements Comparable<Pitch>{
   public PitchClass getPitchClass() {
     return pitchClass;
   }
+
   public int getOctave() {
     return octave;
   }
+
   public int getNoteNumber() {
     return noteNumber;
   }
@@ -86,5 +86,4 @@ public class Pitch implements Comparable<Pitch>{
   public String toString() {
     return pitchClass.toString() + this.octave;
   }
-
 }

@@ -409,7 +409,6 @@ public class KeyUtils {
                     PITCH_CLASSES.get(E.name()),
                     PITCH_CLASSES.get(F.name() + SHARP.getAccidental()),
                     PITCH_CLASSES.get(G.name() + SHARP.getAccidental()))));
-
       }
     };
   }

@@ -1,9 +1,7 @@
 package core.entity.pitch;
 
-
 import java.util.Map;
 import static core.entity.key.KeyUtils.*;
-
 
 public class PitchClass {
 
@@ -16,21 +14,25 @@ public class PitchClass {
   public PitchClass(NoteLetter noteLetter, Accidental accidental) {
     this.noteLetter = noteLetter;
     this.accidental = accidental;
-    this.pitchNumber = findPitchNumber(noteLetter, accidental);
+    this.pitchNumber = this.findPitchNumber();
   }
 
-  private int findPitchNumber(NoteLetter noteLetter, Accidental accidental) {
+  public int findPitchNumber() {
     String pitchName = noteLetter.name() + accidental.getAccidental();
     return PITCH_NUMBERS.get(pitchName);
   }
 
-  public NoteLetter getPitchLetter() {
+  public NoteLetter getNoteLetter() {
     return this.noteLetter;
   }
+
   public Accidental getAccidental() {
     return this.accidental;
   }
-  public int getPitchNumber() { return this.pitchNumber; }
+
+  public int getPitchNumber() {
+    return this.pitchNumber;
+  }
 
   @Override
   public String toString() {

@@ -8,9 +8,9 @@ public enum IntervalStep {
   MAJOR_THIRD(2, 4),
   PERFECT_FOURTH(3, 5),
   AUGMENTED_FOURTH(3, 6),
-  DIMINISHED_FIFTH(4,6),
+  DIMINISHED_FIFTH(4, 6),
   PERFECT_FIFTH(4, 7),
-  MINOR_SIXTH(5,8),
+  MINOR_SIXTH(5, 8),
   MAJOR_SIXTH(5, 9),
   MINOR_SEVENTH(6, 10),
   MAJOR_SEVENTH(6, 11),
@@ -24,6 +24,11 @@ public enum IntervalStep {
     this.stepInSemitones = stepInSemitones;
   }
 
-  public int getStepInKey() { return this.stepInKey; }
-  public int getStepInSemitones() { return this.stepInSemitones; }
+  public int getStepInKey() {
+    return this.stepInKey;
+  }
+
+  public int getStepInSemitones() {
+    return this.stepInSemitones;
+  }
 }

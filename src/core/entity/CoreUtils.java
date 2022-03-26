@@ -1,5 +1,3 @@
 package core.entity;
 
-public class CoreUtils {
-
-}
+public class CoreUtils {}

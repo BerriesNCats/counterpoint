@@ -5,7 +5,6 @@ import java.util.List;
 
 public class KeyScale {
 
-
   private final List<PitchClass> pitchesInKey;
 
   public KeyScale(List<PitchClass> pitchesInKey) {

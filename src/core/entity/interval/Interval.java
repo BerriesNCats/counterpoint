@@ -7,7 +7,8 @@ import static core.entity.interval.IntervalUtils.*;
 
 public class Interval {
 
-  public static final HashMap<IntervalStep, IntervalQuality> INTERVAL_QUALITIES_MAP = loadIntervalQualities();
+  public static final HashMap<IntervalStep, IntervalQuality> INTERVAL_QUALITIES_MAP =
+      loadIntervalQualities();
   public static final List<IntervalStep> CONSONANCES = loadConsonantIntervals();
   public static final List<IntervalStep> DISSONANCES = loadDissonantIntervals();
 

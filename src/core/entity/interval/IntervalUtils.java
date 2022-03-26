@@ -36,8 +36,12 @@ public class IntervalUtils {
 
   static List<IntervalStep> loadDissonantIntervals() {
     return List.of(
-        MINOR_SECOND, MAJOR_SECOND, PERFECT_FOURTH, AUGMENTED_FOURTH, DIMINISHED_FIFTH,
-        MINOR_SEVENTH, MAJOR_SEVENTH
-    );
+        MINOR_SECOND,
+        MAJOR_SECOND,
+        PERFECT_FOURTH,
+        AUGMENTED_FOURTH,
+        DIMINISHED_FIFTH,
+        MINOR_SEVENTH,
+        MAJOR_SEVENTH);
   }
 }

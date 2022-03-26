@@ -32,7 +32,7 @@ public enum KeyName {
   F_MINOR(4, FLAT, MINOR, F.name()),
   F_SHARP_MAJOR(6, SHARP, MAJOR, F.name() + SHARP.name()),
   F_SHARP_MINOR(3, SHARP, MINOR, F.name() + SHARP.name()),
-  G_FLAT_MAJOR( 6, FLAT, MAJOR, G.name() + FLAT.name()),
+  G_FLAT_MAJOR(6, FLAT, MAJOR, G.name() + FLAT.name()),
   G_MAJOR(1, SHARP, MAJOR, G.name()),
   G_MINOR(2, FLAT, MINOR, G.name()),
   G_SHARP_MINOR(5, SHARP, MINOR, G.name() + SHARP.name());
@@ -42,8 +42,7 @@ public enum KeyName {
   private final KeyQuality quality;
   private final String tonic;
 
-  KeyName(int numberOfSharpsOrFlats, Accidental accidental, KeyQuality quality,
-      String tonic) {
+  KeyName(int numberOfSharpsOrFlats, Accidental accidental, KeyQuality quality, String tonic) {
     this.numberOfSharpsOrFlats = numberOfSharpsOrFlats;
     this.accidental = accidental;
     this.quality = quality;
@@ -53,11 +52,16 @@ public enum KeyName {
   public int getNumberOfSharpsOrFlats() {
     return this.numberOfSharpsOrFlats;
   }
+
   public Accidental getAccidental() {
     return this.accidental;
   }
+
   public KeyQuality getQuality() {
     return this.quality;
   }
-  public String getTonic() { return this.tonic; }
+
+  public String getTonic() {
+    return this.tonic;
+  }
 }

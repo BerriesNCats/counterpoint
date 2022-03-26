@@ -14,5 +14,7 @@ public enum NoteDurationCommonTime {
     this.length = length;
   }
 
-  public double getLength() { return this.length; }
+  public double getLength() {
+    return this.length;
+  }
 }
