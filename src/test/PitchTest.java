@@ -116,8 +116,20 @@ class PitchTest {
   }
 
   @Test
-  void isHigherThan() {}
+  void isHigherThan() {
+    Pitch pitch1 = new Pitch(new PitchClass(A, NATURAL), 0);
+    Pitch pitch2 = new Pitch(new PitchClass(C, NATURAL), 1);
+
+    assertTrue(pitch2.isHigherThan(pitch1));
+    assertFalse(pitch1.isHigherThan(pitch2));
+  }
 
   @Test
-  void isLowerThan() {}
+  void isLowerThan() {
+    Pitch pitch1 = new Pitch(new PitchClass(C, NATURAL), 3);
+    Pitch pitch2 = new Pitch(new PitchClass(F, SHARP), 4);
+
+    assertTrue(pitch1.isLowerThan(pitch2));
+    assertFalse(pitch2.isLowerThan(pitch1));
+  }
 }
