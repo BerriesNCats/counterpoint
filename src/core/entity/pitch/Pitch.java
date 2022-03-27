@@ -5,27 +5,38 @@ public class Pitch implements Comparable<Pitch> {
   private final PitchClass pitchClass;
   private final int octave;
   private final int noteNumber;
+  private final int midiNoteNumber;
 
   public Pitch(PitchClass pitchClass, int octave) {
     this.pitchClass = pitchClass;
     this.octave = octave;
     this.noteNumber = findNoteNumber(pitchClass, octave);
+    this.midiNoteNumber = findMidiNoteNumber(noteNumber);
   }
 
-  // TODO TEST
-  private int findNoteNumber(PitchClass pitchClass, int octave) {
-    int noteNumber = pitchClass.getPitchNumber();
-    if (noteNumber < 0) throw new IllegalArgumentException("Valid Pitch Numbers are 0-11");
+  public int findMidiNoteNumber(int noteNumber) {
+    return noteNumber + 21;
+  }
 
-    if (pitchClass.getNoteLetter().name().equals("A")
-        || pitchClass.getNoteLetter().name().equals("B")) {
-      noteNumber -= 9;
-      if (octave == 0) return noteNumber;
+  public int findNoteNumber(PitchClass pitchClass, int octave) {
+    int noteNumber = pitchClass.getPitchNumber();
+    if (noteNumber < -1) throw new IllegalArgumentException("Valid Pitch Numbers are -1 - 12");
+
+    if (pitchClass.getNoteLetter().equals(NoteLetter.A)) {
+      if (!pitchClass.getAccidental().equals(Accidental.FLAT)) {
+        if (octave == 0) return noteNumber - 9;
+      }
+      noteNumber += 3;
+    } else if (pitchClass.getNoteLetter().equals(NoteLetter.B)) {
+      if (octave == 0) return noteNumber - 9;
+      noteNumber += 3;
     } else {
       noteNumber += 3;
     }
 
-    return noteNumber * octave;
+    if (octave == 1) return noteNumber;
+
+    return noteNumber + ((octave - 1) * 12);
   }
 
   public boolean isHigherThan(Pitch that) {
@@ -71,19 +82,23 @@ public class Pitch implements Comparable<Pitch> {
   }
 
   public PitchClass getPitchClass() {
-    return pitchClass;
+    return this.pitchClass;
   }
 
   public int getOctave() {
-    return octave;
+    return this.octave;
   }
 
   public int getNoteNumber() {
-    return noteNumber;
+    return this.noteNumber;
+  }
+
+  public int getMidiNoteNumber() {
+    return this.midiNoteNumber;
   }
 
   @Override
   public String toString() {
-    return pitchClass.toString() + this.octave;
+    return this.pitchClass.toString() + this.octave;
   }
 }

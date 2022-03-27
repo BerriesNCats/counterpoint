@@ -1,7 +1,9 @@
 package core.entity.pitch;
 
+import java.util.HashMap;
 import java.util.Map;
-import static core.entity.key.KeyUtils.*;
+import static core.entity.pitch.Accidental.*;
+import static core.entity.pitch.NoteLetter.*;
 
 public class PitchClass {
 
@@ -20,6 +22,34 @@ public class PitchClass {
   public int findPitchNumber() {
     String pitchName = noteLetter.name() + accidental.getAccidental();
     return PITCH_NUMBERS.get(pitchName);
+  }
+
+  public static Map<String, Integer> loadPitchNumbers() {
+    return new HashMap<String, Integer>() {
+      {
+        put(C.name() + FLAT.getAccidental(), -1);
+        put(C.name() + NATURAL.getAccidental(), 0);
+        put(C.name() + SHARP.getAccidental(), 1);
+        put(D.name() + FLAT.getAccidental(), 1);
+        put(D.name() + NATURAL.getAccidental(), 2);
+        put(D.name() + SHARP.getAccidental(), 3);
+        put(E.name() + FLAT.getAccidental(), 3);
+        put(E.name() + NATURAL.getAccidental(), 4);
+        put(F.name() + FLAT.getAccidental(), 4);
+        put(E.name() + SHARP.getAccidental(), 5);
+        put(F.name() + NATURAL.getAccidental(), 5);
+        put(F.name() + SHARP.getAccidental(), 6);
+        put(G.name() + FLAT.getAccidental(), 6);
+        put(G.name() + NATURAL.getAccidental(), 7);
+        put(G.name() + SHARP.getAccidental(), 8);
+        put(A.name() + FLAT.getAccidental(), 8);
+        put(A.name() + NATURAL.getAccidental(), 9);
+        put(A.name() + SHARP.getAccidental(), 10);
+        put(B.name() + FLAT.getAccidental(), 10);
+        put(B.name() + NATURAL.getAccidental(), 11);
+        put(B.name() + SHARP.getAccidental(), 12);
+      }
+    };
   }
 
   public NoteLetter getNoteLetter() {
