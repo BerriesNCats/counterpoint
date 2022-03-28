@@ -22,19 +22,15 @@ public class Pitch implements Comparable<Pitch> {
     int noteNumber = pitchClass.getPitchNumber();
     if (noteNumber < -1) throw new IllegalArgumentException("Valid Pitch Numbers are -1 - 12");
 
-    if (pitchClass.getNoteLetter().equals(NoteLetter.A)) {
-      if (!pitchClass.getAccidental().equals(Accidental.FLAT)) {
-        if (octave == 0) return noteNumber - 9;
-      }
-      noteNumber += 3;
-    } else if (pitchClass.getNoteLetter().equals(NoteLetter.B)) {
-      if (octave == 0) return noteNumber - 9;
-      noteNumber += 3;
+    // Transform Pitch Number Identity to Note Number Identity
+    if ((pitchClass.getNoteLetter().equals(NoteLetter.A)
+            && !pitchClass.getAccidental().equals(Accidental.FLAT)
+            && octave == 0)
+        || (pitchClass.getNoteLetter().equals(NoteLetter.B) && octave == 0)) {
+      return noteNumber - 9;
     } else {
       noteNumber += 3;
     }
-
-    if (octave == 1) return noteNumber;
 
     return noteNumber + ((octave - 1) * 12);
   }

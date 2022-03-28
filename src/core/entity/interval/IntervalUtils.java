@@ -31,7 +31,13 @@ public class IntervalUtils {
 
   static List<IntervalStep> loadConsonantIntervals() {
     return List.of(
-        UNISON, MINOR_THIRD, MAJOR_THIRD, PERFECT_FIFTH, MAJOR_SIXTH, MAJOR_SIXTH, OCTAVE);
+        UNISON,
+        MINOR_THIRD,
+        MAJOR_THIRD,
+        PERFECT_FIFTH,
+        MAJOR_SIXTH,
+        MAJOR_SIXTH,
+        OCTAVE);
   }
 
   static List<IntervalStep> loadDissonantIntervals() {

@@ -20,6 +20,18 @@ public class Note {
     return duration;
   }
 
+  public boolean isHigherThan(Note that) {
+    return this.pitch.isHigherThan(that.pitch);
+  }
+
+  public boolean isLowerThan(Note that) {
+    return this.pitch.isLowerThan(that.pitch);
+  }
+
+  public int compareTo(Note that) {
+    return this.pitch.compareTo(that.pitch);
+  }
+
   @Override
   public String toString() {
     return pitch.getPitchClass().toString();

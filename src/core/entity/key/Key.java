@@ -1,14 +1,10 @@
 package core.entity.key;
 
-import static core.entity.key.KeyUtils.*;
+import static core.entity.pitch.PitchClass.PITCH_CLASSES;
 
 import core.entity.pitch.PitchClass;
-import java.util.HashMap;
 
 public class Key {
-
-  public static final HashMap<String, PitchClass> PITCH_CLASSES = loadPitchClasses();
-  public static final HashMap<KeyName, KeyScale> SCALES = loadScales();
 
   private final KeyName keyName;
   private final PitchClass tonic;
@@ -22,6 +18,14 @@ public class Key {
 
   public PitchClass getTonic() {
     return this.tonic;
+  }
+
+  public static KeyScale loadScale(KeyName keyName) {
+    return KeyScale.SCALES.get(keyName);
+  }
+
+  public static PitchClass findTonic(KeyName keyName) {
+    return PITCH_CLASSES.get(keyName.getTonic());
   }
 
   @Override

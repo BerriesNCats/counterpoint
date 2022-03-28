@@ -1,5 +1,8 @@
 package core.entity.interval;
 
+import core.entity.Note;
+import core.entity.key.Key;
+import core.entity.pitch.Pitch;
 import java.util.HashMap;
 import java.util.List;
 
@@ -12,12 +15,27 @@ public class Interval {
   public static final List<IntervalStep> CONSONANCES = loadConsonantIntervals();
   public static final List<IntervalStep> DISSONANCES = loadDissonantIntervals();
 
-  private final IntervalQuality quality;
+  private final Note lowVoice;
+  private final Note highVoice;
   private final IntervalStep step;
+  private final IntervalQuality quality;
+  private final Key key;
 
-  public Interval(IntervalStep step) {
+  public Interval(Note lowVoice, Note highVoice, Key key) {
+    this.lowVoice = lowVoice;
+    this.highVoice = highVoice;
+    this.key = key;
+    this.step = findStep(lowVoice, highVoice);
     this.quality = findQuality(step);
-    this.step = step;
+  }
+
+  // TODO
+  private IntervalStep findStep(Note lowNote, Note highNote) {
+    int differenceInSemiTones = lowNote.compareTo(highNote);
+    Pitch lowNotePitch = lowNote.getPitch();
+    Pitch highNotePitch = highNote.getPitch();
+
+    return null;
   }
 
   public boolean isConsonance() {

@@ -2,12 +2,14 @@ package core.entity.pitch;
 
 import java.util.HashMap;
 import java.util.Map;
+
 import static core.entity.pitch.Accidental.*;
 import static core.entity.pitch.NoteLetter.*;
 
 public class PitchClass {
 
   public static final Map<String, Integer> PITCH_NUMBERS = loadPitchNumbers();
+  public static final HashMap<String, PitchClass> PITCH_CLASSES = loadPitchClasses();
 
   private final NoteLetter noteLetter;
   private final Accidental accidental;
@@ -17,6 +19,36 @@ public class PitchClass {
     this.noteLetter = noteLetter;
     this.accidental = accidental;
     this.pitchNumber = this.findPitchNumber();
+  }
+
+  public static HashMap<String, PitchClass> loadPitchClasses() {
+    return new HashMap<String, PitchClass>() {
+      {
+        put(A.name(), new PitchClass(A, NATURAL));
+        put(B.name(), new PitchClass(B, NATURAL));
+        put(C.name(), new PitchClass(C, NATURAL));
+        put(D.name(), new PitchClass(D, NATURAL));
+        put(E.name(), new PitchClass(E, NATURAL));
+        put(F.name(), new PitchClass(F, NATURAL));
+        put(G.name(), new PitchClass(G, NATURAL));
+
+        put(A.name() + FLAT.getAccidental(), new PitchClass(A, FLAT));
+        put(B.name() + FLAT.getAccidental(), new PitchClass(B, FLAT));
+        put(C.name() + FLAT.getAccidental(), new PitchClass(C, FLAT));
+        put(D.name() + FLAT.getAccidental(), new PitchClass(D, FLAT));
+        put(E.name() + FLAT.getAccidental(), new PitchClass(E, FLAT));
+        put(F.name() + FLAT.getAccidental(), new PitchClass(F, FLAT));
+        put(G.name() + FLAT.getAccidental(), new PitchClass(G, FLAT));
+
+        put(A.name() + SHARP.getAccidental(), new PitchClass(A, SHARP));
+        put(B.name() + SHARP.getAccidental(), new PitchClass(B, SHARP));
+        put(C.name() + SHARP.getAccidental(), new PitchClass(C, SHARP));
+        put(D.name() + SHARP.getAccidental(), new PitchClass(D, SHARP));
+        put(E.name() + SHARP.getAccidental(), new PitchClass(E, SHARP));
+        put(F.name() + SHARP.getAccidental(), new PitchClass(F, SHARP));
+        put(G.name() + SHARP.getAccidental(), new PitchClass(G, SHARP));
+      }
+    };
   }
 
   public int findPitchNumber() {
