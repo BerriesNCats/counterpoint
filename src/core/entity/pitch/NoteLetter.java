@@ -7,5 +7,5 @@ public enum NoteLetter {
   D,
   E,
   F,
-  G;
+  G
 }

@@ -8,12 +8,12 @@ public class Key {
 
   private final KeyName keyName;
   private final PitchClass tonic;
-  private final KeyScale scale;
+  private final KeyScale keyScale;
 
   public Key(KeyName keyName) {
     this.keyName = keyName;
     this.tonic = findTonic(keyName);
-    this.scale = loadScale(keyName);
+    this.keyScale = loadScale(keyName);
   }
 
   public PitchClass getTonic() {
@@ -26,6 +26,14 @@ public class Key {
 
   public static PitchClass findTonic(KeyName keyName) {
     return PITCH_CLASSES.get(keyName.getTonic());
+  }
+
+  public KeyName getKeyName() {
+    return keyName;
+  }
+
+  public KeyScale getKeyScale() {
+    return keyScale;
   }
 
   @Override
