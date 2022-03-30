@@ -41,7 +41,6 @@ public class Interval {
     // C                  A = 5                   C = 0       MINOR THIRD = 3
     // C                  C = 0                   D = 1
 
-
     int indexOfPitch1InKey = orderedPitchesInKey.indexOf(pitch1.getPitchClass()); // A2 index 5
     int indexOfPitch2InKey = orderedPitchesInKey.indexOf(pitch2.getPitchClass()); // C3 index 0
     // Should return distance in key of 3

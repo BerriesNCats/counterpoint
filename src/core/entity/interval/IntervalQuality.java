@@ -32,9 +32,5 @@ public enum IntervalQuality {
     return this.stepInSemitones;
   }
 
-  public IntervalQuality getQuality(int stepInKey, int stepInSemitones) {
 
-    // TODO
-    return null;
-  }
 }
