@@ -8,7 +8,7 @@ import java.util.List;
 
 public class IntervalUtils {
 
-  static HashMap<IntervalQuality, IntervalType> loadIntervalQualities() {
+  static HashMap<IntervalQuality, IntervalType> loadIntervalTypes() {
     return new HashMap<IntervalQuality, IntervalType>() {
       {
         put(UNISON, PERFECT_CONSONANCE);
@@ -31,13 +31,7 @@ public class IntervalUtils {
 
   static List<IntervalQuality> loadConsonantIntervals() {
     return List.of(
-        UNISON,
-        MINOR_THIRD,
-        MAJOR_THIRD,
-        PERFECT_FIFTH,
-        MAJOR_SIXTH,
-        MAJOR_SIXTH,
-        OCTAVE);
+        UNISON, MINOR_THIRD, MAJOR_THIRD, PERFECT_FIFTH, MAJOR_SIXTH, MAJOR_SIXTH, OCTAVE);
   }
 
   static List<IntervalQuality> loadDissonantIntervals() {

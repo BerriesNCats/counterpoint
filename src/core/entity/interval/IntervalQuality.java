@@ -1,7 +1,5 @@
 package core.entity.interval;
 
-import java.util.List;
-
 public enum IntervalQuality {
   UNISON(0, 0),
   MINOR_SECOND(1, 1),
@@ -18,8 +16,6 @@ public enum IntervalQuality {
   MAJOR_SEVENTH(6, 11),
   OCTAVE(7, 12);
 
-  public final static List<IntervalQuality> intervalQualities = loadIntervalQualities();
-
   private final int stepInKey;
   private final int stepInSemitones;
 
@@ -28,16 +24,17 @@ public enum IntervalQuality {
     this.stepInSemitones = stepInSemitones;
   }
 
-  private static List<IntervalQuality> loadIntervalQualities() {
-    //TODO
-    return null;
-  }
-
   public int getStepInKey() {
     return this.stepInKey;
   }
 
   public int getStepInSemitones() {
     return this.stepInSemitones;
+  }
+
+  public IntervalQuality getQuality(int stepInKey, int stepInSemitones) {
+
+    // TODO
+    return null;
   }
 }

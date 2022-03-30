@@ -4,20 +4,19 @@ import static core.entity.pitch.Accidental.*;
 import static core.entity.pitch.NoteLetter.*;
 import static core.entity.pitch.PitchClass.PITCH_CLASSES;
 
+import core.entity.interval.IntervalQuality;
+import core.entity.pitch.NoteLetter;
 import core.entity.pitch.PitchClass;
 import java.util.HashMap;
 import java.util.List;
 
 public class KeyScale {
 
-  public static final HashMap<KeyName, KeyScale> SCALES = loadScales();
-
   private final List<PitchClass> scale;
 
   public List<PitchClass> getScale() {
     return scale;
   }
-
 
   public KeyScale(List<PitchClass> orderedNotesInScale) {
     this.scale = orderedNotesInScale;
@@ -52,24 +51,24 @@ public class KeyScale {
             KeyName.A_MAJOR,
             new KeyScale(
                 List.of(
-                    PITCH_CLASSES.get(A.name() + NATURAL),
-                    PITCH_CLASSES.get(B.name() + NATURAL),
+                    PITCH_CLASSES.get(A.name() + NATURAL.getAccidental()),
+                    PITCH_CLASSES.get(B.name() + NATURAL.getAccidental()),
                     PITCH_CLASSES.get(C.name() + SHARP.getAccidental()),
-                    PITCH_CLASSES.get(D.name() + NATURAL),
-                    PITCH_CLASSES.get(E.name() + NATURAL),
+                    PITCH_CLASSES.get(D.name() + NATURAL.getAccidental()),
+                    PITCH_CLASSES.get(E.name() + NATURAL.getAccidental()),
                     PITCH_CLASSES.get(F.name() + SHARP.getAccidental()),
                     PITCH_CLASSES.get(G.name() + SHARP.getAccidental()))));
         put(
             KeyName.A_MINOR,
             new KeyScale(
                 List.of(
-                    PITCH_CLASSES.get(A.name() + NATURAL),
-                    PITCH_CLASSES.get(B.name() + NATURAL),
-                    PITCH_CLASSES.get(C.name() + NATURAL),
-                    PITCH_CLASSES.get(D.name() + NATURAL),
-                    PITCH_CLASSES.get(E.name() + NATURAL),
-                    PITCH_CLASSES.get(F.name() + NATURAL),
-                    PITCH_CLASSES.get(G.name() + NATURAL))));
+                    PITCH_CLASSES.get(A.name() + NATURAL.getAccidental()),
+                    PITCH_CLASSES.get(B.name() + NATURAL.getAccidental()),
+                    PITCH_CLASSES.get(C.name() + NATURAL.getAccidental()),
+                    PITCH_CLASSES.get(D.name() + NATURAL.getAccidental()),
+                    PITCH_CLASSES.get(E.name() + NATURAL.getAccidental()),
+                    PITCH_CLASSES.get(F.name() + NATURAL.getAccidental()),
+                    PITCH_CLASSES.get(G.name() + NATURAL.getAccidental()))));
         put(
             KeyName.A_SHARP_MINOR,
             new KeyScale(
