@@ -12,6 +12,11 @@ public class KeyScale {
 
   private final List<PitchClass> scale;
 
+  public static HashMap<KeyScale, KeyScale> loadMelodicMinorScales() {
+    //TODO
+    return null;
+  }
+
   public List<PitchClass> getScale() {
     return scale;
   }
