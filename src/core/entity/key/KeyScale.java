@@ -4,8 +4,7 @@ import static core.entity.pitch.Accidental.*;
 import static core.entity.pitch.NoteLetter.*;
 import static core.entity.pitch.PitchClass.PITCH_CLASSES;
 
-import core.entity.interval.IntervalQuality;
-import core.entity.pitch.NoteLetter;
+
 import core.entity.pitch.PitchClass;
 import java.util.HashMap;
 import java.util.List;
