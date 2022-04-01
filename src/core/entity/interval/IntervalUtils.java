@@ -9,7 +9,7 @@ import java.util.List;
 public class IntervalUtils {
 
   static HashMap<IntervalQuality, IntervalType> loadIntervalTypes() {
-    return new HashMap<IntervalQuality, IntervalType>() {
+    return new HashMap<>() {
       {
         put(UNISON, PERFECT_CONSONANCE);
         put(MINOR_SECOND, DISSONANCE);
@@ -17,8 +17,7 @@ public class IntervalUtils {
         put(MINOR_THIRD, IMPERFECT_CONSONANCE);
         put(MAJOR_THIRD, IMPERFECT_CONSONANCE);
         put(PERFECT_FOURTH, DISSONANCE);
-        put(AUGMENTED_FOURTH, DISSONANCE);
-        put(DIMINISHED_FIFTH, DISSONANCE);
+        put(TRITONE, DISSONANCE);
         put(PERFECT_FIFTH, PERFECT_CONSONANCE);
         put(MINOR_SIXTH, IMPERFECT_CONSONANCE);
         put(MAJOR_SIXTH, IMPERFECT_CONSONANCE);
@@ -39,8 +38,7 @@ public class IntervalUtils {
         MINOR_SECOND,
         MAJOR_SECOND,
         PERFECT_FOURTH,
-        AUGMENTED_FOURTH,
-        DIMINISHED_FIFTH,
+        TRITONE,
         MINOR_SEVENTH,
         MAJOR_SEVENTH);
   }

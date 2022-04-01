@@ -16,11 +16,10 @@ public class IntervalTest {
 
   @Test
   void findIntervalQualityTest() {
-    Key cMajorKey = new Key(KeyName.C_MAJOR);
     Pitch pitchA2 = new Pitch(new PitchClass(A, NATURAL), 2);
     Pitch pitchC3 = new Pitch(new PitchClass(C, NATURAL), 3);
 
-    Interval interval = new Interval(pitchA2, pitchC3, cMajorKey);
+    Interval interval = new Interval(pitchA2, pitchC3);
 
     Assertions.assertEquals(IntervalQuality.MINOR_THIRD, interval.getQuality());
   }

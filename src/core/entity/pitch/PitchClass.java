@@ -15,6 +15,12 @@ public class PitchClass {
   private final Accidental accidental;
   private final int pitchNumber;
 
+  public PitchClass(NoteLetter noteLetter) {
+    this.noteLetter = noteLetter;
+    this.accidental = NATURAL;
+    this.pitchNumber = findPitchNumber();
+  }
+
   public PitchClass(NoteLetter noteLetter, Accidental accidental) {
     this.noteLetter = noteLetter;
     this.accidental = accidental;
@@ -22,7 +28,7 @@ public class PitchClass {
   }
 
   public static HashMap<String, PitchClass> loadPitchClasses() {
-    return new HashMap<String, PitchClass>() {
+    return new HashMap<>() {
       {
         put(A.name(), new PitchClass(A, NATURAL));
         put(B.name(), new PitchClass(B, NATURAL));
@@ -57,7 +63,7 @@ public class PitchClass {
   }
 
   public static Map<String, Integer> loadPitchNumbers() {
-    return new HashMap<String, Integer>() {
+    return new HashMap<>() {
       {
         put(C.name() + FLAT.getAccidental(), -1);
         put(C.name() + NATURAL.getAccidental(), 0);
@@ -99,5 +105,33 @@ public class PitchClass {
   @Override
   public String toString() {
     return noteLetter.name() + accidental.getAccidental();
+  }
+
+  @Override
+  public boolean equals(Object o) {
+    if (this == o) {
+      return true;
+    }
+    if (o == null || getClass() != o.getClass()) {
+      return false;
+    }
+
+    PitchClass that = (PitchClass) o;
+
+    if (getPitchNumber() != that.getPitchNumber()) {
+      return false;
+    }
+    if (getNoteLetter() != that.getNoteLetter()) {
+      return false;
+    }
+    return getAccidental() == that.getAccidental();
+  }
+
+  @Override
+  public int hashCode() {
+    int result = getNoteLetter().hashCode();
+    result = 31 * result + getAccidental().hashCode();
+    result = 31 * result + getPitchNumber();
+    return result;
   }
 }
