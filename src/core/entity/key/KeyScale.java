@@ -2,6 +2,7 @@ package core.entity.key;
 
 import static core.entity.pitch.Accidental.*;
 import static core.entity.pitch.NoteLetter.*;
+import static core.entity.key.ScaleDegree.*;
 import static core.entity.pitch.PitchClass.PITCH_CLASSES;
 
 import core.entity.pitch.PitchClass;
@@ -10,12 +11,15 @@ import java.util.List;
 
 public class KeyScale {
 
+
   private final List<PitchClass> scale;
 
   public static HashMap<KeyScale, KeyScale> loadMelodicMinorScales() {
     //TODO
     return null;
   }
+
+
 
   public List<PitchClass> getScale() {
     return scale;

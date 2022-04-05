@@ -24,6 +24,7 @@ public class CantusFirmusVoice extends Voice {
     int cantusLength = new Random().nextInt(15 - 10) + 10;
     this.setVoiceLength(cantusLength);
     CantusFirmusVoice cantus = new CantusFirmusVoice();
+    cantus.setVoiceLength(cantusLength);
     Note tonic = new Note(key.getTonic(), octave);
     cantus.addTonic(tonic);
 
@@ -38,23 +39,24 @@ public class CantusFirmusVoice extends Voice {
   private Note generatePenUltimate(Key key, int octave) {
     Note previousNote = this.getNotes().get(this.notes.size() - 3);
 
-    Note superTonic = new Note(key.getScale().get(1), octave);
-    Note leadingTone = new Note(key.getScale().get(6), octave);
+    PitchClass superTonic = key.getSuperTonic();
+    PitchClass leadingTone = key.getLeadingTone();
     //TODO
     // Adjust Notes if octave throws it off
-    if (superTonic.getPitch().isLowerThan(this.notes.get(0).getPitch())) {
-      //adjust
-    } else if (leadingTone.getPitch().isHigherThan(this.notes.get(0).getPitch())) {
-      //adjust
-    }
+//    if (superTonic.getPitch().isLowerThan(this.notes.get(0).getPitch())) {
+//      //adjust
+//    } else if (leadingTone.getPitch().isHigherThan(this.notes.get(0).getPitch())) {
+//      //adjust
+//    }
     //TODO
     // Return based on previousNote if obvious
 
-    // Otherwise random
-    if (new Random().nextBoolean()) {
-      return superTonic;
-    }
-    return leadingTone;
+//    // Otherwise random
+//    if (new Random().nextBoolean()) {
+//      return superTonic;
+//    }
+//    return leadingTone;
+    return null;
   }
 
   private static Note generateNote(List<Note> previousNotes) {
@@ -63,7 +65,7 @@ public class CantusFirmusVoice extends Voice {
     int randomNote = random.nextInt(8);
     //TODO
     // Also shouldn't be random most of the time
-    // Each previous note should inform the new note
+    // Each previous note should inform the new note according to melodic rules
 
     return null;
   }
