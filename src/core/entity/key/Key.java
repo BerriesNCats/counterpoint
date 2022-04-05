@@ -2,8 +2,10 @@ package core.entity.key;
 
 import static core.entity.pitch.PitchClass.PITCH_CLASSES;
 
+import core.entity.Note;
 import core.entity.pitch.PitchClass;
 import java.util.HashMap;
+import java.util.List;
 
 public class Key {
 
@@ -29,6 +31,10 @@ public class Key {
 
   public static PitchClass findTonic(KeyName keyName) {
     return PITCH_CLASSES.get(keyName.getTonic());
+  }
+
+  public List<PitchClass> getScale() {
+    return this.keyScale.getScale();
   }
 
   public KeyName getKeyName() {

@@ -6,7 +6,8 @@ import core.entity.interval.IntervalType;
 import core.entity.key.Key;
 import core.entity.pitch.Pitch;
 import core.species.CantusFirmusVoice;
-import core.species.CounterpointVoice;
+import core.species.CounterPointVoice;
+import core.species.Voice;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -15,15 +16,17 @@ public class NoteAgainstNote {
 
   private final Key key;
   private final CantusFirmusVoice cantusFirmusVoice;
-  private final CounterpointVoice counterpointVoice;
+  private final CounterPointVoice counterPointVoice;
   private final List<Interval> intervals;
 
-  public NoteAgainstNote(Key key, CantusFirmusVoice cantusFirmusVoice, CounterpointVoice counterpointVoice) {
+
+  public NoteAgainstNote(Key key, CantusFirmusVoice cantusFirmusVoice, CounterPointVoice counterPointVoice) {
     this.key = key;
     this.cantusFirmusVoice = cantusFirmusVoice;
-    this.counterpointVoice = counterpointVoice;
+    this.counterPointVoice = counterPointVoice;
     this.intervals = createIntervals();
   }
+
 
   public boolean isValidCantusFirstNote () {
     return cantusFirmusVoice.beginsWithRootNote(key);
@@ -57,7 +60,7 @@ public class NoteAgainstNote {
     List<Interval> intervals = new ArrayList<>();
     for (int i = 0; i < cantusFirmusVoice.getNotes().size() - 1; i++) {
       Note cantusNote = cantusFirmusVoice.getNotes().get(i);
-      Note counterNote = counterpointVoice.getNotes().get(i);
+      Note counterNote = counterPointVoice.getNotes().get(i);
       intervals.add(new Interval(cantusNote.getPitch(), counterNote.getPitch()));
     }
     return intervals;

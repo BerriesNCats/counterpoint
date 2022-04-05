@@ -1,6 +1,7 @@
 package core.entity;
 
 import core.entity.pitch.Pitch;
+import core.entity.pitch.PitchClass;
 
 public class Note {
 
@@ -17,8 +18,17 @@ public class Note {
     this.duration = duration;
   }
 
+  public Note(PitchClass pitchClass, int octave) {
+    this.pitch = new Pitch(pitchClass, octave);
+    this.duration = NoteDurationCommonTime.WHOLE_NOTE;
+  }
+
   public Pitch getPitch() {
     return pitch;
+  }
+
+  public PitchClass getPitchClass() {
+    return this.getPitch().getPitchClass();
   }
 
   public NoteDurationCommonTime getDuration() {
