@@ -14,4 +14,6 @@ public enum Accidental {
   public String getAccidental() {
     return this.accidental;
   }
+
+
 }
