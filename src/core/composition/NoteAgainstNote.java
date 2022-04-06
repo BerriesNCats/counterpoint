@@ -2,44 +2,38 @@ package core.composition;
 
 import core.entity.Note;
 import core.entity.interval.Interval;
-import core.entity.interval.IntervalType;
 import core.entity.key.Key;
 import core.entity.pitch.Pitch;
 import core.species.CantusFirmusVoice;
 import core.species.CounterPointVoice;
-import core.species.Voice;
 import java.util.ArrayList;
 import java.util.List;
-
 
 public class NoteAgainstNote {
 
   private final Key key;
   private final CantusFirmusVoice cantusFirmusVoice;
   private final CounterPointVoice counterPointVoice;
-  private final List<Interval> intervals;
 
-
-  public NoteAgainstNote(Key key, CantusFirmusVoice cantusFirmusVoice, CounterPointVoice counterPointVoice) {
+  public NoteAgainstNote(
+      Key key, CantusFirmusVoice cantusFirmusVoice, CounterPointVoice counterPointVoice) {
     this.key = key;
     this.cantusFirmusVoice = cantusFirmusVoice;
     this.counterPointVoice = counterPointVoice;
-    this.intervals = createIntervals();
   }
 
-
-  public boolean isValidCantusFirstNote () {
-    return cantusFirmusVoice.beginsWithRootNote(key);
+  public boolean isValidCantusFirstNote() {
+    return cantusFirmusVoice.isRootPitch(key);
   }
 
-  public boolean isValidOpeningInterval() {
-    if (!isValidCantusFirstNote()) {
-      return false;
-    }
-    return intervals.get(0).getIntervalType() == IntervalType.PERFECT_CONSONANCE;
-  }
+//  public boolean isValidOpeningInterval() {
+//    if (!isValidCantusFirstNote()) {
+//      return false;
+//    }
+//    return intervals.get(0).getIntervalType() == IntervalType.PERFECT_CONSONANCE;
+//  }
 
-  //TODO
+  // TODO
   public boolean isValidPenultimateNote() {
     return false;
   }
