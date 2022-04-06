@@ -12,21 +12,24 @@ import java.util.List;
 
 public class Voice {
 
-  public HashMap<ScaleDegree, PitchClass> scaleDegrees;
-
   protected List<Note> notes;
   protected Key key;
+  protected HashMap<ScaleDegree, PitchClass> scaleDegrees;
 
   public Voice(Key key) {
     this.key = key;
+    this.notes = new ArrayList<>();
     this.scaleDegrees = loadScaleDegrees();
   }
 
-  public Voice() {}
-
-  public Voice(List<Note> notes, Key key) {
-    this.notes = notes;
+  public Voice(Key key, List<Note> notes) {
     this.key = key;
+    this.notes = notes;
+    this.scaleDegrees = loadScaleDegrees();
+  }
+
+  public PitchClass getScaleDegree(ScaleDegree scaleDegree) {
+    return scaleDegrees.get(scaleDegree);
   }
 
   private HashMap<ScaleDegree, PitchClass> loadScaleDegrees() {

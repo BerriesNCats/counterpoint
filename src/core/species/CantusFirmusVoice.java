@@ -1,14 +1,12 @@
 package core.species;
 
 import static core.UtilityListsAndMaps.VALID_CANTUS_INTERVALS;
-import static core.entity.interval.IntervalQuality.*;
 import static core.entity.key.ScaleDegree.*;
 
 import core.entity.Note;
 import core.entity.interval.IntervalQuality;
 import core.entity.key.Key;
 import core.entity.pitch.PitchClass;
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 
@@ -23,7 +21,6 @@ public class CantusFirmusVoice extends Voice {
     super(notes, key);
   }
 
-  // Should probably be static and take in an object or create List<Note> and return new
   public CantusFirmusVoice createCantus(Key key, int octave) {
     int cantusLength = new Random().nextInt(15 - 10) + 10;
     CantusFirmusVoice cantusFirmus = new CantusFirmusVoice(key);
