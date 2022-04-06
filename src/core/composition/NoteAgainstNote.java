@@ -4,6 +4,7 @@ import static core.entity.Utilities.DEFAULT_OCTAVE;
 
 import core.entity.interval.Interval;
 import core.entity.interval.IntervalQuality;
+import core.entity.interval.IntervalType;
 import core.entity.key.Key;
 import core.entity.pitch.Pitch;
 import core.composition.voice.CantusFirmusVoice;
@@ -38,14 +39,13 @@ public class NoteAgainstNote {
     return cantusFirmusVoice.isRootPitch(key);
   }
 
-  //  public boolean isValidOpeningInterval() {
-  //    if (!isValidCantusFirstNote()) {
-  //      return false;
-  //    }
-  //    return intervals.get(0).getIntervalType() == IntervalType.PERFECT_CONSONANCE;
-  //  }
+  public boolean isValidOpeningInterval() {
+    if (!isValidCantusFirstNote()) {
+      return false;
+    }
+    return intervals.get(0).getIntervalType() == IntervalType.PERFECT_CONSONANCE;
+  }
 
-  // TODO
   public boolean isValidPenultimateNote() {
     PitchClass penUltimateNote =
         this.cantusFirmusVoice
@@ -58,27 +58,29 @@ public class NoteAgainstNote {
   }
 
   public boolean isValidPenultimateInterval() {
-    IntervalQuality penUltimateIntervalQuality = this.intervals.get(this.intervals.size() - 2).getQuality();
+    IntervalQuality penUltimateIntervalQuality =
+        this.intervals.get(this.intervals.size() - 2).getQuality();
 
-    return penUltimateIntervalQuality.equals(IntervalQuality.MAJOR_SIXTH) ||
-       penUltimateIntervalQuality.equals(IntervalQuality.MINOR_THIRD);
+    return penUltimateIntervalQuality.equals(IntervalQuality.MAJOR_SIXTH)
+        || penUltimateIntervalQuality.equals(IntervalQuality.MINOR_THIRD);
   }
 
   public boolean isValidUltimateNote() {
     PitchClass ultimateNote =
         this.cantusFirmusVoice
-        .getNotes()
-        .get(cantusFirmusVoice.getNotes().size() - 1)
-        .getPitchClass();
+            .getNotes()
+            .get(cantusFirmusVoice.getNotes().size() - 1)
+            .getPitchClass();
 
     return ultimateNote.equals(key.getTonic());
   }
 
   public boolean isValidUltimateInterval() {
-    IntervalQuality ultimateIntervalQuality = this.intervals.get(this.intervals.size() - 1).getQuality();
+    IntervalQuality ultimateIntervalQuality =
+        this.intervals.get(this.intervals.size() - 1).getQuality();
 
-    return ultimateIntervalQuality.equals(IntervalQuality.UNISON) ||
-        ultimateIntervalQuality.equals(IntervalQuality.OCTAVE);
+    return ultimateIntervalQuality.equals(IntervalQuality.UNISON)
+        || ultimateIntervalQuality.equals(IntervalQuality.OCTAVE);
   }
 
   public List<Interval> createIntervals() {
