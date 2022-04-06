@@ -3,10 +3,12 @@ package core.composition;
 import static core.entity.Utilities.DEFAULT_OCTAVE;
 
 import core.entity.interval.Interval;
+import core.entity.interval.IntervalQuality;
 import core.entity.key.Key;
 import core.entity.pitch.Pitch;
 import core.composition.voice.CantusFirmusVoice;
 import core.composition.voice.CounterPointVoice;
+import core.entity.pitch.PitchClass;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -15,6 +17,7 @@ public class NoteAgainstNote {
   private final Key key;
   private final CantusFirmusVoice cantusFirmusVoice;
   private final CounterPointVoice counterPointVoice;
+  private final List<Interval> intervals;
 
   public NoteAgainstNote(Key key) {
     this(
@@ -28,6 +31,7 @@ public class NoteAgainstNote {
     this.key = key;
     this.cantusFirmusVoice = cantusFirmusVoice;
     this.counterPointVoice = counterPointVoice;
+    this.intervals = createIntervals();
   }
 
   public boolean isValidCantusFirstNote() {
@@ -43,22 +47,41 @@ public class NoteAgainstNote {
 
   // TODO
   public boolean isValidPenultimateNote() {
-    return false;
+    PitchClass penUltimateNote =
+        this.cantusFirmusVoice
+            .getNotes()
+            .get(cantusFirmusVoice.getNotes().size() - 2)
+            .getPitchClass();
+
+    return penUltimateNote.equals(key.getSuperTonic())
+        || penUltimateNote.equals(key.getLeadingTone());
   }
 
   public boolean isValidPenultimateInterval() {
-    return false;
+    IntervalQuality penUltimateIntervalQuality = this.intervals.get(this.intervals.size() - 2).getQuality();
+
+    return penUltimateIntervalQuality.equals(IntervalQuality.MAJOR_SIXTH) ||
+       penUltimateIntervalQuality.equals(IntervalQuality.MINOR_THIRD);
   }
 
   public boolean isValidUltimateNote() {
-    return false;
+    PitchClass ultimateNote =
+        this.cantusFirmusVoice
+        .getNotes()
+        .get(cantusFirmusVoice.getNotes().size() - 1)
+        .getPitchClass();
+
+    return ultimateNote.equals(key.getTonic());
   }
 
   public boolean isValidUltimateInterval() {
-    return false;
+    IntervalQuality ultimateIntervalQuality = this.intervals.get(this.intervals.size() - 1).getQuality();
+
+    return ultimateIntervalQuality.equals(IntervalQuality.UNISON) ||
+        ultimateIntervalQuality.equals(IntervalQuality.OCTAVE);
   }
 
-  private List<Interval> createIntervals() {
+  public List<Interval> createIntervals() {
     List<Interval> intervals = new ArrayList<>();
     for (int i = 0; i < cantusFirmusVoice.getNotes().size() - 1; i++) {
       Note cantusNote = cantusFirmusVoice.getNotes().get(i);
