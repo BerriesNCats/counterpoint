@@ -2,30 +2,13 @@ package core;
 
 import static core.entity.interval.IntervalQuality.*;
 import static core.entity.interval.IntervalType.*;
-import static core.entity.key.ScaleDegree.DOMINANT;
-import static core.entity.key.ScaleDegree.LEADING_TONE;
-import static core.entity.key.ScaleDegree.MEDIANT;
-import static core.entity.key.ScaleDegree.SUB_DOMINANT;
-import static core.entity.key.ScaleDegree.SUB_MEDIANT;
-import static core.entity.key.ScaleDegree.SUPER_TONIC;
-import static core.entity.key.ScaleDegree.TONIC;
-import static core.entity.pitch.Accidental.FLAT;
-import static core.entity.pitch.Accidental.NATURAL;
-import static core.entity.pitch.Accidental.SHARP;
-import static core.entity.pitch.NoteLetter.A;
-import static core.entity.pitch.NoteLetter.B;
-import static core.entity.pitch.NoteLetter.C;
-import static core.entity.pitch.NoteLetter.D;
-import static core.entity.pitch.NoteLetter.E;
-import static core.entity.pitch.NoteLetter.F;
-import static core.entity.pitch.NoteLetter.G;
+import static core.entity.pitch.Accidental.*;
+import static core.entity.pitch.NoteLetter.*;
 
 import core.entity.interval.IntervalQuality;
 import core.entity.interval.IntervalType;
-import core.entity.key.Key;
 import core.entity.key.KeyName;
 import core.entity.key.KeyScale;
-import core.entity.key.ScaleDegree;
 import core.entity.pitch.PitchClass;
 import java.util.HashMap;
 import java.util.List;
@@ -35,10 +18,13 @@ public class UtilityListsAndMaps {
 
   public static final Map<Integer, IntervalQuality> INTERVAL_QUALITIES = loadIntervalQualities();
   public static final Map<IntervalQuality, IntervalType> INTERVAL_TYPES = loadIntervalTypes();
-  public static final HashMap<KeyName, KeyScale> SCALES = loadScales();
-  public static final Map<String, Integer> PITCH_NUMBERS = loadPitchNumbers();
-  public static final HashMap<String, PitchClass> PITCH_CLASSES = loadPitchClasses();
   public static final List<IntervalQuality> VALID_CANTUS_INTERVALS = loadValidCantusIntervals();
+  public static final List<IntervalQuality> CONSONANT_INTERVALS = loadConsonantIntervals();
+  public static final List<IntervalQuality> DISSONANT_INTERVALS = loadDissonantIntervals();
+
+  public static final HashMap<KeyName, KeyScale> SCALES = loadScales();
+  public static final HashMap<String, Integer> PITCH_NUMBERS = loadPitchNumbers();
+  public static final HashMap<String, PitchClass> PITCH_CLASSES = loadPitchClasses();
 
   private static HashMap<Integer, IntervalQuality> loadIntervalQualities() {
     return new HashMap<>() {
@@ -459,8 +445,21 @@ public class UtilityListsAndMaps {
     };
   }
 
-  private static Map<String, Integer> loadPitchNumbers() {
-    return new HashMap<>() {
+  private static List<IntervalQuality> loadValidCantusIntervals() {
+    return List.of(
+        MINOR_SECOND,
+        MAJOR_SECOND,
+        MINOR_THIRD,
+        MAJOR_THIRD,
+        PERFECT_FOURTH,
+        PERFECT_FIFTH,
+        MINOR_SIXTH,
+        MAJOR_SIXTH,
+        OCTAVE);
+  }
+
+  public static HashMap<String, Integer> loadPitchNumbers() {
+    return new HashMap<String, Integer>() {
       {
         put(C.name() + FLAT.getAccidental(), -1);
         put(C.name() + NATURAL.getAccidental(), 0);
@@ -485,18 +484,5 @@ public class UtilityListsAndMaps {
         put(B.name() + SHARP.getAccidental(), 12);
       }
     };
-  }
-
-  private static List<IntervalQuality> loadValidCantusIntervals() {
-    return List.of(
-        MINOR_SECOND,
-        MAJOR_SECOND,
-        MINOR_THIRD,
-        MAJOR_THIRD,
-        PERFECT_FOURTH,
-        PERFECT_FIFTH,
-        MINOR_SIXTH,
-        MAJOR_SIXTH,
-        OCTAVE);
   }
 }

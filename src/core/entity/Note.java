@@ -24,7 +24,7 @@ public class Note {
   }
 
   public Pitch getPitch() {
-    return pitch;
+    return this.pitch;
   }
 
   public PitchClass getPitchClass() {
@@ -49,6 +49,6 @@ public class Note {
 
   @Override
   public String toString() {
-    return pitch.getPitchClass().toString();
+    return this.pitch.getPitchClass().toString();
   }
 }

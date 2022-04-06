@@ -2,6 +2,16 @@ package core.entity.pitch;
 
 import static core.UtilityListsAndMaps.PITCH_NUMBERS;
 import static core.entity.pitch.Accidental.*;
+import static core.entity.pitch.NoteLetter.A;
+import static core.entity.pitch.NoteLetter.B;
+import static core.entity.pitch.NoteLetter.C;
+import static core.entity.pitch.NoteLetter.D;
+import static core.entity.pitch.NoteLetter.E;
+import static core.entity.pitch.NoteLetter.F;
+import static core.entity.pitch.NoteLetter.G;
+
+import java.util.HashMap;
+import java.util.Map;
 
 public class PitchClass {
 

@@ -17,8 +17,8 @@ public class CantusFirmusVoice extends Voice {
     super(key);
   }
 
-  public CantusFirmusVoice(List<Note> notes, Key key) {
-    super(notes, key);
+  public CantusFirmusVoice(Key key, List<Note> notes) {
+    super(key, notes);
   }
 
   public CantusFirmusVoice createCantus(Key key, int octave) {
