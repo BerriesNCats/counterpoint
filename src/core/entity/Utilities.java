@@ -12,6 +12,9 @@ import java.util.HashMap;
 import java.util.List;
 
 public class Utilities {
+
+  public static final int DEFAULT_OCTAVE = 4;
+
   public static final List<IntervalQuality> VALID_CANTUS_INTERVALS = loadValidCantusIntervals();
   public static final List<IntervalQuality> CONSONANT_INTERVALS = loadConsonantIntervals();
   public static final List<IntervalQuality> DISSONANT_INTERVALS = loadDissonantIntervals();

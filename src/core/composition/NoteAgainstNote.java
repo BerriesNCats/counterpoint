@@ -1,5 +1,7 @@
 package core.composition;
 
+import static core.entity.Utilities.DEFAULT_OCTAVE;
+
 import core.entity.interval.Interval;
 import core.entity.key.Key;
 import core.entity.pitch.Pitch;
@@ -13,6 +15,13 @@ public class NoteAgainstNote {
   private final Key key;
   private final CantusFirmusVoice cantusFirmusVoice;
   private final CounterPointVoice counterPointVoice;
+
+  public NoteAgainstNote(Key key) {
+    this(
+        key,
+        CantusFirmusVoice.createNewCantus(key, DEFAULT_OCTAVE),
+        CounterPointVoice.createNewCounterpoint());
+  }
 
   public NoteAgainstNote(
       Key key, CantusFirmusVoice cantusFirmusVoice, CounterPointVoice counterPointVoice) {

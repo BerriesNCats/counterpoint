@@ -1,8 +1,8 @@
 package core.entity.pitch;
 
-public class Pitch implements Comparable<Pitch> {
+import static core.entity.Utilities.DEFAULT_OCTAVE;
 
-  private static final int DEFAULT_OCTAVE = 4;
+public class Pitch implements Comparable<Pitch> {
 
   private final PitchClass pitchClass;
   private final int octave;
@@ -26,7 +26,8 @@ public class Pitch implements Comparable<Pitch> {
 
   public int findNoteNumber(PitchClass pitchClass, int octave) {
     int noteNumber = pitchClass.getPitchNumber();
-    if (noteNumber < -1) throw new IllegalArgumentException("Valid Pitch Numbers must be in range of -1, 12");
+    if (noteNumber < -1)
+      throw new IllegalArgumentException("Valid Pitch Numbers must be in range of -1, 12");
 
     // Transform Pitch Number Identity to Note Number Identity
     if ((pitchClass.getNoteLetter().equals(NoteLetter.A)

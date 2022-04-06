@@ -25,7 +25,7 @@ public class CantusFirmusVoice extends Voice {
     super(key, notes);
   }
 
-  public CantusFirmusVoice createNewCantus(Key key, int octave) {
+  public static CantusFirmusVoice createNewCantus(Key key, int octave) {
     int cantusLength =
         new Random().nextInt(MAX_CANTUS_LENGTH - MIN_CANTUS_LENGTH) + MIN_CANTUS_LENGTH;
     CantusFirmusVoice cantusFirmus = new CantusFirmusVoice(key);
@@ -35,10 +35,10 @@ public class CantusFirmusVoice extends Voice {
     cantusFirmus.addTonic(tonic);
 
     for (int i = 1; i < cantusLength - 2; i++) {
-      cantusFirmus.addNote(generateNote(this.notes));
+      cantusFirmus.addNote(generateNote(cantusFirmus.notes));
     }
 
-    cantusFirmus.addPenUltimate(this.generatePenUltimate(key, octave), cantusLength - 2);
+    cantusFirmus.addPenUltimate(cantusFirmus.generatePenUltimate(key, octave), cantusLength - 2);
     cantusFirmus.addUltimate(tonic, cantusLength - 1);
     return cantusFirmus;
   }

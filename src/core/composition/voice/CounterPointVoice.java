@@ -10,4 +10,9 @@ public class CounterPointVoice extends Voice {
     super(key);
     this.cantusFirmusVoice = cantusFirmusVoice;
   }
+
+  public static CounterPointVoice createNewCounterpoint() {
+    // TODO
+    return null;
+  }
 }
