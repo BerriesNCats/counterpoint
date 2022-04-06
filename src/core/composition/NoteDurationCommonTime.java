@@ -1,4 +1,4 @@
-package core.entity;
+package core.composition;
 
 public enum NoteDurationCommonTime {
   WHOLE_NOTE(4.0),

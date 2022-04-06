@@ -1,11 +1,10 @@
 package core.composition;
 
-import core.entity.Note;
 import core.entity.interval.Interval;
 import core.entity.key.Key;
 import core.entity.pitch.Pitch;
-import core.species.CantusFirmusVoice;
-import core.species.CounterPointVoice;
+import core.composition.voice.CantusFirmusVoice;
+import core.composition.voice.CounterPointVoice;
 import java.util.ArrayList;
 import java.util.List;
 

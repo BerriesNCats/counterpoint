@@ -1,4 +1,4 @@
-package core.entity;
+package core.composition;
 
 import core.entity.pitch.Pitch;
 import core.entity.pitch.PitchClass;

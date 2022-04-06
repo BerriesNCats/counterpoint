@@ -1,7 +1,7 @@
-package core.species;
+package core.composition.voice;
 
 import static core.entity.key.ScaleDegree.*;
-import core.entity.Note;
+import core.composition.Note;
 
 import core.entity.key.Key;
 import core.entity.key.ScaleDegree;

@@ -1,4 +1,4 @@
-package core;
+package core.entity;
 
 import static core.entity.interval.IntervalQuality.*;
 import static core.entity.pitch.Accidental.*;

@@ -1,4 +1,4 @@
-package core.species;
+package core.composition.voice;
 
 import core.entity.key.Key;
 
