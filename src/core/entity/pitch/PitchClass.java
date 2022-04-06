@@ -14,9 +14,7 @@ public class PitchClass {
   private final int pitchNumber;
 
   public PitchClass(NoteLetter noteLetter) {
-    this.noteLetter = noteLetter;
-    this.accidental = NATURAL;
-    this.pitchNumber = findPitchNumber();
+    this(noteLetter, NATURAL);
   }
 
   public PitchClass(NoteLetter noteLetter, Accidental accidental) {
@@ -73,27 +71,27 @@ public class PitchClass {
 
   @Override
   public String toString() {
-    return noteLetter.name() + accidental.getAccidental();
+    return this.noteLetter.name() + this.accidental.getAccidental();
   }
 
   @Override
-  public boolean equals(Object o) {
-    if (this == o) {
+  public boolean equals(Object other) {
+    if (this == other) {
       return true;
     }
-    if (o == null || getClass() != o.getClass()) {
+    if (other == null || this.getClass() != other.getClass()) {
       return false;
     }
 
-    PitchClass that = (PitchClass) o;
+    PitchClass otherPitchClass = (PitchClass) other;
 
-    if (getPitchNumber() != that.getPitchNumber()) {
+    if (this.getPitchNumber() != otherPitchClass.getPitchNumber()) {
       return false;
     }
-    if (getNoteLetter() != that.getNoteLetter()) {
+    if (this.getNoteLetter() != otherPitchClass.getNoteLetter()) {
       return false;
     }
-    return getAccidental() == that.getAccidental();
+    return this.getAccidental() == otherPitchClass.getAccidental();
   }
 
   @Override

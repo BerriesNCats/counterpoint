@@ -9,18 +9,16 @@ public class Note {
   private final NoteDurationCommonTime duration;
 
   public Note(Pitch pitch) {
-    this.pitch = pitch;
-    this.duration = NoteDurationCommonTime.WHOLE_NOTE;
+    this(pitch, NoteDurationCommonTime.WHOLE_NOTE);
+  }
+
+  public Note(PitchClass pitchClass, int octave) {
+    this(new Pitch(pitchClass, octave), NoteDurationCommonTime.WHOLE_NOTE);
   }
 
   public Note(Pitch pitch, NoteDurationCommonTime duration) {
     this.pitch = pitch;
     this.duration = duration;
-  }
-
-  public Note(PitchClass pitchClass, int octave) {
-    this.pitch = new Pitch(pitchClass, octave);
-    this.duration = NoteDurationCommonTime.WHOLE_NOTE;
   }
 
   public Pitch getPitch() {

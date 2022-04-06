@@ -2,10 +2,16 @@ package core.entity.pitch;
 
 public class Pitch implements Comparable<Pitch> {
 
+  private static final int DEFAULT_OCTAVE = 4;
+
   private final PitchClass pitchClass;
   private final int octave;
   private final int noteNumber;
   private final int midiNoteNumber;
+
+  public Pitch(PitchClass pitchClass) {
+    this(pitchClass, DEFAULT_OCTAVE);
+  }
 
   public Pitch(PitchClass pitchClass, int octave) {
     this.pitchClass = pitchClass;
@@ -20,7 +26,7 @@ public class Pitch implements Comparable<Pitch> {
 
   public int findNoteNumber(PitchClass pitchClass, int octave) {
     int noteNumber = pitchClass.getPitchNumber();
-    if (noteNumber < -1) throw new IllegalArgumentException("Valid Pitch Numbers are -1 - 12");
+    if (noteNumber < -1) throw new IllegalArgumentException("Valid Pitch Numbers must be in range of -1, 12");
 
     // Transform Pitch Number Identity to Note Number Identity
     if ((pitchClass.getNoteLetter().equals(NoteLetter.A)
@@ -50,23 +56,23 @@ public class Pitch implements Comparable<Pitch> {
   }
 
   @Override
-  public boolean equals(Object that) {
-    if (this == that) {
+  public boolean equals(Object other) {
+    if (this == other) {
       return true;
     }
-    if (!(that instanceof Pitch)) {
+    if (!(other instanceof Pitch)) {
       return false;
     }
 
-    Pitch pitch = (Pitch) that;
+    Pitch otherPitch = (Pitch) other;
 
-    if (this.getOctave() != pitch.getOctave()) {
+    if (this.getOctave() != otherPitch.getOctave()) {
       return false;
     }
-    if (this.getNoteNumber() != pitch.getNoteNumber()) {
+    if (this.getNoteNumber() != otherPitch.getNoteNumber()) {
       return false;
     }
-    return this.getPitchClass().equals(pitch.getPitchClass());
+    return this.getPitchClass().equals(otherPitch.getPitchClass());
   }
 
   @Override

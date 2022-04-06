@@ -11,7 +11,7 @@ import core.entity.pitch.PitchClass;
 import java.util.HashMap;
 import java.util.List;
 
-public class UtilityListsAndMaps {
+public class Utilities {
   public static final List<IntervalQuality> VALID_CANTUS_INTERVALS = loadValidCantusIntervals();
   public static final List<IntervalQuality> CONSONANT_INTERVALS = loadConsonantIntervals();
   public static final List<IntervalQuality> DISSONANT_INTERVALS = loadDissonantIntervals();

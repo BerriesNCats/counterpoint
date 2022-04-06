@@ -1,6 +1,6 @@
 package core.entity.key;
 
-import static core.UtilityListsAndMaps.*;
+import static core.Utilities.*;
 
 import core.entity.pitch.PitchClass;
 import java.util.List;

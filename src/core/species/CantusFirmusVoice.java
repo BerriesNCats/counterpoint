@@ -1,6 +1,6 @@
 package core.species;
 
-import static core.UtilityListsAndMaps.VALID_CANTUS_INTERVALS;
+import static core.Utilities.VALID_CANTUS_INTERVALS;
 import static core.entity.key.ScaleDegree.*;
 
 import core.entity.Note;

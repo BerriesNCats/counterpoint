@@ -17,9 +17,7 @@ public class Voice {
   protected HashMap<ScaleDegree, PitchClass> scaleDegrees;
 
   public Voice(Key key) {
-    this.key = key;
-    this.notes = new ArrayList<>();
-    this.scaleDegrees = loadScaleDegrees();
+    this(key, new ArrayList<>());
   }
 
   public Voice(Key key, List<Note> notes) {
