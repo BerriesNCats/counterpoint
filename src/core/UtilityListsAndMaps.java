@@ -1,18 +1,15 @@
 package core;
 
 import static core.entity.interval.IntervalQuality.*;
-import static core.entity.interval.IntervalType.*;
 import static core.entity.pitch.Accidental.*;
 import static core.entity.pitch.NoteLetter.*;
 
 import core.entity.interval.IntervalQuality;
-import core.entity.interval.IntervalType;
 import core.entity.key.KeyName;
 import core.entity.key.KeyScale;
 import core.entity.pitch.PitchClass;
 import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 public class UtilityListsAndMaps {
   public static final List<IntervalQuality> VALID_CANTUS_INTERVALS = loadValidCantusIntervals();
