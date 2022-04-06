@@ -14,7 +14,7 @@ public class Voice {
 
   protected List<Note> notes;
   protected Key key;
-  protected HashMap<ScaleDegree, PitchClass> scaleDegrees;
+  protected HashMap<ScaleDegree, PitchClass> pitchClassByScaleDegree;
 
   public Voice(Key key) {
     this(key, new ArrayList<>());
@@ -23,11 +23,11 @@ public class Voice {
   public Voice(Key key, List<Note> notes) {
     this.key = key;
     this.notes = notes;
-    this.scaleDegrees = loadScaleDegrees();
+    this.pitchClassByScaleDegree = loadScaleDegrees();
   }
 
   public PitchClass getScaleDegree(ScaleDegree scaleDegree) {
-    return scaleDegrees.get(scaleDegree);
+    return pitchClassByScaleDegree.get(scaleDegree);
   }
 
   private HashMap<ScaleDegree, PitchClass> loadScaleDegrees() {

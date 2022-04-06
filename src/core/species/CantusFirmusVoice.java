@@ -36,32 +36,39 @@ public class CantusFirmusVoice extends Voice {
     cantusFirmus.addUltimate(tonic, cantusLength - 1);
     return cantusFirmus;
   }
-
+  //        TONIC,        || SUPER_TONIC/LEADING_TONE       --Leave to Random
+  //        SUPER_TONIC,  || invalid                        --Done
+  //        MEDIANT,      || POSSIBLY EITHER SUPER_TONIC    --Leave to Random
+  //        SUB_DOMINANT, || MUST BE SUPER_TONIC            --Done
+  //        DOMINANT,     || SUPER_TONIC/LEADING_TONE       --Leave to Random
+  //        SUB_MEDIANT,  || LEADING_TONE/SUPER_TONIC       --Leave to Random
+  //        LEADING_TONE  || invalid                        --Done
   private Note generatePenUltimate(Key key, int octave) {
-    PitchClass previousPitchClass = this.getNotes().get(this.notes.size() - 3).getPitchClass();
     // TODO Might Need to Adjust for different octaves so there aren't unexpected leaps when they
-    // should be steps
-    // REDO THIS
-    // ACCOUNT FOR SITUATIONS WHERE IT SHOULD BE OR COULD BE SUPER TONIC
-    // THEN RETURN LEADING TONE IF ALL OF THOSE AREN'T MET
-    if (previousPitchClass.equals(scaleDegrees.get(SUB_MEDIANT))) {
-      return new Note(scaleDegrees.get(LEADING_TONE), octave);
-    } else if (previousPitchClass.equals(scaleDegrees.get(MEDIANT))) {
-      return new Note(scaleDegrees.get(SUPER_TONIC), octave);
+    PitchClass previousPitchClass = this.getNotes().get(this.notes.size() - 3).getPitchClass();
+
+    PitchClass superTonic = pitchClassByScaleDegree.get(SUPER_TONIC);
+    PitchClass leadingTone = pitchClassByScaleDegree.get(SUPER_TONIC);
+
+    if (previousPitchClass.equals(superTonic) || previousPitchClass.equals(leadingTone)) {
+      throw new IllegalArgumentException(
+          "A cantus must stay in continuous motion and the penultimate note must be of either the "
+              + "super tonic or leading tone and therefore the note preceding the pen ultimate note "
+              + "must not be the super tonic or sub mediant. ");
     }
 
-    if (new Random().nextBoolean()) {
-      return new Note(scaleDegrees.get(LEADING_TONE), octave);
+    if (previousPitchClass.equals(pitchClassByScaleDegree.get(SUB_DOMINANT))) {
+      return new Note(superTonic, octave);
     }
-    return new Note(scaleDegrees.get(SUPER_TONIC), octave);
+    // If not the super tonic, leading tone or sub dominant return randomly.
+    return new Random().nextBoolean()
+        ? new Note(superTonic, octave)
+        : new Note(leadingTone, octave);
   }
 
   private static Note generateNote(List<Note> previousNotes) {
     Random random = new Random();
-    // Double check how random works
-    int randomNote = random.nextInt(8);
     // TODO
-    // Also shouldn't be random most of the time
     // Each previous note should inform the new note according to melodic rules
 
     // Look at the two or three previous notes and create a valid list based on them
