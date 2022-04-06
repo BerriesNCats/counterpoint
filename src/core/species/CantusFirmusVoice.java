@@ -7,46 +7,46 @@ import core.entity.Note;
 import core.entity.interval.IntervalQuality;
 import core.entity.key.Key;
 import core.entity.pitch.PitchClass;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 
 public class CantusFirmusVoice extends Voice {
-  public static final int MAX_RANGE = 10;
+
+  public static final int MAX_RANGE_OF_CANTUS_VOICE = 10;
+  public static final int MAX_CANTUS_LENGTH = 15;
+  public static final int MIN_CANTUS_LENGTH = 8;
 
   public CantusFirmusVoice(Key key) {
-    super(key);
+    this(key, new ArrayList<>());
   }
 
   public CantusFirmusVoice(Key key, List<Note> notes) {
     super(key, notes);
   }
 
-  public CantusFirmusVoice createCantus(Key key, int octave) {
-    int cantusLength = new Random().nextInt(15 - 10) + 10;
+  public CantusFirmusVoice createNewCantus(Key key, int octave) {
+    int cantusLength =
+        new Random().nextInt(MAX_CANTUS_LENGTH - MIN_CANTUS_LENGTH) + MIN_CANTUS_LENGTH;
     CantusFirmusVoice cantusFirmus = new CantusFirmusVoice(key);
-    cantusFirmus.setVoiceLength(cantusLength);
-
     Note tonic = new Note(key.getTonic(), octave);
+
+    cantusFirmus.setVoiceLength(cantusLength);
     cantusFirmus.addTonic(tonic);
 
     for (int i = 1; i < cantusLength - 2; i++) {
       cantusFirmus.addNote(generateNote(this.notes));
     }
+
     cantusFirmus.addPenUltimate(this.generatePenUltimate(key, octave), cantusLength - 2);
     cantusFirmus.addUltimate(tonic, cantusLength - 1);
     return cantusFirmus;
   }
-  //        TONIC,        || SUPER_TONIC/LEADING_TONE       --Leave to Random
-  //        SUPER_TONIC,  || invalid                        --Done
-  //        MEDIANT,      || POSSIBLY EITHER SUPER_TONIC    --Leave to Random
-  //        SUB_DOMINANT, || MUST BE SUPER_TONIC            --Done
-  //        DOMINANT,     || SUPER_TONIC/LEADING_TONE       --Leave to Random
-  //        SUB_MEDIANT,  || LEADING_TONE/SUPER_TONIC       --Leave to Random
-  //        LEADING_TONE  || invalid                        --Done
+
   private Note generatePenUltimate(Key key, int octave) {
     // TODO Might Need to Adjust for different octaves so there aren't unexpected leaps when they
+    // need to be steps
     PitchClass previousPitchClass = this.getNotes().get(this.notes.size() - 3).getPitchClass();
-
     PitchClass superTonic = pitchClassByScaleDegree.get(SUPER_TONIC);
     PitchClass leadingTone = pitchClassByScaleDegree.get(SUPER_TONIC);
 
