@@ -22,33 +22,30 @@ public class Voice {
     this.scaleDegrees = loadScaleDegrees();
   }
 
-  public Voice() {
-
-  }
-
-  private HashMap<ScaleDegree, PitchClass> loadScaleDegrees() {
-    return new HashMap<ScaleDegree, PitchClass>() {
-      {
-      put(TONIC, key.getTonic());
-      put(SUPER_TONIC, key.getSuperTonic());
-      put(MEDIANT, key.getMediant());
-      put(SUB_DOMINANT, key.getSubDominant());
-      put(DOMINANT, key.getDominant());
-      put(SUB_MEDIANT, key.getSubMediant());
-      put(LEADING_TONE, key.getLeadingTone());
-      }
-    };
-  }
+  public Voice() {}
 
   public Voice(List<Note> notes, Key key) {
     this.notes = notes;
     this.key = key;
   }
 
+  private HashMap<ScaleDegree, PitchClass> loadScaleDegrees() {
+    return new HashMap<ScaleDegree, PitchClass>() {
+      {
+        put(TONIC, key.getTonic());
+        put(SUPER_TONIC, key.getSuperTonic());
+        put(MEDIANT, key.getMediant());
+        put(SUB_DOMINANT, key.getSubDominant());
+        put(DOMINANT, key.getDominant());
+        put(SUB_MEDIANT, key.getSubMediant());
+        put(LEADING_TONE, key.getLeadingTone());
+      }
+    };
+  }
+
   public List<Note> getNotes() {
     return this.notes;
   }
-
 
   protected void setVoiceLength(int cantusLength) {
     this.notes = new ArrayList<>(cantusLength);

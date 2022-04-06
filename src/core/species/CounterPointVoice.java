@@ -2,7 +2,7 @@ package core.species;
 
 import core.entity.key.Key;
 
-public class CounterPointVoice extends Voice{
+public class CounterPointVoice extends Voice {
 
   private final CantusFirmusVoice cantusFirmusVoice;
 

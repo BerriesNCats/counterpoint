@@ -30,6 +30,4 @@ public enum IntervalQuality {
   public int getStepInSemitones() {
     return this.stepInSemitones;
   }
-
-
 }

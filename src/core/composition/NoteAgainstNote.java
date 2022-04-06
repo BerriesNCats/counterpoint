@@ -26,12 +26,12 @@ public class NoteAgainstNote {
     return cantusFirmusVoice.isRootPitch(key);
   }
 
-//  public boolean isValidOpeningInterval() {
-//    if (!isValidCantusFirstNote()) {
-//      return false;
-//    }
-//    return intervals.get(0).getIntervalType() == IntervalType.PERFECT_CONSONANCE;
-//  }
+  //  public boolean isValidOpeningInterval() {
+  //    if (!isValidCantusFirstNote()) {
+  //      return false;
+  //    }
+  //    return intervals.get(0).getIntervalType() == IntervalType.PERFECT_CONSONANCE;
+  //  }
 
   // TODO
   public boolean isValidPenultimateNote() {

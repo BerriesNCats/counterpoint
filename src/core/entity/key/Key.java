@@ -1,15 +1,11 @@
 package core.entity.key;
 
-import static core.entity.key.ScaleDegree.*;
-import static core.entity.pitch.PitchClass.PITCH_CLASSES;
+import static core.UtilityListsAndMaps.*;
 
 import core.entity.pitch.PitchClass;
-import java.util.HashMap;
 import java.util.List;
 
 public class Key {
-
-  public static final HashMap<KeyName, KeyScale> SCALES = KeyScale.loadScales();
 
   private final KeyName keyName;
   private final KeyScale keyScale;
@@ -17,20 +13,6 @@ public class Key {
   public Key(KeyName keyName) {
     this.keyName = keyName;
     this.keyScale = findScale(keyName);
-  }
-
-  public HashMap<ScaleDegree, PitchClass> loadDegrees(Key key) {
-    return new HashMap<ScaleDegree, PitchClass>() {
-      {
-        put(TONIC, key.getTonic());
-        put(SUPER_TONIC, key.getSuperTonic());
-        put(MEDIANT, key.getMediant());
-        put(SUB_DOMINANT, key.getSubDominant());
-        put(DOMINANT, key.getDominant());
-        put(SUB_MEDIANT, key.getSubMediant());
-        put(LEADING_TONE, key.getLeadingTone());
-      }
-    };
   }
 
   public PitchClass getTonic() {

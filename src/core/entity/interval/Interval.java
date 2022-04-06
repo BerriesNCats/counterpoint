@@ -1,16 +1,9 @@
 package core.entity.interval;
 
-import static core.entity.interval.IntervalUtils.*;
-import static core.entity.interval.IntervalQuality.*;
-
+import static core.UtilityListsAndMaps.*;
 import core.entity.pitch.Pitch;
-import java.util.HashMap;
 
 public class Interval {
-
-  public static final HashMap<Integer, IntervalQuality> INTERVAL_QUALITIES =
-      loadIntervalQualities();
-  public static final HashMap<IntervalQuality, IntervalType> INTERVAL_TYPES = loadIntervalTypes();
 
   private final Pitch pitch1;
   private final Pitch pitch2;
@@ -31,26 +24,6 @@ public class Interval {
   public IntervalQuality findIntervalQuality() {
     int distanceInSemitones = Math.abs(this.pitch1.getNoteNumber() - this.pitch2.getNoteNumber());
     return INTERVAL_QUALITIES.get(distanceInSemitones);
-  }
-
-  public static HashMap<Integer, IntervalQuality> loadIntervalQualities() {
-    return new HashMap<>() {
-      {
-        put(UNISON.getStepInSemitones(), UNISON);
-        put(MINOR_SECOND.getStepInSemitones(), MINOR_SECOND);
-        put(MAJOR_SECOND.getStepInSemitones(), MAJOR_SECOND);
-        put(MINOR_THIRD.getStepInSemitones(), MINOR_THIRD);
-        put(MAJOR_THIRD.getStepInSemitones(), MAJOR_THIRD);
-        put(PERFECT_FOURTH.getStepInSemitones(), PERFECT_FOURTH);
-        put(TRITONE.getStepInSemitones(), TRITONE);
-        put(PERFECT_FIFTH.getStepInSemitones(), PERFECT_FIFTH);
-        put(MINOR_SIXTH.getStepInSemitones(), MINOR_SIXTH);
-        put(MAJOR_SIXTH.getStepInSemitones(), MAJOR_SIXTH);
-        put(MINOR_SEVENTH.getStepInSemitones(), MINOR_SEVENTH);
-        put(MAJOR_SEVENTH.getStepInSemitones(), MAJOR_SEVENTH);
-        put(OCTAVE.getStepInSemitones(), OCTAVE);
-      }
-    };
   }
 
   public Pitch getPitch1() {
