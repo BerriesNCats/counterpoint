@@ -21,6 +21,8 @@ public class Note {
     this.duration = duration;
   }
 
+  public int getNoteNumber() { return this.pitch.getNoteNumber(); }
+
   public Pitch getPitch() {
     return this.pitch;
   }
@@ -35,6 +37,10 @@ public class Note {
 
   public boolean isHigherThan(Note that) {
     return this.pitch.isHigherThan(that.pitch);
+  }
+
+  public boolean isSameAs(Note that) {
+    return this.pitch.equals(that.pitch);
   }
 
   public boolean isLowerThan(Note that) {

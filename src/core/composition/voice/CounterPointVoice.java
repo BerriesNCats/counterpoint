@@ -11,7 +11,7 @@ public class CounterPointVoice extends Voice {
     this.cantusFirmusVoice = cantusFirmusVoice;
   }
 
-  public static CounterPointVoice createNewCounterpoint() {
+  public static CounterPointVoice createNewCounterpoint(Key key, int octave) {
     // TODO
     return null;
   }

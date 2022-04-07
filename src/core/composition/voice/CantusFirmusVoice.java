@@ -35,7 +35,7 @@ public class CantusFirmusVoice extends Voice {
     cantusFirmus.addTonic(tonic);
 
     for (int i = 1; i < cantusLength - 2; i++) {
-      cantusFirmus.addNote(generateNote(cantusFirmus.notes));
+      cantusFirmus.addNote(generateNote(cantusFirmus.notes, i));
     }
 
     cantusFirmus.addPenUltimate(cantusFirmus.generatePenUltimate(key, octave), cantusLength - 2);
@@ -66,7 +66,7 @@ public class CantusFirmusVoice extends Voice {
         : new Note(leadingTone, octave);
   }
 
-  private static Note generateNote(List<Note> previousNotes) {
+  private static Note generateNote(List<Note> previousNotes, int index) {
     Random random = new Random();
     // TODO
     // Each previous note should inform the new note according to melodic rules
