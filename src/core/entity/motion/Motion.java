@@ -1,6 +1,6 @@
 package core.entity.motion;
 
-import core.composition.Note;
+import core.entity.note.Note;
 import core.entity.interval.Interval;
 import java.util.List;
 

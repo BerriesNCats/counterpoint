@@ -1,14 +1,12 @@
 package test;
 
-import static core.entity.pitch.NoteLetter.*;
-import static core.entity.pitch.Accidental.*;
+import static core.entity.note.NoteLetter.*;
+import static core.entity.note.Accidental.*;
 
 import core.entity.interval.Interval;
 import core.entity.interval.IntervalQuality;
-import core.entity.key.Key;
-import core.entity.key.KeyName;
-import core.entity.pitch.Pitch;
-import core.entity.pitch.PitchClass;
+import core.entity.note.Pitch;
+import core.entity.note.PitchClass;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 

@@ -3,10 +3,10 @@ package core.composition.voice;
 import static core.entity.Utilities.VALID_CANTUS_INTERVALS;
 import static core.entity.key.ScaleDegree.*;
 
-import core.composition.Note;
+import core.entity.note.Note;
 import core.entity.interval.IntervalQuality;
 import core.entity.key.Key;
-import core.entity.pitch.PitchClass;
+import core.entity.note.PitchClass;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;

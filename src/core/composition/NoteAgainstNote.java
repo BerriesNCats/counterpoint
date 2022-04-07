@@ -6,10 +6,11 @@ import core.entity.interval.Interval;
 import core.entity.interval.IntervalQuality;
 import core.entity.interval.IntervalType;
 import core.entity.key.Key;
-import core.entity.pitch.Pitch;
+import core.entity.note.Note;
+import core.entity.note.Pitch;
 import core.composition.voice.CantusFirmusVoice;
 import core.composition.voice.CounterPointVoice;
-import core.entity.pitch.PitchClass;
+import core.entity.note.PitchClass;
 import java.util.ArrayList;
 import java.util.List;
 

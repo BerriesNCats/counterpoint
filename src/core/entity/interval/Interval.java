@@ -3,7 +3,7 @@ package core.entity.interval;
 import static core.entity.interval.IntervalQuality.*;
 import static core.entity.interval.IntervalType.*;
 
-import core.entity.pitch.Pitch;
+import core.entity.note.Pitch;
 import java.util.HashMap;
 import java.util.Map;
 

@@ -1,13 +1,13 @@
 package core.entity;
 
 import static core.entity.interval.IntervalQuality.*;
-import static core.entity.pitch.Accidental.*;
-import static core.entity.pitch.NoteLetter.*;
+import static core.entity.note.Accidental.*;
+import static core.entity.note.NoteLetter.*;
 
 import core.entity.interval.IntervalQuality;
 import core.entity.key.KeyName;
 import core.entity.key.KeyScale;
-import core.entity.pitch.PitchClass;
+import core.entity.note.PitchClass;
 import java.util.HashMap;
 import java.util.List;
 

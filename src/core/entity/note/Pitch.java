@@ -1,4 +1,4 @@
-package core.entity.pitch;
+package core.entity.note;
 
 import static core.entity.Utilities.DEFAULT_OCTAVE;
 

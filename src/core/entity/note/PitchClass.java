@@ -1,7 +1,7 @@
-package core.entity.pitch;
+package core.entity.note;
 
-import static core.entity.pitch.Accidental.*;
-import static core.entity.pitch.NoteLetter.*;
+import static core.entity.note.Accidental.*;
+import static core.entity.note.NoteLetter.*;
 
 import java.util.HashMap;
 

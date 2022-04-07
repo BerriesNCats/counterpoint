@@ -1,11 +1,11 @@
 package test;
 
-import core.entity.pitch.PitchClass;
+import core.entity.note.PitchClass;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
-import static core.entity.pitch.Accidental.*;
-import static core.entity.pitch.NoteLetter.*;
+import static core.entity.note.Accidental.*;
+import static core.entity.note.NoteLetter.*;
 
 class PitchClassTest {
 

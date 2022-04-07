@@ -1,4 +1,4 @@
-package core.entity.pitch;
+package core.entity.note;
 
 public enum Accidental {
   NATURAL(""),

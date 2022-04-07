@@ -1,7 +1,4 @@
-package core.composition;
-
-import core.entity.pitch.Pitch;
-import core.entity.pitch.PitchClass;
+package core.entity.note;
 
 public class Note {
 

@@ -1,6 +1,6 @@
 package core.entity.key;
 
-import core.entity.pitch.PitchClass;
+import core.entity.note.PitchClass;
 import java.util.List;
 
 public class KeyScale {

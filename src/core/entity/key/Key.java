@@ -2,7 +2,7 @@ package core.entity.key;
 
 import static core.entity.Utilities.*;
 
-import core.entity.pitch.PitchClass;
+import core.entity.note.PitchClass;
 import java.util.List;
 
 public class Key {

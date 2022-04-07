@@ -1,9 +1,9 @@
 package core.entity.key;
 
-import core.entity.pitch.Accidental;
-import static core.entity.pitch.Accidental.*;
+import core.entity.note.Accidental;
+import static core.entity.note.Accidental.*;
 import static core.entity.key.KeyQuality.*;
-import static core.entity.pitch.NoteLetter.*;
+import static core.entity.note.NoteLetter.*;
 
 public enum KeyName {
   A_FLAT_MAJOR(4, FLAT, MAJOR, A.name() + FLAT.name()),
