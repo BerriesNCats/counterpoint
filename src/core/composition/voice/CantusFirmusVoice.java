@@ -54,7 +54,7 @@ public class CantusFirmusVoice extends Voice {
       throw new IllegalArgumentException(
           "A cantus must stay in continuous motion and the penultimate note must be of either the "
               + "super tonic or leading tone and therefore the note preceding the pen ultimate note "
-              + "must not be the super tonic or sub mediant. ");
+              + "must not be the super tonic or leading tone. ");
     }
 
     if (previousPitchClass.equals(pitchClassByScaleDegree.get(SUB_DOMINANT))) {
