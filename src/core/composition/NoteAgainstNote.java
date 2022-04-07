@@ -9,7 +9,7 @@ import core.entity.key.Key;
 import core.entity.note.Note;
 import core.entity.note.Pitch;
 import core.composition.voice.CantusFirmusVoice;
-import core.composition.voice.CounterPointVoice;
+import core.composition.voice.CounterPointVoiceFirstSpecies;
 import core.entity.note.PitchClass;
 import java.util.ArrayList;
 import java.util.List;
@@ -18,18 +18,18 @@ public class NoteAgainstNote {
 
   private final Key key;
   private final CantusFirmusVoice cantusFirmusVoice;
-  private final CounterPointVoice counterPointVoice;
+  private final CounterPointVoiceFirstSpecies counterPointVoice;
   private final List<Interval> intervals;
 
   public NoteAgainstNote(Key key) {
     this(
         key,
         CantusFirmusVoice.createNewCantus(key, DEFAULT_OCTAVE),
-        CounterPointVoice.createNewCounterpoint(key, DEFAULT_OCTAVE));
+        CounterPointVoiceFirstSpecies.createNewCounterpoint(key, DEFAULT_OCTAVE));
   }
 
   public NoteAgainstNote(
-      Key key, CantusFirmusVoice cantusFirmusVoice, CounterPointVoice counterPointVoice) {
+      Key key, CantusFirmusVoice cantusFirmusVoice, CounterPointVoiceFirstSpecies counterPointVoice) {
     this.key = key;
     this.cantusFirmusVoice = cantusFirmusVoice;
     this.counterPointVoice = counterPointVoice;

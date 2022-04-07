@@ -16,7 +16,7 @@ public class Motion {
     this.motionType = findMotionType();
   }
 
-  private MotionType findMotionType() {
+  public MotionType findMotionType() {
     MotionDirection voice1Direction = findMotionDirection(voice1.get(0), voice1.get(1));
     MotionDirection voice2Direction = findMotionDirection(voice2.get(0), voice2.get(1));
     Interval voice1Interval = new Interval(voice1.get(0).getPitch(), voice1.get(1).getPitch());
