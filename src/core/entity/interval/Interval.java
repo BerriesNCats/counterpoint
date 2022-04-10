@@ -3,6 +3,7 @@ package core.entity.interval;
 import static core.entity.interval.IntervalQuality.*;
 import static core.entity.interval.IntervalType.*;
 
+import core.entity.note.Note;
 import core.entity.note.Pitch;
 import java.util.HashMap;
 import java.util.Map;
@@ -17,6 +18,9 @@ public class Interval {
   private final IntervalQuality quality;
   private final IntervalType type;
 
+  public Interval(Note note1, Note note2) {
+    this(note1.getPitch(), note2.getPitch());
+  }
   public Interval(Pitch pitch1, Pitch pitch2) {
     this.pitch1 = pitch1;
     this.pitch2 = pitch2;

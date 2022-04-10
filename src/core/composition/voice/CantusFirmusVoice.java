@@ -3,6 +3,10 @@ package core.composition.voice;
 import static core.entity.Utilities.VALID_CANTUS_INTERVALS;
 import static core.entity.key.ScaleDegree.*;
 
+import core.entity.interval.Interval;
+import core.entity.motion.Motion;
+import core.entity.motion.MotionDirection;
+import core.entity.motion.MotionDistance;
 import core.entity.note.Note;
 import core.entity.interval.IntervalQuality;
 import core.entity.key.Key;
@@ -66,8 +70,23 @@ public class CantusFirmusVoice extends Voice {
         : new Note(leadingTone, octave);
   }
 
-  private static Note generateNote(List<Note> previousNotes, int index) {
+  public static Note generateNote(List<Note> previousNotes, int index) {
     Random random = new Random();
+    Motion previousMotion =
+        new Motion(List.of(previousNotes.get(index - 2), previousNotes.get(index - 1)));
+    Interval previousInterval =
+        new Interval(previousNotes.get(index - 2), previousNotes.get(index - 1));
+
+    if (previousMotion.findMotionDistance() == MotionDistance.LEAP) {
+      if (previousMotion.findMotionDirection() == MotionDirection.UP) {
+
+      } else {
+
+      }
+    }
+    //if previous motion is leap greater than 3rd, change direction with step
+    //
+
     // TODO
     // Each previous note should inform the new note according to melodic rules
 
@@ -77,11 +96,11 @@ public class CantusFirmusVoice extends Voice {
     return null;
   }
 
-  private void addPenUltimate(Note penUltimate, int secondToLastIndexInCantus) {
+  public void addPenUltimate(Note penUltimate, int secondToLastIndexInCantus) {
     this.notes.add(secondToLastIndexInCantus, penUltimate);
   }
 
-  private void addUltimate(Note ultimate, int lastIndexInCantus) {
+  public void addUltimate(Note ultimate, int lastIndexInCantus) {
     this.notes.add(lastIndexInCantus, ultimate);
   }
 
