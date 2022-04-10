@@ -15,6 +15,10 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 
+/**
+ * A Cantus Firmus is a group of notes adhering to the rules of counterpoint that serves as the
+ * basis for a polyphonic composition.
+ */
 public class CantusFirmusVoice extends Voice {
 
   public static final int MAX_RANGE_OF_CANTUS_VOICE = 10;
@@ -29,6 +33,12 @@ public class CantusFirmusVoice extends Voice {
     super(key, notes);
   }
 
+  /**
+   * Generates a new Cantus Firmus in a given key.
+   * @param key the key of the cantus.
+   * @param octave the octave of the cantus.
+   * @return a newly generated cantus.
+   */
   public static CantusFirmusVoice createNewCantus(Key key, int octave) {
     int cantusLength =
         new Random().nextInt(MAX_CANTUS_LENGTH - MIN_CANTUS_LENGTH) + MIN_CANTUS_LENGTH;
@@ -47,6 +57,12 @@ public class CantusFirmusVoice extends Voice {
     return cantusFirmus;
   }
 
+  /**
+   * Generates the pen ultimate note of a cantus.
+   * @param key the key of the cantus.
+   * @param octave the octave of the cantus.
+   * @return a super tonic or leading tone.
+   */
   private Note generatePenUltimate(Key key, int octave) {
     // TODO Might Need to Adjust for different octaves so there aren't unexpected leaps when they
     // need to be steps
@@ -70,6 +86,12 @@ public class CantusFirmusVoice extends Voice {
         : new Note(leadingTone, octave);
   }
 
+  /**
+   * Generates a random note to fill in the body of the cantus.
+   * @param previousNotes a list of notes already in the cantus.
+   * @param index the index of the note to be generated
+   * @return a suitable random note based on it's position in the cantus.
+   */
   public static Note generateNote(List<Note> previousNotes, int index) {
     Random random = new Random();
     Motion previousMotion =
@@ -96,28 +118,56 @@ public class CantusFirmusVoice extends Voice {
     return null;
   }
 
+  /**
+   * Adds the pen ultimate note to a cantus.
+   * @param penUltimate the pen ultimate note.
+   * @param secondToLastIndexInCantus the index of the pen ultimate note.
+   */
   public void addPenUltimate(Note penUltimate, int secondToLastIndexInCantus) {
     this.notes.add(secondToLastIndexInCantus, penUltimate);
   }
 
+  /**
+   * Adds the ultimate note to the cantus.
+   * @param ultimate the ultimate note.
+   * @param lastIndexInCantus the index of the ultimate.
+   */
   public void addUltimate(Note ultimate, int lastIndexInCantus) {
     this.notes.add(lastIndexInCantus, ultimate);
   }
 
+  /**
+   * Adds the tonic note to the cantus
+   * @param tonic the tonic tone.
+   */
   public void addTonic(Note tonic) {
     this.notes.add(0, tonic);
   }
 
+  /**
+   * Adds a given note to the cantus.
+   * @param note the given note.
+   */
   public void addNote(Note note) {
     this.notes.add(note);
   }
 
+  /**
+   * Compares the first pitch in the cantus with the root of the cantus key.
+   * @param key the key of the cantus.
+   * @return true if the pitches match.
+   */
   public boolean isRootPitch(Key key) {
     PitchClass firstPitch = this.notes.get(0).getPitchClass();
     PitchClass rootPitch = key.getTonic();
     return firstPitch.equals(rootPitch);
   }
 
+  /**
+   * Checks to see if a given interval is a valid cantus interval.
+   * @param quality the quality of the interval.
+   * @return true if a valid cantus interval.
+   */
   public boolean isValidCantusInterval(IntervalQuality quality) {
     return VALID_CANTUS_INTERVALS.contains(quality);
   }

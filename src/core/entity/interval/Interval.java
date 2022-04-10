@@ -8,6 +8,9 @@ import core.entity.note.Pitch;
 import java.util.HashMap;
 import java.util.Map;
 
+/**
+ * An Interval describes the relationship and quality between two given Pitches.
+ */
 public class Interval {
 
   public static final Map<Integer, IntervalQuality> INTERVAL_QUALITIES = loadIntervalQualities();
@@ -28,15 +31,27 @@ public class Interval {
     this.type = findIntervalType();
   }
 
+  /**
+   * Describes the interval type associated with the given pitches.
+   * @return the associated interval type.
+   */
   public IntervalType findIntervalType() {
     return INTERVAL_TYPES.get(this.quality);
   }
 
+  /**
+   * Describes the interval quality associated with the given pitches.
+   * @return the associated interval quality.
+   */
   public IntervalQuality findIntervalQuality() {
     int distanceInSemitones = Math.abs(this.pitch1.getNoteNumber() - this.pitch2.getNoteNumber());
     return INTERVAL_QUALITIES.get(distanceInSemitones);
   }
 
+  /**
+   * Maps the difference in semitones between the given pitches to their associated interval quality.
+   * @return a map of semitones to interval qualities.
+   */
   private static HashMap<Integer, IntervalQuality> loadIntervalQualities() {
     return new HashMap<>() {
       {
@@ -57,6 +72,10 @@ public class Interval {
     };
   }
 
+  /**
+   * Maps interval qualities to their associated interval types.
+   * @return a map of interval qualities to interval types.
+   */
   private static HashMap<IntervalQuality, IntervalType> loadIntervalTypes() {
     return new HashMap<>() {
       {
