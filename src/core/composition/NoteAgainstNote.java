@@ -24,7 +24,7 @@ public class NoteAgainstNote {
   public NoteAgainstNote(Key key) {
     this(
         key,
-        CantusFirmusVoice.createNewCantus(key, DEFAULT_OCTAVE),
+        new CantusFirmusVoice(key),
         CounterPointVoiceFirstSpecies.createNewCounterpoint(key, DEFAULT_OCTAVE));
   }
 

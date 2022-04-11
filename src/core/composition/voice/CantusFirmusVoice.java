@@ -1,15 +1,16 @@
 package core.composition.voice;
 
 import static core.entity.Utilities.VALID_CANTUS_INTERVALS;
-import static core.entity.key.ScaleDegree.*;
+import static core.entity.key.ScaleDegree.SUB_DOMINANT;
+import static core.entity.key.ScaleDegree.SUPER_TONIC;
 
 import core.entity.interval.Interval;
+import core.entity.interval.IntervalType;
+import core.entity.key.Key;
 import core.entity.motion.Motion;
 import core.entity.motion.MotionDirection;
 import core.entity.motion.MotionDistance;
 import core.entity.note.Note;
-import core.entity.interval.IntervalType;
-import core.entity.key.Key;
 import core.entity.note.PitchClass;
 import java.util.ArrayList;
 import java.util.List;
@@ -26,7 +27,7 @@ public class CantusFirmusVoice extends Voice {
   public static final int MIN_CANTUS_LENGTH = 8;
 
   public CantusFirmusVoice(Key key) {
-    this(key, new ArrayList<>());
+    this(key, new ArrayList<Note>());
   }
 
   public CantusFirmusVoice(Key key, List<Note> notes) {
@@ -48,22 +49,21 @@ public class CantusFirmusVoice extends Voice {
     cantusFirmus.setVoiceLength(cantusLength);
     cantusFirmus.addTonic(tonic);
 
-    for (int i = 1; i < cantusLength - 2; i++) {
-      cantusFirmus.addNote(generateNote(cantusFirmus.notes, i));
+    for (int index = 1; index < cantusLength - 2; index++) {
+      cantusFirmus.addNote(generateNote(key, cantusFirmus.notes, index));
     }
 
-    cantusFirmus.addPenUltimate(cantusFirmus.generatePenUltimate(key, octave), cantusLength - 2);
+    cantusFirmus.addPenUltimate(cantusFirmus.generatePenUltimate(octave), cantusLength - 2);
     cantusFirmus.addUltimate(tonic, cantusLength - 1);
     return cantusFirmus;
   }
 
   /**
    * Generates the pen ultimate note of a cantus.
-   * @param key the key of the cantus.
    * @param octave the octave of the cantus.
    * @return a super tonic or leading tone.
    */
-  private Note generatePenUltimate(Key key, int octave) {
+  private Note generatePenUltimate(int octave) {
     // TODO Might Need to Adjust for different octaves so there aren't unexpected leaps when they
     // need to be steps
     PitchClass previousPitchClass = this.getNotes().get(this.notes.size() - 3).getPitchClass();
@@ -88,22 +88,29 @@ public class CantusFirmusVoice extends Voice {
 
   /**
    * Generates a random note to fill in the body of the cantus.
+   * @param key the key of the cantus.
    * @param previousNotes a list of notes already in the cantus.
    * @param index the index of the note to be generated
    * @return a suitable random note based on it's position in the cantus.
    */
-  public static Note generateNote(List<Note> previousNotes, int index) {
+  public static Note generateNote(Key key, List<Note> previousNotes, int index) {
     Random random = new Random();
+    Note previousNote = previousNotes.get(index - 2);
+    Note currentNote = previousNotes.get(index - 1);
+    Note generatedNote;
     Motion previousMotion =
-        new Motion(List.of(previousNotes.get(index - 2), previousNotes.get(index - 1)));
+        new Motion(List.of(previousNote, currentNote));
     Interval previousInterval =
         new Interval(previousNotes.get(index - 2), previousNotes.get(index - 1));
     int octave = previousNotes.get(index - 1).getOctave();
 
-
     if (previousMotion.findMotionDistance() == MotionDistance.LEAP) {
       if (previousMotion.findMotionDirection() == MotionDirection.UP) {
-
+        generatedNote = Note.createNewNoteByMotion(key, previousNote, MotionDistance.STEP, MotionDirection.DOWN);
+        // can i just use pitchclass by scale degrees??
+        // with like
+        // findScaleDegree
+        // getPitchClassByScaleDegree with like + 1
       } else {
 
       }

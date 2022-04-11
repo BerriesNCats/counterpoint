@@ -1,5 +1,9 @@
 package core.entity.note;
 
+import core.entity.key.Key;
+import core.entity.motion.MotionDirection;
+import core.entity.motion.MotionDistance;
+
 public class Note {
 
   private final Pitch pitch;
@@ -18,7 +22,17 @@ public class Note {
     this.duration = duration;
   }
 
-  public int getNoteNumber() { return this.pitch.getNoteNumber(); }
+  public static Note createNewNoteByMotion(
+      Key key, Note previousNote, MotionDistance step, MotionDirection down) {
+    // What do you need to create a Note
+    // -- Pitch -- PitchClass(Note Letter/Accidental) & Octave
+
+    // How to transform Note
+  }
+
+  public int getNoteNumber() {
+    return this.pitch.getNoteNumber();
+  }
 
   public Pitch getPitch() {
     return this.pitch;
@@ -28,7 +42,9 @@ public class Note {
     return this.getPitch().getPitchClass();
   }
 
-  public int getOctave() { return this.getPitch().getOctave(); }
+  public int getOctave() {
+    return this.getPitch().getOctave();
+  }
 
   public NoteDurationCommonTime getDuration() {
     return duration;
