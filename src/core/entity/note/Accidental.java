@@ -1,5 +1,7 @@
 package core.entity.note;
 
+import java.util.Random;
+
 public enum Accidental {
   NATURAL(""),
   SHARP("#"),
@@ -15,5 +17,11 @@ public enum Accidental {
     return this.accidental;
   }
 
-
+  public static Accidental getRandomAccidental() {
+    return switch (new Random().nextInt(3)) {
+      case 0 -> NATURAL;
+      case 1 -> SHARP;
+      default -> FLAT;
+    };
+  }
 }

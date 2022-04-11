@@ -111,17 +111,13 @@ public class CantusFirmusVoice extends Voice {
             Note.createNewNoteByMotion(
                 key, previousNote, MotionDistance.STEP, MotionDirection.DOWN);
       }
-    }
+    } //TODO more distinct rule cases before completely random return
     MotionDistance distance = MotionDistance.getRandomDistance(true);
     MotionDirection direction = MotionDirection.getRandomDirection(true);
     generatedNote = Note.createNewNoteByMotion(key, previousNote, distance, direction);
 
     // if previous motion is leap greater than 3rd, change direction with step
-    //
-
-    // TODO
     // Each previous note should inform the new note according to melodic rules
-
     // Look at the two or three previous notes and create a valid list based on them
     // and other cantus rules such as motion, tritone, climax, leaps
 

@@ -19,25 +19,25 @@ public enum MotionDistance {
     if (excludeNone) {
       random = r.nextInt(7);
       return switch (random) {
-        case 0 -> MotionDistance.STEP;
-        case 1 -> MotionDistance.LEAP_THIRD;
-        case 2 -> MotionDistance.LEAP_FOURTH;
-        case 3 -> MotionDistance.LEAP_FIFTH;
-        case 4 -> MotionDistance.LEAP_SIXTH;
-        case 5 -> MotionDistance.LEAP_SEVENTH;
-        default -> MotionDistance.LEAP_OCTAVE;
+        case 0 -> STEP;
+        case 1 -> LEAP_THIRD;
+        case 2 -> LEAP_FOURTH;
+        case 3 -> LEAP_FIFTH;
+        case 4 -> LEAP_SIXTH;
+        case 5 -> LEAP_SEVENTH;
+        default -> LEAP_OCTAVE;
       };
     } else {
       random = r.nextInt(8);
       return switch (random) {
-        case 0 -> MotionDistance.STEP;
-        case 1 -> MotionDistance.LEAP_THIRD;
-        case 2 -> MotionDistance.LEAP_FOURTH;
-        case 3 -> MotionDistance.LEAP_FIFTH;
-        case 4 -> MotionDistance.LEAP_SIXTH;
-        case 5 -> MotionDistance.LEAP_SEVENTH;
-        case 6 -> MotionDistance.LEAP_OCTAVE;
-        default -> MotionDistance.NONE;
+        case 0 -> STEP;
+        case 1 -> LEAP_THIRD;
+        case 2 -> LEAP_FOURTH;
+        case 3 -> LEAP_FIFTH;
+        case 4 -> LEAP_SIXTH;
+        case 5 -> LEAP_SEVENTH;
+        case 6 -> LEAP_OCTAVE;
+        default -> NONE;
       };
     }
 
