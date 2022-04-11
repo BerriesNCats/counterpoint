@@ -36,6 +36,7 @@ public class CantusFirmusVoice extends Voice {
 
   /**
    * Generates a new Cantus Firmus in a given key.
+   *
    * @param key the key of the cantus.
    * @param octave the octave of the cantus.
    * @return a newly generated cantus.
@@ -60,6 +61,7 @@ public class CantusFirmusVoice extends Voice {
 
   /**
    * Generates the pen ultimate note of a cantus.
+   *
    * @param octave the octave of the cantus.
    * @return a super tonic or leading tone.
    */
@@ -88,34 +90,33 @@ public class CantusFirmusVoice extends Voice {
 
   /**
    * Generates a random note to fill in the body of the cantus.
+   *
    * @param key the key of the cantus.
    * @param previousNotes a list of notes already in the cantus.
    * @param index the index of the note to be generated
    * @return a suitable random note based on it's position in the cantus.
    */
   public static Note generateNote(Key key, List<Note> previousNotes, int index) {
-    Random random = new Random();
     Note previousNote = previousNotes.get(index - 2);
     Note currentNote = previousNotes.get(index - 1);
-    Note generatedNote;
-    Motion previousMotion =
-        new Motion(List.of(previousNote, currentNote));
+    Note generatedNote = null;
+    Motion previousMotion = new Motion(List.of(previousNote, currentNote));
     Interval previousInterval =
         new Interval(previousNotes.get(index - 2), previousNotes.get(index - 1));
     int octave = previousNotes.get(index - 1).getOctave();
 
-    if (previousMotion.findMotionDistance() == MotionDistance.LEAP) {
+    if (previousMotion.findMotionDistance() != MotionDistance.STEP) {
       if (previousMotion.findMotionDirection() == MotionDirection.UP) {
-        generatedNote = Note.createNewNoteByMotion(key, previousNote, MotionDistance.STEP, MotionDirection.DOWN);
-        // can i just use pitchclass by scale degrees??
-        // with like
-        // findScaleDegree
-        // getPitchClassByScaleDegree with like + 1
-      } else {
-
+        generatedNote =
+            Note.createNewNoteByMotion(
+                key, previousNote, MotionDistance.STEP, MotionDirection.DOWN);
       }
     }
-    //if previous motion is leap greater than 3rd, change direction with step
+    MotionDistance distance = MotionDistance.getRandomDistance(true);
+    MotionDirection direction = MotionDirection.getRandomDirection(true);
+    generatedNote = Note.createNewNoteByMotion(key, previousNote, distance, direction);
+
+    // if previous motion is leap greater than 3rd, change direction with step
     //
 
     // TODO
@@ -124,11 +125,12 @@ public class CantusFirmusVoice extends Voice {
     // Look at the two or three previous notes and create a valid list based on them
     // and other cantus rules such as motion, tritone, climax, leaps
 
-    return null;
+    return generatedNote;
   }
 
   /**
    * Adds the pen ultimate note to a cantus.
+   *
    * @param penUltimate the pen ultimate note.
    * @param secondToLastIndexInCantus the index of the pen ultimate note.
    */
@@ -138,6 +140,7 @@ public class CantusFirmusVoice extends Voice {
 
   /**
    * Adds the ultimate note to the cantus.
+   *
    * @param ultimate the ultimate note.
    * @param lastIndexInCantus the index of the ultimate.
    */
@@ -147,6 +150,7 @@ public class CantusFirmusVoice extends Voice {
 
   /**
    * Adds the tonic note to the cantus
+   *
    * @param tonic the tonic tone.
    */
   public void addTonic(Note tonic) {
@@ -155,6 +159,7 @@ public class CantusFirmusVoice extends Voice {
 
   /**
    * Adds a given note to the cantus.
+   *
    * @param note the given note.
    */
   public void addNote(Note note) {
@@ -163,6 +168,7 @@ public class CantusFirmusVoice extends Voice {
 
   /**
    * Compares the first pitch in the cantus with the root of the cantus key.
+   *
    * @param key the key of the cantus.
    * @return true if the pitches match.
    */
@@ -174,6 +180,7 @@ public class CantusFirmusVoice extends Voice {
 
   /**
    * Checks to see if a given interval is a valid cantus interval.
+   *
    * @param quality the quality of the interval.
    * @return true if a valid cantus interval.
    */

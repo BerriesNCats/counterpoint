@@ -1,6 +1,8 @@
 package core.composition.voice;
 
 import static core.entity.key.ScaleDegree.*;
+
+import core.entity.motion.MotionDistance;
 import core.entity.note.Note;
 
 import core.entity.key.Key;

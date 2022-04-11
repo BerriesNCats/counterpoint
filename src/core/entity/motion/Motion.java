@@ -14,10 +14,17 @@ public class Motion {
   public MotionDistance findMotionDistance(Note note1, Note note2) {
     int distance = Math.abs(note1.getNoteNumber() - note2.getNoteNumber());
 
-    return switch (distance) {
+    if (distance == 12) return MotionDistance.LEAP_OCTAVE;
+
+    return switch (distance % 12) {
       case 0 -> MotionDistance.NONE;
       case 1, 2 -> MotionDistance.STEP;
-      default -> MotionDistance.LEAP;
+      case 3, 4 -> MotionDistance.LEAP_THIRD;
+      case 5, 6 -> MotionDistance.LEAP_FOURTH;
+      case 7 -> MotionDistance.LEAP_FIFTH;
+      case 8, 9 -> MotionDistance.LEAP_SIXTH;
+      case 10, 11 -> MotionDistance.LEAP_SEVENTH;
+      default -> MotionDistance.LEAP_OCTAVE;
     };
   }
 
@@ -31,7 +38,7 @@ public class Motion {
     } else if (note1.isHigherThan(note2)) {
       return MotionDirection.DOWN;
     }
-    return MotionDirection.NONE;
+    return MotionDirection.UP;
   }
 
   public MotionDirection findMotionDirection() {
