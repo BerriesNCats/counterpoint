@@ -13,8 +13,8 @@ import java.util.List;
 public class Voice {
 
   protected List<Note> notes;
-  protected Key key;
-  protected HashMap<ScaleDegree, PitchClass> pitchClassByScaleDegree;
+  protected final Key key;
+  protected final HashMap<ScaleDegree, PitchClass> pitchClassByScaleDegree;
 
   public Voice(Key key) {
     this(key, new ArrayList<>());
@@ -31,7 +31,7 @@ public class Voice {
   }
 
   private HashMap<ScaleDegree, PitchClass> loadScaleDegrees() {
-    return new HashMap<ScaleDegree, PitchClass>() {
+    return new HashMap<>() {
       {
         put(TONIC, key.getTonic());
         put(SUPER_TONIC, key.getSuperTonic());

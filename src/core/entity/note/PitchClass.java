@@ -7,7 +7,7 @@ import java.util.HashMap;
 
 public class PitchClass {
 
-  public static HashMap<String, Integer> PITCH_NUMBERS = loadPitchNumbers();
+  public static final HashMap<String, Integer> PITCH_NUMBERS = loadPitchNumbers();
 
   private final NoteLetter noteLetter;
   private final Accidental accidental;

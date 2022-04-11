@@ -6,12 +6,12 @@ import static core.entity.note.Accidental.*;
 
 import core.entity.note.Pitch;
 import core.entity.note.PitchClass;
-import org.junit.jupiter.api.Test;
+import org.junit.Test;
 
 class PitchTest {
 
   @Test
-  void findNoteNumberForA() {
+  public void findNoteNumberForA() {
     Pitch aNatural0 = new Pitch(new PitchClass(A, NATURAL), 0);
     Pitch aSharp0 = new Pitch(new PitchClass(A, SHARP), 0);
     Pitch aFlat1 = new Pitch(new PitchClass(A, FLAT), 1);
@@ -32,7 +32,7 @@ class PitchTest {
   }
 
   @Test
-  void findNoteNumberForB() {
+  public void findNoteNumberForB() {
     Pitch bFlat0 = new Pitch(new PitchClass(B, FLAT), 0);
     Pitch bNatural0 = new Pitch(new PitchClass(B, NATURAL), 0);
     Pitch bSharp0 = new Pitch(new PitchClass(B, SHARP), 0);
@@ -55,7 +55,7 @@ class PitchTest {
   }
 
   @Test
-  void findNoteNumberForC() {
+  public void findNoteNumberForC() {
     Pitch cFlat1 = new Pitch(new PitchClass(C, FLAT), 1);
     Pitch cNatural1 = new Pitch(new PitchClass(C, NATURAL), 1);
     Pitch cSharp1 = new Pitch(new PitchClass(C, SHARP), 1);
@@ -78,7 +78,7 @@ class PitchTest {
   }
 
   @Test
-  void findNoteNumberForD() {
+  public void findNoteNumberForD() {
     Pitch dFlat1 = new Pitch(new PitchClass(D, FLAT), 1);
     Pitch dNatural1 = new Pitch(new PitchClass(D, NATURAL), 1);
     Pitch dSharp1 = new Pitch(new PitchClass(D, SHARP), 1);
@@ -101,7 +101,7 @@ class PitchTest {
   }
 
   @Test
-  void findMidiNoteNumber() {
+  public void findMidiNoteNumber() {
     Pitch pitch1 = new Pitch(new PitchClass(A, NATURAL), 0);
     Pitch pitch2 = new Pitch(new PitchClass(C, NATURAL), 1);
     Pitch pitch3 = new Pitch(new PitchClass(C, NATURAL), 3);
@@ -116,7 +116,7 @@ class PitchTest {
   }
 
   @Test
-  void isHigherThan() {
+  public void isHigherThan() {
     Pitch pitch1 = new Pitch(new PitchClass(A, NATURAL), 0);
     Pitch pitch2 = new Pitch(new PitchClass(C, NATURAL), 1);
 
@@ -125,7 +125,7 @@ class PitchTest {
   }
 
   @Test
-  void isLowerThan() {
+  public void isLowerThan() {
     Pitch pitch1 = new Pitch(new PitchClass(C, NATURAL), 3);
     Pitch pitch2 = new Pitch(new PitchClass(F, SHARP), 4);
 

@@ -28,6 +28,8 @@ public class Note {
     return this.getPitch().getPitchClass();
   }
 
+  public int getOctave() { return this.getPitch().getOctave(); }
+
   public NoteDurationCommonTime getDuration() {
     return duration;
   }

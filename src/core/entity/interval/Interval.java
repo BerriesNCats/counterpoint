@@ -13,8 +13,8 @@ import java.util.Map;
  */
 public class Interval {
 
-  public static final Map<Integer, IntervalType> INTERVAL_QUALITIES = loadIntervalQualities();
-  public static final HashMap<IntervalType, IntervalQuality> INTERVAL_TYPES = loadIntervalTypes();
+  public static final Map<Integer, IntervalType> TYPES_BY_SEMITONES = loadIntervalQualities();
+  public static final HashMap<IntervalType, IntervalQuality> QUALITIES_BY_TYPE = loadIntervalTypes();
 
   private final Pitch pitch1;
   private final Pitch pitch2;
@@ -36,7 +36,7 @@ public class Interval {
    * @return the associated interval quality.
    */
   public IntervalQuality findIntervalQuality() {
-    return INTERVAL_TYPES.get(this.quality);
+    return QUALITIES_BY_TYPE.get(this.quality);
   }
 
   /**
@@ -45,7 +45,7 @@ public class Interval {
    */
   public IntervalType findIntervalType() {
     int distanceInSemitones = Math.abs(this.pitch1.getNoteNumber() - this.pitch2.getNoteNumber());
-    return INTERVAL_QUALITIES.get(distanceInSemitones);
+    return TYPES_BY_SEMITONES.get(distanceInSemitones);
   }
 
   /**
@@ -55,19 +55,19 @@ public class Interval {
   private static HashMap<Integer, IntervalType> loadIntervalQualities() {
     return new HashMap<>() {
       {
-        put(UNISON.getStepInSemitones(), UNISON);
-        put(MINOR_SECOND.getStepInSemitones(), MINOR_SECOND);
-        put(MAJOR_SECOND.getStepInSemitones(), MAJOR_SECOND);
-        put(MINOR_THIRD.getStepInSemitones(), MINOR_THIRD);
-        put(MAJOR_THIRD.getStepInSemitones(), MAJOR_THIRD);
-        put(PERFECT_FOURTH.getStepInSemitones(), PERFECT_FOURTH);
-        put(TRITONE.getStepInSemitones(), TRITONE);
-        put(PERFECT_FIFTH.getStepInSemitones(), PERFECT_FIFTH);
-        put(MINOR_SIXTH.getStepInSemitones(), MINOR_SIXTH);
-        put(MAJOR_SIXTH.getStepInSemitones(), MAJOR_SIXTH);
-        put(MINOR_SEVENTH.getStepInSemitones(), MINOR_SEVENTH);
-        put(MAJOR_SEVENTH.getStepInSemitones(), MAJOR_SEVENTH);
-        put(OCTAVE.getStepInSemitones(), OCTAVE);
+        put(UNISON.getStepsInSemitones(), UNISON);
+        put(MINOR_SECOND.getStepsInSemitones(), MINOR_SECOND);
+        put(MAJOR_SECOND.getStepsInSemitones(), MAJOR_SECOND);
+        put(MINOR_THIRD.getStepsInSemitones(), MINOR_THIRD);
+        put(MAJOR_THIRD.getStepsInSemitones(), MAJOR_THIRD);
+        put(PERFECT_FOURTH.getStepsInSemitones(), PERFECT_FOURTH);
+        put(TRITONE.getStepsInSemitones(), TRITONE);
+        put(PERFECT_FIFTH.getStepsInSemitones(), PERFECT_FIFTH);
+        put(MINOR_SIXTH.getStepsInSemitones(), MINOR_SIXTH);
+        put(MAJOR_SIXTH.getStepsInSemitones(), MAJOR_SIXTH);
+        put(MINOR_SEVENTH.getStepsInSemitones(), MINOR_SEVENTH);
+        put(MAJOR_SEVENTH.getStepsInSemitones(), MAJOR_SEVENTH);
+        put(OCTAVE.getStepsInSemitones(), OCTAVE);
       }
     };
   }

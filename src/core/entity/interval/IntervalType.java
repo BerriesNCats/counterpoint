@@ -1,5 +1,8 @@
 package core.entity.interval;
 
+/**
+ * An Interval Type describes the distance between a set of pitches.
+ */
 public enum IntervalType {
   UNISON(0, 0),
   MINOR_SECOND(1, 1),
@@ -15,19 +18,19 @@ public enum IntervalType {
   MAJOR_SEVENTH(6, 11),
   OCTAVE(7, 12);
 
-  private final int stepInKey;
-  private final int stepInSemitones;
+  private final int stepsInKey;
+  private final int stepsInSemitones;
 
-  IntervalType(int stepInKey, int stepInSemitones) {
-    this.stepInKey = stepInKey;
-    this.stepInSemitones = stepInSemitones;
+  IntervalType(int stepsInKey, int stepsInSemitones) {
+    this.stepsInKey = stepsInKey;
+    this.stepsInSemitones = stepsInSemitones;
   }
 
-  public int getStepInKey() {
-    return this.stepInKey;
+  public int getStepsInKey() {
+    return this.stepsInKey;
   }
 
-  public int getStepInSemitones() {
-    return this.stepInSemitones;
+  public int getStepsInSemitones() {
+    return this.stepsInSemitones;
   }
 }

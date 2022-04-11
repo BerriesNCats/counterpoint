@@ -34,340 +34,340 @@ public class Utilities {
   }
 
   private static HashMap<KeyName, KeyScale> loadScales() {
-    return new HashMap<KeyName, KeyScale>() {
+    return new HashMap<>() {
       {
         put(
-            KeyName.A_FLAT_MAJOR,
-            new KeyScale(
-                List.of(
-                    PITCH_CLASSES.get(A.name() + FLAT.getAccidental()),
-                    PITCH_CLASSES.get(B.name() + FLAT.getAccidental()),
-                    PITCH_CLASSES.get(C.name() + NATURAL.getAccidental()),
-                    PITCH_CLASSES.get(D.name() + FLAT.getAccidental()),
-                    PITCH_CLASSES.get(E.name() + FLAT.getAccidental()),
-                    PITCH_CLASSES.get(F.name() + NATURAL.getAccidental()),
-                    PITCH_CLASSES.get(G.name() + NATURAL.getAccidental()))));
+                KeyName.A_FLAT_MAJOR,
+                new KeyScale(
+                        List.of(
+                                PITCH_CLASSES.get(A.name() + FLAT.getAccidental()),
+                                PITCH_CLASSES.get(B.name() + FLAT.getAccidental()),
+                                PITCH_CLASSES.get(C.name() + NATURAL.getAccidental()),
+                                PITCH_CLASSES.get(D.name() + FLAT.getAccidental()),
+                                PITCH_CLASSES.get(E.name() + FLAT.getAccidental()),
+                                PITCH_CLASSES.get(F.name() + NATURAL.getAccidental()),
+                                PITCH_CLASSES.get(G.name() + NATURAL.getAccidental()))));
         put(
-            KeyName.A_FLAT_MINOR,
-            new KeyScale(
-                List.of(
-                    PITCH_CLASSES.get(A.name() + FLAT.getAccidental()),
-                    PITCH_CLASSES.get(B.name() + FLAT.getAccidental()),
-                    PITCH_CLASSES.get(C.name() + FLAT.getAccidental()),
-                    PITCH_CLASSES.get(D.name() + FLAT.getAccidental()),
-                    PITCH_CLASSES.get(E.name() + FLAT.getAccidental()),
-                    PITCH_CLASSES.get(F.name() + FLAT.getAccidental()),
-                    PITCH_CLASSES.get(G.name() + FLAT.getAccidental()))));
+                KeyName.A_FLAT_MINOR,
+                new KeyScale(
+                        List.of(
+                                PITCH_CLASSES.get(A.name() + FLAT.getAccidental()),
+                                PITCH_CLASSES.get(B.name() + FLAT.getAccidental()),
+                                PITCH_CLASSES.get(C.name() + FLAT.getAccidental()),
+                                PITCH_CLASSES.get(D.name() + FLAT.getAccidental()),
+                                PITCH_CLASSES.get(E.name() + FLAT.getAccidental()),
+                                PITCH_CLASSES.get(F.name() + FLAT.getAccidental()),
+                                PITCH_CLASSES.get(G.name() + FLAT.getAccidental()))));
         put(
-            KeyName.A_MAJOR,
-            new KeyScale(
-                List.of(
-                    PITCH_CLASSES.get(A.name() + NATURAL.getAccidental()),
-                    PITCH_CLASSES.get(B.name() + NATURAL.getAccidental()),
-                    PITCH_CLASSES.get(C.name() + SHARP.getAccidental()),
-                    PITCH_CLASSES.get(D.name() + NATURAL.getAccidental()),
-                    PITCH_CLASSES.get(E.name() + NATURAL.getAccidental()),
-                    PITCH_CLASSES.get(F.name() + SHARP.getAccidental()),
-                    PITCH_CLASSES.get(G.name() + SHARP.getAccidental()))));
+                KeyName.A_MAJOR,
+                new KeyScale(
+                        List.of(
+                                PITCH_CLASSES.get(A.name() + NATURAL.getAccidental()),
+                                PITCH_CLASSES.get(B.name() + NATURAL.getAccidental()),
+                                PITCH_CLASSES.get(C.name() + SHARP.getAccidental()),
+                                PITCH_CLASSES.get(D.name() + NATURAL.getAccidental()),
+                                PITCH_CLASSES.get(E.name() + NATURAL.getAccidental()),
+                                PITCH_CLASSES.get(F.name() + SHARP.getAccidental()),
+                                PITCH_CLASSES.get(G.name() + SHARP.getAccidental()))));
         put(
-            KeyName.A_MINOR,
-            new KeyScale(
-                List.of(
-                    PITCH_CLASSES.get(A.name() + NATURAL.getAccidental()),
-                    PITCH_CLASSES.get(B.name() + NATURAL.getAccidental()),
-                    PITCH_CLASSES.get(C.name() + NATURAL.getAccidental()),
-                    PITCH_CLASSES.get(D.name() + NATURAL.getAccidental()),
-                    PITCH_CLASSES.get(E.name() + NATURAL.getAccidental()),
-                    PITCH_CLASSES.get(F.name() + NATURAL.getAccidental()),
-                    PITCH_CLASSES.get(G.name() + NATURAL.getAccidental()))));
+                KeyName.A_MINOR,
+                new KeyScale(
+                        List.of(
+                                PITCH_CLASSES.get(A.name() + NATURAL.getAccidental()),
+                                PITCH_CLASSES.get(B.name() + NATURAL.getAccidental()),
+                                PITCH_CLASSES.get(C.name() + NATURAL.getAccidental()),
+                                PITCH_CLASSES.get(D.name() + NATURAL.getAccidental()),
+                                PITCH_CLASSES.get(E.name() + NATURAL.getAccidental()),
+                                PITCH_CLASSES.get(F.name() + NATURAL.getAccidental()),
+                                PITCH_CLASSES.get(G.name() + NATURAL.getAccidental()))));
         put(
-            KeyName.A_SHARP_MINOR,
-            new KeyScale(
-                List.of(
-                    PITCH_CLASSES.get(A.name() + SHARP.getAccidental()),
-                    PITCH_CLASSES.get(B.name() + SHARP.getAccidental()),
-                    PITCH_CLASSES.get(C.name() + SHARP.getAccidental()),
-                    PITCH_CLASSES.get(D.name() + SHARP.getAccidental()),
-                    PITCH_CLASSES.get(E.name() + SHARP.getAccidental()),
-                    PITCH_CLASSES.get(F.name() + SHARP.getAccidental()),
-                    PITCH_CLASSES.get(G.name() + SHARP.getAccidental()))));
+                KeyName.A_SHARP_MINOR,
+                new KeyScale(
+                        List.of(
+                                PITCH_CLASSES.get(A.name() + SHARP.getAccidental()),
+                                PITCH_CLASSES.get(B.name() + SHARP.getAccidental()),
+                                PITCH_CLASSES.get(C.name() + SHARP.getAccidental()),
+                                PITCH_CLASSES.get(D.name() + SHARP.getAccidental()),
+                                PITCH_CLASSES.get(E.name() + SHARP.getAccidental()),
+                                PITCH_CLASSES.get(F.name() + SHARP.getAccidental()),
+                                PITCH_CLASSES.get(G.name() + SHARP.getAccidental()))));
         put(
-            KeyName.B_FLAT_MAJOR,
-            new KeyScale(
-                List.of(
-                    PITCH_CLASSES.get(B.name() + FLAT.getAccidental()),
-                    PITCH_CLASSES.get(C.name() + NATURAL.getAccidental()),
-                    PITCH_CLASSES.get(D.name() + NATURAL.getAccidental()),
-                    PITCH_CLASSES.get(E.name() + FLAT.getAccidental()),
-                    PITCH_CLASSES.get(F.name() + NATURAL.getAccidental()),
-                    PITCH_CLASSES.get(G.name() + NATURAL.getAccidental()),
-                    PITCH_CLASSES.get(A.name() + NATURAL.getAccidental()))));
+                KeyName.B_FLAT_MAJOR,
+                new KeyScale(
+                        List.of(
+                                PITCH_CLASSES.get(B.name() + FLAT.getAccidental()),
+                                PITCH_CLASSES.get(C.name() + NATURAL.getAccidental()),
+                                PITCH_CLASSES.get(D.name() + NATURAL.getAccidental()),
+                                PITCH_CLASSES.get(E.name() + FLAT.getAccidental()),
+                                PITCH_CLASSES.get(F.name() + NATURAL.getAccidental()),
+                                PITCH_CLASSES.get(G.name() + NATURAL.getAccidental()),
+                                PITCH_CLASSES.get(A.name() + NATURAL.getAccidental()))));
         put(
-            KeyName.B_FLAT_MINOR,
-            new KeyScale(
-                List.of(
-                    PITCH_CLASSES.get(B.name() + FLAT.getAccidental()),
-                    PITCH_CLASSES.get(C.name() + NATURAL.getAccidental()),
-                    PITCH_CLASSES.get(D.name() + FLAT.getAccidental()),
-                    PITCH_CLASSES.get(E.name() + FLAT.getAccidental()),
-                    PITCH_CLASSES.get(F.name() + NATURAL.getAccidental()),
-                    PITCH_CLASSES.get(G.name() + FLAT.getAccidental()),
-                    PITCH_CLASSES.get(A.name() + FLAT.getAccidental()))));
+                KeyName.B_FLAT_MINOR,
+                new KeyScale(
+                        List.of(
+                                PITCH_CLASSES.get(B.name() + FLAT.getAccidental()),
+                                PITCH_CLASSES.get(C.name() + NATURAL.getAccidental()),
+                                PITCH_CLASSES.get(D.name() + FLAT.getAccidental()),
+                                PITCH_CLASSES.get(E.name() + FLAT.getAccidental()),
+                                PITCH_CLASSES.get(F.name() + NATURAL.getAccidental()),
+                                PITCH_CLASSES.get(G.name() + FLAT.getAccidental()),
+                                PITCH_CLASSES.get(A.name() + FLAT.getAccidental()))));
         put(
-            KeyName.B_MAJOR,
-            new KeyScale(
-                List.of(
-                    PITCH_CLASSES.get(B.name() + NATURAL.getAccidental()),
-                    PITCH_CLASSES.get(C.name() + SHARP.getAccidental()),
-                    PITCH_CLASSES.get(D.name() + SHARP.getAccidental()),
-                    PITCH_CLASSES.get(E.name() + NATURAL.getAccidental()),
-                    PITCH_CLASSES.get(F.name() + SHARP.getAccidental()),
-                    PITCH_CLASSES.get(G.name() + SHARP.getAccidental()),
-                    PITCH_CLASSES.get(A.name() + SHARP.getAccidental()))));
+                KeyName.B_MAJOR,
+                new KeyScale(
+                        List.of(
+                                PITCH_CLASSES.get(B.name() + NATURAL.getAccidental()),
+                                PITCH_CLASSES.get(C.name() + SHARP.getAccidental()),
+                                PITCH_CLASSES.get(D.name() + SHARP.getAccidental()),
+                                PITCH_CLASSES.get(E.name() + NATURAL.getAccidental()),
+                                PITCH_CLASSES.get(F.name() + SHARP.getAccidental()),
+                                PITCH_CLASSES.get(G.name() + SHARP.getAccidental()),
+                                PITCH_CLASSES.get(A.name() + SHARP.getAccidental()))));
         put(
-            KeyName.B_MINOR,
-            new KeyScale(
-                List.of(
-                    PITCH_CLASSES.get(B.name() + NATURAL.getAccidental()),
-                    PITCH_CLASSES.get(C.name() + SHARP.getAccidental()),
-                    PITCH_CLASSES.get(D.name() + NATURAL.getAccidental()),
-                    PITCH_CLASSES.get(E.name() + NATURAL.getAccidental()),
-                    PITCH_CLASSES.get(F.name() + SHARP.getAccidental()),
-                    PITCH_CLASSES.get(G.name() + NATURAL.getAccidental()),
-                    PITCH_CLASSES.get(A.name() + NATURAL.getAccidental()))));
+                KeyName.B_MINOR,
+                new KeyScale(
+                        List.of(
+                                PITCH_CLASSES.get(B.name() + NATURAL.getAccidental()),
+                                PITCH_CLASSES.get(C.name() + SHARP.getAccidental()),
+                                PITCH_CLASSES.get(D.name() + NATURAL.getAccidental()),
+                                PITCH_CLASSES.get(E.name() + NATURAL.getAccidental()),
+                                PITCH_CLASSES.get(F.name() + SHARP.getAccidental()),
+                                PITCH_CLASSES.get(G.name() + NATURAL.getAccidental()),
+                                PITCH_CLASSES.get(A.name() + NATURAL.getAccidental()))));
         put(
-            KeyName.C_FLAT_MAJOR,
-            new KeyScale(
-                List.of(
-                    PITCH_CLASSES.get(C.name() + FLAT.getAccidental()),
-                    PITCH_CLASSES.get(D.name() + FLAT.getAccidental()),
-                    PITCH_CLASSES.get(E.name() + FLAT.getAccidental()),
-                    PITCH_CLASSES.get(F.name() + FLAT.getAccidental()),
-                    PITCH_CLASSES.get(G.name() + FLAT.getAccidental()),
-                    PITCH_CLASSES.get(A.name() + FLAT.getAccidental()),
-                    PITCH_CLASSES.get(B.name() + FLAT.getAccidental()))));
+                KeyName.C_FLAT_MAJOR,
+                new KeyScale(
+                        List.of(
+                                PITCH_CLASSES.get(C.name() + FLAT.getAccidental()),
+                                PITCH_CLASSES.get(D.name() + FLAT.getAccidental()),
+                                PITCH_CLASSES.get(E.name() + FLAT.getAccidental()),
+                                PITCH_CLASSES.get(F.name() + FLAT.getAccidental()),
+                                PITCH_CLASSES.get(G.name() + FLAT.getAccidental()),
+                                PITCH_CLASSES.get(A.name() + FLAT.getAccidental()),
+                                PITCH_CLASSES.get(B.name() + FLAT.getAccidental()))));
         put(
-            KeyName.C_MAJOR,
-            new KeyScale(
-                List.of(
-                    PITCH_CLASSES.get(C.name() + NATURAL.getAccidental()),
-                    PITCH_CLASSES.get(D.name() + NATURAL.getAccidental()),
-                    PITCH_CLASSES.get(E.name() + NATURAL.getAccidental()),
-                    PITCH_CLASSES.get(F.name() + NATURAL.getAccidental()),
-                    PITCH_CLASSES.get(G.name() + NATURAL.getAccidental()),
-                    PITCH_CLASSES.get(A.name() + NATURAL.getAccidental()),
-                    PITCH_CLASSES.get(B.name() + NATURAL.getAccidental()))));
+                KeyName.C_MAJOR,
+                new KeyScale(
+                        List.of(
+                                PITCH_CLASSES.get(C.name() + NATURAL.getAccidental()),
+                                PITCH_CLASSES.get(D.name() + NATURAL.getAccidental()),
+                                PITCH_CLASSES.get(E.name() + NATURAL.getAccidental()),
+                                PITCH_CLASSES.get(F.name() + NATURAL.getAccidental()),
+                                PITCH_CLASSES.get(G.name() + NATURAL.getAccidental()),
+                                PITCH_CLASSES.get(A.name() + NATURAL.getAccidental()),
+                                PITCH_CLASSES.get(B.name() + NATURAL.getAccidental()))));
         put(
-            KeyName.C_MINOR,
-            new KeyScale(
-                List.of(
-                    PITCH_CLASSES.get(C.name() + NATURAL.getAccidental()),
-                    PITCH_CLASSES.get(D.name() + NATURAL.getAccidental()),
-                    PITCH_CLASSES.get(E.name() + FLAT.getAccidental()),
-                    PITCH_CLASSES.get(F.name() + NATURAL.getAccidental()),
-                    PITCH_CLASSES.get(G.name() + NATURAL.getAccidental()),
-                    PITCH_CLASSES.get(A.name() + FLAT.getAccidental()),
-                    PITCH_CLASSES.get(B.name() + FLAT.getAccidental()))));
+                KeyName.C_MINOR,
+                new KeyScale(
+                        List.of(
+                                PITCH_CLASSES.get(C.name() + NATURAL.getAccidental()),
+                                PITCH_CLASSES.get(D.name() + NATURAL.getAccidental()),
+                                PITCH_CLASSES.get(E.name() + FLAT.getAccidental()),
+                                PITCH_CLASSES.get(F.name() + NATURAL.getAccidental()),
+                                PITCH_CLASSES.get(G.name() + NATURAL.getAccidental()),
+                                PITCH_CLASSES.get(A.name() + FLAT.getAccidental()),
+                                PITCH_CLASSES.get(B.name() + FLAT.getAccidental()))));
         put(
-            KeyName.C_SHARP_MAJOR,
-            new KeyScale(
-                List.of(
-                    PITCH_CLASSES.get(C.name() + SHARP.getAccidental()),
-                    PITCH_CLASSES.get(D.name() + SHARP.getAccidental()),
-                    PITCH_CLASSES.get(E.name() + SHARP.getAccidental()),
-                    PITCH_CLASSES.get(F.name() + SHARP.getAccidental()),
-                    PITCH_CLASSES.get(G.name() + SHARP.getAccidental()),
-                    PITCH_CLASSES.get(A.name() + SHARP.getAccidental()),
-                    PITCH_CLASSES.get(B.name() + SHARP.getAccidental()))));
+                KeyName.C_SHARP_MAJOR,
+                new KeyScale(
+                        List.of(
+                                PITCH_CLASSES.get(C.name() + SHARP.getAccidental()),
+                                PITCH_CLASSES.get(D.name() + SHARP.getAccidental()),
+                                PITCH_CLASSES.get(E.name() + SHARP.getAccidental()),
+                                PITCH_CLASSES.get(F.name() + SHARP.getAccidental()),
+                                PITCH_CLASSES.get(G.name() + SHARP.getAccidental()),
+                                PITCH_CLASSES.get(A.name() + SHARP.getAccidental()),
+                                PITCH_CLASSES.get(B.name() + SHARP.getAccidental()))));
         put(
-            KeyName.C_SHARP_MINOR,
-            new KeyScale(
-                List.of(
-                    PITCH_CLASSES.get(C.name() + SHARP.getAccidental()),
-                    PITCH_CLASSES.get(D.name() + SHARP.getAccidental()),
-                    PITCH_CLASSES.get(E.name() + NATURAL.getAccidental()),
-                    PITCH_CLASSES.get(F.name() + SHARP.getAccidental()),
-                    PITCH_CLASSES.get(G.name() + SHARP.getAccidental()),
-                    PITCH_CLASSES.get(A.name() + NATURAL.getAccidental()),
-                    PITCH_CLASSES.get(B.name() + NATURAL.getAccidental()))));
+                KeyName.C_SHARP_MINOR,
+                new KeyScale(
+                        List.of(
+                                PITCH_CLASSES.get(C.name() + SHARP.getAccidental()),
+                                PITCH_CLASSES.get(D.name() + SHARP.getAccidental()),
+                                PITCH_CLASSES.get(E.name() + NATURAL.getAccidental()),
+                                PITCH_CLASSES.get(F.name() + SHARP.getAccidental()),
+                                PITCH_CLASSES.get(G.name() + SHARP.getAccidental()),
+                                PITCH_CLASSES.get(A.name() + NATURAL.getAccidental()),
+                                PITCH_CLASSES.get(B.name() + NATURAL.getAccidental()))));
         put(
-            KeyName.D_FLAT_MAJOR,
-            new KeyScale(
-                List.of(
-                    PITCH_CLASSES.get(D.name() + FLAT.getAccidental()),
-                    PITCH_CLASSES.get(E.name() + FLAT.getAccidental()),
-                    PITCH_CLASSES.get(F.name() + NATURAL.getAccidental()),
-                    PITCH_CLASSES.get(G.name() + FLAT.getAccidental()),
-                    PITCH_CLASSES.get(A.name() + FLAT.getAccidental()),
-                    PITCH_CLASSES.get(B.name() + FLAT.getAccidental()),
-                    PITCH_CLASSES.get(C.name() + NATURAL.getAccidental()))));
+                KeyName.D_FLAT_MAJOR,
+                new KeyScale(
+                        List.of(
+                                PITCH_CLASSES.get(D.name() + FLAT.getAccidental()),
+                                PITCH_CLASSES.get(E.name() + FLAT.getAccidental()),
+                                PITCH_CLASSES.get(F.name() + NATURAL.getAccidental()),
+                                PITCH_CLASSES.get(G.name() + FLAT.getAccidental()),
+                                PITCH_CLASSES.get(A.name() + FLAT.getAccidental()),
+                                PITCH_CLASSES.get(B.name() + FLAT.getAccidental()),
+                                PITCH_CLASSES.get(C.name() + NATURAL.getAccidental()))));
         put(
-            KeyName.D_MAJOR,
-            new KeyScale(
-                List.of(
-                    PITCH_CLASSES.get(D.name() + NATURAL.getAccidental()),
-                    PITCH_CLASSES.get(E.name() + NATURAL.getAccidental()),
-                    PITCH_CLASSES.get(F.name() + SHARP.getAccidental()),
-                    PITCH_CLASSES.get(G.name() + NATURAL.getAccidental()),
-                    PITCH_CLASSES.get(A.name() + NATURAL.getAccidental()),
-                    PITCH_CLASSES.get(B.name() + NATURAL.getAccidental()),
-                    PITCH_CLASSES.get(C.name() + SHARP.getAccidental()))));
+                KeyName.D_MAJOR,
+                new KeyScale(
+                        List.of(
+                                PITCH_CLASSES.get(D.name() + NATURAL.getAccidental()),
+                                PITCH_CLASSES.get(E.name() + NATURAL.getAccidental()),
+                                PITCH_CLASSES.get(F.name() + SHARP.getAccidental()),
+                                PITCH_CLASSES.get(G.name() + NATURAL.getAccidental()),
+                                PITCH_CLASSES.get(A.name() + NATURAL.getAccidental()),
+                                PITCH_CLASSES.get(B.name() + NATURAL.getAccidental()),
+                                PITCH_CLASSES.get(C.name() + SHARP.getAccidental()))));
         put(
-            KeyName.D_MINOR,
-            new KeyScale(
-                List.of(
-                    PITCH_CLASSES.get(D.name() + NATURAL.getAccidental()),
-                    PITCH_CLASSES.get(E.name() + NATURAL.getAccidental()),
-                    PITCH_CLASSES.get(F.name() + NATURAL.getAccidental()),
-                    PITCH_CLASSES.get(G.name() + NATURAL.getAccidental()),
-                    PITCH_CLASSES.get(A.name() + NATURAL.getAccidental()),
-                    PITCH_CLASSES.get(B.name() + FLAT.getAccidental()),
-                    PITCH_CLASSES.get(C.name() + NATURAL.getAccidental()))));
+                KeyName.D_MINOR,
+                new KeyScale(
+                        List.of(
+                                PITCH_CLASSES.get(D.name() + NATURAL.getAccidental()),
+                                PITCH_CLASSES.get(E.name() + NATURAL.getAccidental()),
+                                PITCH_CLASSES.get(F.name() + NATURAL.getAccidental()),
+                                PITCH_CLASSES.get(G.name() + NATURAL.getAccidental()),
+                                PITCH_CLASSES.get(A.name() + NATURAL.getAccidental()),
+                                PITCH_CLASSES.get(B.name() + FLAT.getAccidental()),
+                                PITCH_CLASSES.get(C.name() + NATURAL.getAccidental()))));
         put(
-            KeyName.D_SHARP_MINOR,
-            new KeyScale(
-                List.of(
-                    PITCH_CLASSES.get(D.name() + SHARP.getAccidental()),
-                    PITCH_CLASSES.get(E.name() + SHARP.getAccidental()),
-                    PITCH_CLASSES.get(F.name() + SHARP.getAccidental()),
-                    PITCH_CLASSES.get(G.name() + SHARP.getAccidental()),
-                    PITCH_CLASSES.get(A.name() + SHARP.getAccidental()),
-                    PITCH_CLASSES.get(B.name() + NATURAL.getAccidental()),
-                    PITCH_CLASSES.get(C.name() + SHARP.getAccidental()))));
+                KeyName.D_SHARP_MINOR,
+                new KeyScale(
+                        List.of(
+                                PITCH_CLASSES.get(D.name() + SHARP.getAccidental()),
+                                PITCH_CLASSES.get(E.name() + SHARP.getAccidental()),
+                                PITCH_CLASSES.get(F.name() + SHARP.getAccidental()),
+                                PITCH_CLASSES.get(G.name() + SHARP.getAccidental()),
+                                PITCH_CLASSES.get(A.name() + SHARP.getAccidental()),
+                                PITCH_CLASSES.get(B.name() + NATURAL.getAccidental()),
+                                PITCH_CLASSES.get(C.name() + SHARP.getAccidental()))));
         put(
-            KeyName.E_FLAT_MAJOR,
-            new KeyScale(
-                List.of(
-                    PITCH_CLASSES.get(E.name() + FLAT.getAccidental()),
-                    PITCH_CLASSES.get(F.name() + NATURAL.getAccidental()),
-                    PITCH_CLASSES.get(G.name() + NATURAL.getAccidental()),
-                    PITCH_CLASSES.get(A.name() + FLAT.getAccidental()),
-                    PITCH_CLASSES.get(B.name() + FLAT.getAccidental()),
-                    PITCH_CLASSES.get(C.name() + NATURAL.getAccidental()),
-                    PITCH_CLASSES.get(D.name() + NATURAL.getAccidental()))));
+                KeyName.E_FLAT_MAJOR,
+                new KeyScale(
+                        List.of(
+                                PITCH_CLASSES.get(E.name() + FLAT.getAccidental()),
+                                PITCH_CLASSES.get(F.name() + NATURAL.getAccidental()),
+                                PITCH_CLASSES.get(G.name() + NATURAL.getAccidental()),
+                                PITCH_CLASSES.get(A.name() + FLAT.getAccidental()),
+                                PITCH_CLASSES.get(B.name() + FLAT.getAccidental()),
+                                PITCH_CLASSES.get(C.name() + NATURAL.getAccidental()),
+                                PITCH_CLASSES.get(D.name() + NATURAL.getAccidental()))));
         put(
-            KeyName.E_FLAT_MINOR,
-            new KeyScale(
-                List.of(
-                    PITCH_CLASSES.get(E.name() + FLAT.getAccidental()),
-                    PITCH_CLASSES.get(F.name() + NATURAL.getAccidental()),
-                    PITCH_CLASSES.get(G.name() + FLAT.getAccidental()),
-                    PITCH_CLASSES.get(A.name() + FLAT.getAccidental()),
-                    PITCH_CLASSES.get(B.name() + FLAT.getAccidental()),
-                    PITCH_CLASSES.get(C.name() + FLAT.getAccidental()),
-                    PITCH_CLASSES.get(D.name() + FLAT.getAccidental()))));
+                KeyName.E_FLAT_MINOR,
+                new KeyScale(
+                        List.of(
+                                PITCH_CLASSES.get(E.name() + FLAT.getAccidental()),
+                                PITCH_CLASSES.get(F.name() + NATURAL.getAccidental()),
+                                PITCH_CLASSES.get(G.name() + FLAT.getAccidental()),
+                                PITCH_CLASSES.get(A.name() + FLAT.getAccidental()),
+                                PITCH_CLASSES.get(B.name() + FLAT.getAccidental()),
+                                PITCH_CLASSES.get(C.name() + FLAT.getAccidental()),
+                                PITCH_CLASSES.get(D.name() + FLAT.getAccidental()))));
 
         put(
-            KeyName.E_MAJOR,
-            new KeyScale(
-                List.of(
-                    PITCH_CLASSES.get(E.name() + NATURAL.getAccidental()),
-                    PITCH_CLASSES.get(F.name() + SHARP.getAccidental()),
-                    PITCH_CLASSES.get(G.name() + SHARP.getAccidental()),
-                    PITCH_CLASSES.get(A.name() + NATURAL.getAccidental()),
-                    PITCH_CLASSES.get(B.name() + NATURAL.getAccidental()),
-                    PITCH_CLASSES.get(C.name() + SHARP.getAccidental()),
-                    PITCH_CLASSES.get(D.name() + SHARP.getAccidental()))));
+                KeyName.E_MAJOR,
+                new KeyScale(
+                        List.of(
+                                PITCH_CLASSES.get(E.name() + NATURAL.getAccidental()),
+                                PITCH_CLASSES.get(F.name() + SHARP.getAccidental()),
+                                PITCH_CLASSES.get(G.name() + SHARP.getAccidental()),
+                                PITCH_CLASSES.get(A.name() + NATURAL.getAccidental()),
+                                PITCH_CLASSES.get(B.name() + NATURAL.getAccidental()),
+                                PITCH_CLASSES.get(C.name() + SHARP.getAccidental()),
+                                PITCH_CLASSES.get(D.name() + SHARP.getAccidental()))));
 
         put(
-            KeyName.E_MINOR,
-            new KeyScale(
-                List.of(
-                    PITCH_CLASSES.get(E.name() + NATURAL.getAccidental()),
-                    PITCH_CLASSES.get(F.name() + SHARP.getAccidental()),
-                    PITCH_CLASSES.get(G.name() + NATURAL.getAccidental()),
-                    PITCH_CLASSES.get(A.name() + NATURAL.getAccidental()),
-                    PITCH_CLASSES.get(B.name() + NATURAL.getAccidental()),
-                    PITCH_CLASSES.get(C.name() + NATURAL.getAccidental()),
-                    PITCH_CLASSES.get(D.name() + NATURAL.getAccidental()))));
+                KeyName.E_MINOR,
+                new KeyScale(
+                        List.of(
+                                PITCH_CLASSES.get(E.name() + NATURAL.getAccidental()),
+                                PITCH_CLASSES.get(F.name() + SHARP.getAccidental()),
+                                PITCH_CLASSES.get(G.name() + NATURAL.getAccidental()),
+                                PITCH_CLASSES.get(A.name() + NATURAL.getAccidental()),
+                                PITCH_CLASSES.get(B.name() + NATURAL.getAccidental()),
+                                PITCH_CLASSES.get(C.name() + NATURAL.getAccidental()),
+                                PITCH_CLASSES.get(D.name() + NATURAL.getAccidental()))));
         put(
-            KeyName.F_MAJOR,
-            new KeyScale(
-                List.of(
-                    PITCH_CLASSES.get(F.name() + NATURAL.getAccidental()),
-                    PITCH_CLASSES.get(G.name() + NATURAL.getAccidental()),
-                    PITCH_CLASSES.get(A.name() + NATURAL.getAccidental()),
-                    PITCH_CLASSES.get(B.name() + FLAT.getAccidental()),
-                    PITCH_CLASSES.get(C.name() + NATURAL.getAccidental()),
-                    PITCH_CLASSES.get(D.name() + NATURAL.getAccidental()),
-                    PITCH_CLASSES.get(E.name() + NATURAL.getAccidental()))));
+                KeyName.F_MAJOR,
+                new KeyScale(
+                        List.of(
+                                PITCH_CLASSES.get(F.name() + NATURAL.getAccidental()),
+                                PITCH_CLASSES.get(G.name() + NATURAL.getAccidental()),
+                                PITCH_CLASSES.get(A.name() + NATURAL.getAccidental()),
+                                PITCH_CLASSES.get(B.name() + FLAT.getAccidental()),
+                                PITCH_CLASSES.get(C.name() + NATURAL.getAccidental()),
+                                PITCH_CLASSES.get(D.name() + NATURAL.getAccidental()),
+                                PITCH_CLASSES.get(E.name() + NATURAL.getAccidental()))));
         put(
-            KeyName.F_MINOR,
-            new KeyScale(
-                List.of(
-                    PITCH_CLASSES.get(F.name() + NATURAL.getAccidental()),
-                    PITCH_CLASSES.get(G.name() + NATURAL.getAccidental()),
-                    PITCH_CLASSES.get(A.name() + FLAT.getAccidental()),
-                    PITCH_CLASSES.get(B.name() + FLAT.getAccidental()),
-                    PITCH_CLASSES.get(C.name() + NATURAL.getAccidental()),
-                    PITCH_CLASSES.get(D.name() + FLAT.getAccidental()),
-                    PITCH_CLASSES.get(E.name() + FLAT.getAccidental()))));
+                KeyName.F_MINOR,
+                new KeyScale(
+                        List.of(
+                                PITCH_CLASSES.get(F.name() + NATURAL.getAccidental()),
+                                PITCH_CLASSES.get(G.name() + NATURAL.getAccidental()),
+                                PITCH_CLASSES.get(A.name() + FLAT.getAccidental()),
+                                PITCH_CLASSES.get(B.name() + FLAT.getAccidental()),
+                                PITCH_CLASSES.get(C.name() + NATURAL.getAccidental()),
+                                PITCH_CLASSES.get(D.name() + FLAT.getAccidental()),
+                                PITCH_CLASSES.get(E.name() + FLAT.getAccidental()))));
         put(
-            KeyName.F_SHARP_MAJOR,
-            new KeyScale(
-                List.of(
-                    PITCH_CLASSES.get(F.name() + SHARP.getAccidental()),
-                    PITCH_CLASSES.get(G.name() + SHARP.getAccidental()),
-                    PITCH_CLASSES.get(A.name() + SHARP.getAccidental()),
-                    PITCH_CLASSES.get(B.name() + NATURAL.getAccidental()),
-                    PITCH_CLASSES.get(C.name() + SHARP.getAccidental()),
-                    PITCH_CLASSES.get(D.name() + SHARP.getAccidental()),
-                    PITCH_CLASSES.get(E.name() + SHARP.getAccidental()))));
+                KeyName.F_SHARP_MAJOR,
+                new KeyScale(
+                        List.of(
+                                PITCH_CLASSES.get(F.name() + SHARP.getAccidental()),
+                                PITCH_CLASSES.get(G.name() + SHARP.getAccidental()),
+                                PITCH_CLASSES.get(A.name() + SHARP.getAccidental()),
+                                PITCH_CLASSES.get(B.name() + NATURAL.getAccidental()),
+                                PITCH_CLASSES.get(C.name() + SHARP.getAccidental()),
+                                PITCH_CLASSES.get(D.name() + SHARP.getAccidental()),
+                                PITCH_CLASSES.get(E.name() + SHARP.getAccidental()))));
         put(
-            KeyName.F_SHARP_MINOR,
-            new KeyScale(
-                List.of(
-                    PITCH_CLASSES.get(F.name() + SHARP.getAccidental()),
-                    PITCH_CLASSES.get(G.name() + SHARP.getAccidental()),
-                    PITCH_CLASSES.get(A.name() + NATURAL.getAccidental()),
-                    PITCH_CLASSES.get(B.name() + NATURAL.getAccidental()),
-                    PITCH_CLASSES.get(C.name() + SHARP.getAccidental()),
-                    PITCH_CLASSES.get(D.name() + NATURAL.getAccidental()),
-                    PITCH_CLASSES.get(E.name() + NATURAL.getAccidental()))));
+                KeyName.F_SHARP_MINOR,
+                new KeyScale(
+                        List.of(
+                                PITCH_CLASSES.get(F.name() + SHARP.getAccidental()),
+                                PITCH_CLASSES.get(G.name() + SHARP.getAccidental()),
+                                PITCH_CLASSES.get(A.name() + NATURAL.getAccidental()),
+                                PITCH_CLASSES.get(B.name() + NATURAL.getAccidental()),
+                                PITCH_CLASSES.get(C.name() + SHARP.getAccidental()),
+                                PITCH_CLASSES.get(D.name() + NATURAL.getAccidental()),
+                                PITCH_CLASSES.get(E.name() + NATURAL.getAccidental()))));
         put(
-            KeyName.G_FLAT_MAJOR,
-            new KeyScale(
-                List.of(
-                    PITCH_CLASSES.get(G.name() + FLAT.getAccidental()),
-                    PITCH_CLASSES.get(A.name() + FLAT.getAccidental()),
-                    PITCH_CLASSES.get(B.name() + FLAT.getAccidental()),
-                    PITCH_CLASSES.get(C.name() + FLAT.getAccidental()),
-                    PITCH_CLASSES.get(D.name() + FLAT.getAccidental()),
-                    PITCH_CLASSES.get(E.name() + FLAT.getAccidental()),
-                    PITCH_CLASSES.get(F.name() + NATURAL.getAccidental()))));
+                KeyName.G_FLAT_MAJOR,
+                new KeyScale(
+                        List.of(
+                                PITCH_CLASSES.get(G.name() + FLAT.getAccidental()),
+                                PITCH_CLASSES.get(A.name() + FLAT.getAccidental()),
+                                PITCH_CLASSES.get(B.name() + FLAT.getAccidental()),
+                                PITCH_CLASSES.get(C.name() + FLAT.getAccidental()),
+                                PITCH_CLASSES.get(D.name() + FLAT.getAccidental()),
+                                PITCH_CLASSES.get(E.name() + FLAT.getAccidental()),
+                                PITCH_CLASSES.get(F.name() + NATURAL.getAccidental()))));
         put(
-            KeyName.G_MAJOR,
-            new KeyScale(
-                List.of(
-                    PITCH_CLASSES.get(G.name() + NATURAL.getAccidental()),
-                    PITCH_CLASSES.get(A.name() + NATURAL.getAccidental()),
-                    PITCH_CLASSES.get(B.name() + NATURAL.getAccidental()),
-                    PITCH_CLASSES.get(C.name() + NATURAL.getAccidental()),
-                    PITCH_CLASSES.get(D.name() + NATURAL.getAccidental()),
-                    PITCH_CLASSES.get(E.name() + NATURAL.getAccidental()),
-                    PITCH_CLASSES.get(F.name() + SHARP.getAccidental()))));
+                KeyName.G_MAJOR,
+                new KeyScale(
+                        List.of(
+                                PITCH_CLASSES.get(G.name() + NATURAL.getAccidental()),
+                                PITCH_CLASSES.get(A.name() + NATURAL.getAccidental()),
+                                PITCH_CLASSES.get(B.name() + NATURAL.getAccidental()),
+                                PITCH_CLASSES.get(C.name() + NATURAL.getAccidental()),
+                                PITCH_CLASSES.get(D.name() + NATURAL.getAccidental()),
+                                PITCH_CLASSES.get(E.name() + NATURAL.getAccidental()),
+                                PITCH_CLASSES.get(F.name() + SHARP.getAccidental()))));
         put(
-            KeyName.G_MINOR,
-            new KeyScale(
-                List.of(
-                    PITCH_CLASSES.get(G.name() + NATURAL.getAccidental()),
-                    PITCH_CLASSES.get(A.name() + NATURAL.getAccidental()),
-                    PITCH_CLASSES.get(B.name() + FLAT.getAccidental()),
-                    PITCH_CLASSES.get(C.name() + NATURAL.getAccidental()),
-                    PITCH_CLASSES.get(D.name() + NATURAL.getAccidental()),
-                    PITCH_CLASSES.get(E.name() + FLAT.getAccidental()),
-                    PITCH_CLASSES.get(F.name() + NATURAL.getAccidental()))));
+                KeyName.G_MINOR,
+                new KeyScale(
+                        List.of(
+                                PITCH_CLASSES.get(G.name() + NATURAL.getAccidental()),
+                                PITCH_CLASSES.get(A.name() + NATURAL.getAccidental()),
+                                PITCH_CLASSES.get(B.name() + FLAT.getAccidental()),
+                                PITCH_CLASSES.get(C.name() + NATURAL.getAccidental()),
+                                PITCH_CLASSES.get(D.name() + NATURAL.getAccidental()),
+                                PITCH_CLASSES.get(E.name() + FLAT.getAccidental()),
+                                PITCH_CLASSES.get(F.name() + NATURAL.getAccidental()))));
         put(
-            KeyName.G_SHARP_MINOR,
-            new KeyScale(
-                List.of(
-                    PITCH_CLASSES.get(G.name() + SHARP.getAccidental()),
-                    PITCH_CLASSES.get(A.name() + SHARP.getAccidental()),
-                    PITCH_CLASSES.get(B.name() + NATURAL.getAccidental()),
-                    PITCH_CLASSES.get(C.name() + SHARP.getAccidental()),
-                    PITCH_CLASSES.get(D.name() + SHARP.getAccidental()),
-                    PITCH_CLASSES.get(E.name() + NATURAL.getAccidental()),
-                    PITCH_CLASSES.get(F.name() + SHARP.getAccidental()))));
+                KeyName.G_SHARP_MINOR,
+                new KeyScale(
+                        List.of(
+                                PITCH_CLASSES.get(G.name() + SHARP.getAccidental()),
+                                PITCH_CLASSES.get(A.name() + SHARP.getAccidental()),
+                                PITCH_CLASSES.get(B.name() + NATURAL.getAccidental()),
+                                PITCH_CLASSES.get(C.name() + SHARP.getAccidental()),
+                                PITCH_CLASSES.get(D.name() + SHARP.getAccidental()),
+                                PITCH_CLASSES.get(E.name() + NATURAL.getAccidental()),
+                                PITCH_CLASSES.get(F.name() + SHARP.getAccidental()))));
       }
     };
   }

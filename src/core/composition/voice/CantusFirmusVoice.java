@@ -98,6 +98,8 @@ public class CantusFirmusVoice extends Voice {
         new Motion(List.of(previousNotes.get(index - 2), previousNotes.get(index - 1)));
     Interval previousInterval =
         new Interval(previousNotes.get(index - 2), previousNotes.get(index - 1));
+    int octave = previousNotes.get(index - 1).getOctave();
+
 
     if (previousMotion.findMotionDistance() == MotionDistance.LEAP) {
       if (previousMotion.findMotionDirection() == MotionDirection.UP) {
