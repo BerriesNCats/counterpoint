@@ -27,7 +27,7 @@ public class CantusFirmusVoice extends Voice {
   public static final int MIN_CANTUS_LENGTH = 8;
 
   public CantusFirmusVoice(Key key) {
-    this(key, new ArrayList<Note>());
+    this(key, new ArrayList<>());
   }
 
   public CantusFirmusVoice(Key key, List<Note> notes) {
@@ -49,6 +49,7 @@ public class CantusFirmusVoice extends Voice {
 
     cantusFirmus.setVoiceLength(cantusLength);
     cantusFirmus.addTonic(tonic);
+    //Generate second note below loop will look out of bounds and needs different logic
     for (int index = 1; index < cantusLength - 2; index++) {
       cantusFirmus.addNote(generateNote(key, cantusFirmus.notes, index));
     }
@@ -96,9 +97,10 @@ public class CantusFirmusVoice extends Voice {
    * @return a suitable random note based on it's position in the cantus.
    */
   public static Note generateNote(Key key, List<Note> previousNotes, int index) {
+    // TODO separate method for second note as previous note will be out of bounds
     Note previousNote = previousNotes.get(index - 2);
     Note currentNote = previousNotes.get(index - 1);
-    Note generatedNote = null;
+    Note generatedNote;
     Motion previousMotion = new Motion(List.of(previousNote, currentNote));
     Interval previousInterval =
         new Interval(previousNotes.get(index - 2), previousNotes.get(index - 1));
