@@ -8,13 +8,12 @@ import core.entity.note.Pitch;
 import java.util.HashMap;
 import java.util.Map;
 
-/**
- * An Interval describes the relationship and quality between two given Pitches.
- */
+/** An Interval describes the relationship and quality between two given Pitches. */
 public class Interval {
 
   public static final Map<Integer, IntervalType> TYPES_BY_SEMITONES = loadIntervalQualities();
-  public static final HashMap<IntervalType, IntervalQuality> QUALITIES_BY_TYPE = loadIntervalTypes();
+  public static final HashMap<IntervalType, IntervalQuality> QUALITIES_BY_TYPE =
+      loadIntervalTypes();
 
   private final Pitch pitch1;
   private final Pitch pitch2;
@@ -24,6 +23,7 @@ public class Interval {
   public Interval(Note note1, Note note2) {
     this(note1.getPitch(), note2.getPitch());
   }
+
   public Interval(Pitch pitch1, Pitch pitch2) {
     this.pitch1 = pitch1;
     this.pitch2 = pitch2;
@@ -33,6 +33,7 @@ public class Interval {
 
   /**
    * Finds the interval quality associated with the given pitches.
+   *
    * @return the associated interval quality.
    */
   public IntervalQuality findIntervalQuality() {
@@ -41,6 +42,7 @@ public class Interval {
 
   /**
    * Finds the interval type associated with the given pitches.
+   *
    * @return the associated interval type.
    */
   public IntervalType findIntervalType() {
@@ -50,6 +52,7 @@ public class Interval {
 
   /**
    * Maps interval types by their inherit step in semitones.
+   *
    * @return a map of semitones to interval types.
    */
   private static HashMap<Integer, IntervalType> loadIntervalQualities() {
@@ -74,6 +77,7 @@ public class Interval {
 
   /**
    * Maps interval types to their associated interval quality.
+   *
    * @return a map of interval types to interval qualities.
    */
   private static HashMap<IntervalType, IntervalQuality> loadIntervalTypes() {

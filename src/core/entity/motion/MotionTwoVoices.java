@@ -4,7 +4,7 @@ import core.entity.interval.Interval;
 import core.entity.note.Note;
 import java.util.List;
 
-public class MotionTwoVoices extends Motion{
+public class MotionTwoVoices extends Motion {
 
   private final List<Note> voice2;
   private final MotionType motionType;
@@ -23,7 +23,8 @@ public class MotionTwoVoices extends Motion{
 
     if ((voice1Direction == MotionDirection.UP && voice2Direction == MotionDirection.UP)
         || (voice1Direction == MotionDirection.DOWN && voice2Direction == MotionDirection.DOWN)) {
-      if (voice1Interval.findIntervalType().getStepsInKey() == voice2Interval.findIntervalType().getStepsInKey()) {
+      if (voice1Interval.findIntervalType().getStepsInKey()
+          == voice2Interval.findIntervalType().getStepsInKey()) {
         return MotionType.PARALLEL;
       } else {
         return MotionType.SIMILAR;
@@ -42,5 +43,4 @@ public class MotionTwoVoices extends Motion{
 
     return null;
   }
-
 }

@@ -14,5 +14,4 @@ public class KeyScale {
   public List<PitchClass> getScale() {
     return scale;
   }
-
 }

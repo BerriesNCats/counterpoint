@@ -49,13 +49,12 @@ public class CantusFirmusVoice extends Voice {
 
     cantusFirmus.setVoiceLength(cantusLength);
     cantusFirmus.addTonic(tonic);
-
     for (int index = 1; index < cantusLength - 2; index++) {
       cantusFirmus.addNote(generateNote(key, cantusFirmus.notes, index));
     }
-
     cantusFirmus.addPenUltimate(cantusFirmus.generatePenUltimate(octave), cantusLength - 2);
     cantusFirmus.addUltimate(tonic, cantusLength - 1);
+
     return cantusFirmus;
   }
 
@@ -111,7 +110,7 @@ public class CantusFirmusVoice extends Voice {
             Note.createNewNoteByMotion(
                 key, previousNote, MotionDistance.STEP, MotionDirection.DOWN);
       }
-    } //TODO more distinct rule cases before completely random return
+    } // TODO more distinct rule cases before completely random return
     MotionDistance distance = MotionDistance.getRandomDistance(true);
     MotionDirection direction = MotionDirection.getRandomDirection(true);
     generatedNote = Note.createNewNoteByMotion(key, previousNote, distance, direction);

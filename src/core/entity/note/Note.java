@@ -25,8 +25,6 @@ public class Note {
   public static Note createNewNoteByMotion(
       Key key, Note previousNote, MotionDistance distance, MotionDirection direction) {
 
-
-
     // What do you need to create a Note
     // -- Pitch -- PitchClass(Note Letter/Accidental) & Octave
 

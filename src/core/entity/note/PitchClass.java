@@ -23,7 +23,6 @@ public class PitchClass {
     this.pitchNumber = findPitchNumber();
   }
 
-
   public int findPitchNumber() {
     String pitchName = noteLetter.name() + accidental.getAccidental();
     return PITCH_NUMBERS.get(pitchName);

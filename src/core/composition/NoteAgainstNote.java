@@ -29,7 +29,9 @@ public class NoteAgainstNote {
   }
 
   public NoteAgainstNote(
-      Key key, CantusFirmusVoice cantusFirmusVoice, CounterPointVoiceFirstSpecies counterPointVoice) {
+      Key key,
+      CantusFirmusVoice cantusFirmusVoice,
+      CounterPointVoiceFirstSpecies counterPointVoice) {
     this.key = key;
     this.cantusFirmusVoice = cantusFirmusVoice;
     this.counterPointVoice = counterPointVoice;
@@ -77,8 +79,7 @@ public class NoteAgainstNote {
   }
 
   public boolean isValidUltimateInterval() {
-    IntervalType ultimateIntervalType =
-        this.intervals.get(this.intervals.size() - 1).getQuality();
+    IntervalType ultimateIntervalType = this.intervals.get(this.intervals.size() - 1).getQuality();
 
     return ultimateIntervalType.equals(IntervalType.UNISON)
         || ultimateIntervalType.equals(IntervalType.OCTAVE);
