@@ -1,10 +1,10 @@
 package core.entity;
 
-import static core.entity.interval.IntervalQuality.*;
+import static core.entity.interval.IntervalType.*;
 import static core.entity.note.Accidental.*;
 import static core.entity.note.NoteLetter.*;
 
-import core.entity.interval.IntervalQuality;
+import core.entity.interval.IntervalType;
 import core.entity.key.KeyName;
 import core.entity.key.KeyScale;
 import core.entity.note.PitchClass;
@@ -15,20 +15,20 @@ public class Utilities {
 
   public static final int DEFAULT_OCTAVE = 4;
 
-  public static final List<IntervalQuality> VALID_CANTUS_INTERVALS = loadValidCantusIntervals();
-  public static final List<IntervalQuality> CONSONANT_INTERVALS = loadConsonantIntervals();
-  public static final List<IntervalQuality> DISSONANT_INTERVALS = loadDissonantIntervals();
+  public static final List<IntervalType> VALID_CANTUS_INTERVALS = loadValidCantusIntervals();
+  public static final List<IntervalType> CONSONANT_INTERVALS = loadConsonantIntervals();
+  public static final List<IntervalType> DISSONANT_INTERVALS = loadDissonantIntervals();
 
   public static final HashMap<KeyName, KeyScale> SCALES = loadScales();
 
   public static final HashMap<String, PitchClass> PITCH_CLASSES = loadPitchClasses();
 
-  private static List<IntervalQuality> loadConsonantIntervals() {
+  private static List<IntervalType> loadConsonantIntervals() {
     return List.of(
         UNISON, MINOR_THIRD, MAJOR_THIRD, PERFECT_FIFTH, MAJOR_SIXTH, MAJOR_SIXTH, OCTAVE);
   }
 
-  private static List<IntervalQuality> loadDissonantIntervals() {
+  private static List<IntervalType> loadDissonantIntervals() {
     return List.of(
         MINOR_SECOND, MAJOR_SECOND, PERFECT_FOURTH, TRITONE, MINOR_SEVENTH, MAJOR_SEVENTH);
   }
@@ -402,7 +402,7 @@ public class Utilities {
     };
   }
 
-  private static List<IntervalQuality> loadValidCantusIntervals() {
+  private static List<IntervalType> loadValidCantusIntervals() {
     return List.of(
         MINOR_SECOND,
         MAJOR_SECOND,

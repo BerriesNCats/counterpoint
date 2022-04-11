@@ -8,7 +8,7 @@ import core.entity.motion.Motion;
 import core.entity.motion.MotionDirection;
 import core.entity.motion.MotionDistance;
 import core.entity.note.Note;
-import core.entity.interval.IntervalQuality;
+import core.entity.interval.IntervalType;
 import core.entity.key.Key;
 import core.entity.note.PitchClass;
 import java.util.ArrayList;
@@ -168,7 +168,7 @@ public class CantusFirmusVoice extends Voice {
    * @param quality the quality of the interval.
    * @return true if a valid cantus interval.
    */
-  public boolean isValidCantusInterval(IntervalQuality quality) {
+  public boolean isValidCantusInterval(IntervalType quality) {
     return VALID_CANTUS_INTERVALS.contains(quality);
   }
 }

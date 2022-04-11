@@ -4,7 +4,7 @@ import static core.entity.note.NoteLetter.*;
 import static core.entity.note.Accidental.*;
 
 import core.entity.interval.Interval;
-import core.entity.interval.IntervalQuality;
+import core.entity.interval.IntervalType;
 import core.entity.note.Pitch;
 import core.entity.note.PitchClass;
 import org.junit.jupiter.api.Assertions;
@@ -19,6 +19,6 @@ public class IntervalTest {
 
     Interval interval = new Interval(pitchA2, pitchC3);
 
-    Assertions.assertEquals(IntervalQuality.MINOR_THIRD, interval.getQuality());
+    Assertions.assertEquals(IntervalType.MINOR_THIRD, interval.getQuality());
   }
 }

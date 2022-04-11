@@ -3,8 +3,8 @@ package core.composition;
 import static core.entity.Utilities.DEFAULT_OCTAVE;
 
 import core.entity.interval.Interval;
-import core.entity.interval.IntervalQuality;
 import core.entity.interval.IntervalType;
+import core.entity.interval.IntervalQuality;
 import core.entity.key.Key;
 import core.entity.note.Note;
 import core.entity.note.Pitch;
@@ -44,7 +44,7 @@ public class NoteAgainstNote {
     if (!isValidCantusFirstNote()) {
       return false;
     }
-    return intervals.get(0).getIntervalType() == IntervalType.PERFECT_CONSONANCE;
+    return intervals.get(0).getType() == IntervalQuality.PERFECT_CONSONANCE;
   }
 
   public boolean isValidPenultimateNote() {
@@ -59,11 +59,11 @@ public class NoteAgainstNote {
   }
 
   public boolean isValidPenultimateInterval() {
-    IntervalQuality penUltimateIntervalQuality =
+    IntervalType penUltimateIntervalType =
         this.intervals.get(this.intervals.size() - 2).getQuality();
 
-    return penUltimateIntervalQuality.equals(IntervalQuality.MAJOR_SIXTH)
-        || penUltimateIntervalQuality.equals(IntervalQuality.MINOR_THIRD);
+    return penUltimateIntervalType.equals(IntervalType.MAJOR_SIXTH)
+        || penUltimateIntervalType.equals(IntervalType.MINOR_THIRD);
   }
 
   public boolean isValidUltimateNote() {
@@ -77,11 +77,11 @@ public class NoteAgainstNote {
   }
 
   public boolean isValidUltimateInterval() {
-    IntervalQuality ultimateIntervalQuality =
+    IntervalType ultimateIntervalType =
         this.intervals.get(this.intervals.size() - 1).getQuality();
 
-    return ultimateIntervalQuality.equals(IntervalQuality.UNISON)
-        || ultimateIntervalQuality.equals(IntervalQuality.OCTAVE);
+    return ultimateIntervalType.equals(IntervalType.UNISON)
+        || ultimateIntervalType.equals(IntervalType.OCTAVE);
   }
 
   public List<Interval> createIntervals() {

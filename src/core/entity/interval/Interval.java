@@ -1,7 +1,7 @@
 package core.entity.interval;
 
-import static core.entity.interval.IntervalQuality.*;
 import static core.entity.interval.IntervalType.*;
+import static core.entity.interval.IntervalQuality.*;
 
 import core.entity.note.Note;
 import core.entity.note.Pitch;
@@ -13,13 +13,13 @@ import java.util.Map;
  */
 public class Interval {
 
-  public static final Map<Integer, IntervalQuality> INTERVAL_QUALITIES = loadIntervalQualities();
-  public static final HashMap<IntervalQuality, IntervalType> INTERVAL_TYPES = loadIntervalTypes();
+  public static final Map<Integer, IntervalType> INTERVAL_QUALITIES = loadIntervalQualities();
+  public static final HashMap<IntervalType, IntervalQuality> INTERVAL_TYPES = loadIntervalTypes();
 
   private final Pitch pitch1;
   private final Pitch pitch2;
-  private final IntervalQuality quality;
-  private final IntervalType type;
+  private final IntervalType quality;
+  private final IntervalQuality type;
 
   public Interval(Note note1, Note note2) {
     this(note1.getPitch(), note2.getPitch());
@@ -27,32 +27,32 @@ public class Interval {
   public Interval(Pitch pitch1, Pitch pitch2) {
     this.pitch1 = pitch1;
     this.pitch2 = pitch2;
-    this.quality = findIntervalQuality();
-    this.type = findIntervalType();
+    this.quality = findIntervalType();
+    this.type = findIntervalQuality();
   }
 
   /**
-   * Describes the interval type associated with the given pitches.
-   * @return the associated interval type.
+   * Finds the interval quality associated with the given pitches.
+   * @return the associated interval quality.
    */
-  public IntervalType findIntervalType() {
+  public IntervalQuality findIntervalQuality() {
     return INTERVAL_TYPES.get(this.quality);
   }
 
   /**
-   * Describes the interval quality associated with the given pitches.
-   * @return the associated interval quality.
+   * Finds the interval type associated with the given pitches.
+   * @return the associated interval type.
    */
-  public IntervalQuality findIntervalQuality() {
+  public IntervalType findIntervalType() {
     int distanceInSemitones = Math.abs(this.pitch1.getNoteNumber() - this.pitch2.getNoteNumber());
     return INTERVAL_QUALITIES.get(distanceInSemitones);
   }
 
   /**
-   * Maps the difference in semitones between the given pitches to their associated interval quality.
-   * @return a map of semitones to interval qualities.
+   * Maps interval types by their inherit step in semitones.
+   * @return a map of semitones to interval types.
    */
-  private static HashMap<Integer, IntervalQuality> loadIntervalQualities() {
+  private static HashMap<Integer, IntervalType> loadIntervalQualities() {
     return new HashMap<>() {
       {
         put(UNISON.getStepInSemitones(), UNISON);
@@ -73,10 +73,10 @@ public class Interval {
   }
 
   /**
-   * Maps interval qualities to their associated interval types.
-   * @return a map of interval qualities to interval types.
+   * Maps interval types to their associated interval quality.
+   * @return a map of interval types to interval qualities.
    */
-  private static HashMap<IntervalQuality, IntervalType> loadIntervalTypes() {
+  private static HashMap<IntervalType, IntervalQuality> loadIntervalTypes() {
     return new HashMap<>() {
       {
         put(UNISON, PERFECT_CONSONANCE);
@@ -104,11 +104,11 @@ public class Interval {
     return this.pitch2;
   }
 
-  public IntervalType getIntervalType() {
+  public IntervalQuality getType() {
     return this.type;
   }
 
-  public IntervalQuality getQuality() {
+  public IntervalType getQuality() {
     return quality;
   }
 }

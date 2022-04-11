@@ -23,7 +23,7 @@ public class MotionTwoVoices extends Motion{
 
     if ((voice1Direction == MotionDirection.UP && voice2Direction == MotionDirection.UP)
         || (voice1Direction == MotionDirection.DOWN && voice2Direction == MotionDirection.DOWN)) {
-      if (voice1Interval.findIntervalQuality().getStepInKey() == voice2Interval.findIntervalQuality().getStepInKey()) {
+      if (voice1Interval.findIntervalType().getStepInKey() == voice2Interval.findIntervalType().getStepInKey()) {
         return MotionType.PARALLEL;
       } else {
         return MotionType.SIMILAR;
