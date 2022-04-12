@@ -12,6 +12,7 @@ import com.davidamateau.counterpoint.core.entity.motion.MotionDistance;
 import com.davidamateau.counterpoint.core.entity.note.Note;
 import com.davidamateau.counterpoint.core.entity.note.PitchClass;
 import java.util.ArrayList;
+import java.util.List;
 import java.util.Random;
 
 /**
