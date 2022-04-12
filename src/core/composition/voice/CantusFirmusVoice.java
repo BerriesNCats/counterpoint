@@ -49,9 +49,9 @@ public class CantusFirmusVoice extends Voice {
 
     cantusFirmus.setVoiceLength(cantusLength);
     cantusFirmus.addTonic(tonic);
-    //Generate second note below loop will look out of bounds and needs different logic
-    for (int index = 1; index < cantusLength - 2; index++) {
-      cantusFirmus.addNote(generateNote(key, cantusFirmus.notes, index));
+    cantusFirmus.addNote(cantusFirmus.generateSecondNote(key, octave));
+    for (int index = 2; index < cantusLength - 2; index++) {
+      cantusFirmus.addNote(generateNote(key, cantusFirmus.getNotes(), index));
     }
     cantusFirmus.addPenUltimate(cantusFirmus.generatePenUltimate(octave), cantusLength - 2);
     cantusFirmus.addUltimate(tonic, cantusLength - 1);
@@ -60,12 +60,36 @@ public class CantusFirmusVoice extends Voice {
   }
 
   /**
+   * Generates randomly the second note for the cantus.
+   *
+   * @param key the key of the cantus.
+   * @param octave the octave of the cantus.
+   * @return the newly generated second note.
+   */
+  public Note generateSecondNote(Key key, int octave) {
+    return switch (new Random().nextInt(12)) {
+      case 0 -> new Note(key.getSuperTonic(), octave);
+      case 1 -> new Note(key.getMediant(), octave);
+      case 2 -> new Note(key.getSubDominant(), octave);
+      case 3 -> new Note(key.getDominant(), octave);
+      case 4 -> new Note(key.getSubMediant(), octave);
+      case 5 -> new Note(key.getLeadingTone(), octave);
+      case 6 -> new Note(key.getSuperTonic(), octave - 1);
+      case 7 -> new Note(key.getMediant(), octave - 1);
+      case 8 -> new Note(key.getSubDominant(), octave - 1);
+      case 9 -> new Note(key.getDominant(), octave - 1);
+      case 10 -> new Note(key.getSubMediant(), octave - 1);
+      default -> new Note(key.getLeadingTone(), octave - 1);
+    };
+  }
+
+  /**
    * Generates the pen ultimate note of a cantus.
    *
    * @param octave the octave of the cantus.
    * @return a super tonic or leading tone.
    */
-  private Note generatePenUltimate(int octave) {
+  public Note generatePenUltimate(int octave) {
     // TODO Might Need to Adjust for different octaves so there aren't unexpected leaps when they
     // need to be steps
     PitchClass previousPitchClass = this.getNotes().get(this.notes.size() - 3).getPitchClass();
@@ -99,12 +123,17 @@ public class CantusFirmusVoice extends Voice {
   public static Note generateNote(Key key, List<Note> previousNotes, int index) {
     // TODO separate method for second note as previous note will be out of bounds
     Note previousNote = previousNotes.get(index - 2);
+    //ScaleDegree degree = findScaleDegree(previousNote); Maybe something like this to help with creating the next note?
+    // getScaleDegreeByIntervalRelationship()?????
     Note currentNote = previousNotes.get(index - 1);
     Note generatedNote;
-    Motion previousMotion = new Motion(List.of(previousNote, currentNote));
-    Interval previousInterval =
-        new Interval(previousNotes.get(index - 2), previousNotes.get(index - 1));
-    int octave = previousNotes.get(index - 1).getOctave();
+    List<Note> previousTwoNotes = new ArrayList<>();
+    previousTwoNotes.add(previousNote);
+    previousTwoNotes.add(currentNote);
+    Motion previousMotion = new Motion(previousTwoNotes);
+//    Interval previousInterval =
+//        new Interval(previousNote, currentNote);
+//    int octave = currentNote.getOctave();
 
     if (previousMotion.findMotionDistance() != MotionDistance.STEP) {
       if (previousMotion.findMotionDirection() == MotionDirection.UP) {

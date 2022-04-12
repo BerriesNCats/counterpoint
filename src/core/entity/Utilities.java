@@ -19,7 +19,6 @@ public class Utilities {
   public static final List<IntervalType> CONSONANT_INTERVALS = loadConsonantIntervals();
   public static final List<IntervalType> DISSONANT_INTERVALS = loadDissonantIntervals();
 
-  public static final HashMap<KeyName, KeyScale> SCALES = loadScales();
 
   public static final HashMap<String, PitchClass> PITCH_CLASSES = loadPitchClasses();
 
