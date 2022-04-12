@@ -15,6 +15,11 @@ public class MotionTwoVoices extends Motion {
     this.motionType = findMotionType();
   }
 
+  /**
+   * Describes the type of motion between two contrapuntal voices.
+   *
+   * @return the contrapuntal motion type.
+   */
   public MotionType findMotionType() {
     MotionDirection voice1Direction = findMotionDirection(voice.get(0), voice.get(1));
     MotionDirection voice2Direction = findMotionDirection(voice2.get(0), voice2.get(1));

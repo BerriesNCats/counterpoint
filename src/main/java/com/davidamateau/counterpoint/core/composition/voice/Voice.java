@@ -11,6 +11,9 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
+/**
+ * Base class for a contrapuntal voice.
+ */
 public class Voice {
 
   protected List<Note> notes;
@@ -27,6 +30,11 @@ public class Voice {
     this.scaleDegreesToPitchClass = loadScaleDegrees();
   }
 
+  /**
+   * Maps scale degrees to pitch classes.
+   *
+   * @return map of scale degree to pitch class.
+   */
   private HashMap<ScaleDegree, PitchClass> loadScaleDegrees() {
     return new HashMap<>() {
       {
@@ -41,11 +49,45 @@ public class Voice {
     };
   }
 
+  /**
+   * Adds the pen ultimate note to a voice.
+   *
+   * @param penUltimate the pen ultimate note.
+   * @param secondToLastIndexInVoice the index of the pen ultimate note.
+   */
+  public void addPenUltimate(Note penUltimate, int secondToLastIndexInVoice) {
+    this.notes.add(secondToLastIndexInVoice, penUltimate);
+  }
+
+  /**
+   * Adds the ultimate note to the voice.
+   *
+   * @param ultimate the ultimate note.
+   * @param lastIndexInVoice the index of the ultimate.
+   */
+  public void addUltimate(Note ultimate, int lastIndexInVoice) {
+    this.notes.add(lastIndexInVoice, ultimate);
+  }
+
+  /**
+   * Adds a given note to the voice.
+   *
+   * @param note the given note.
+   */
+  public void addNote(Note note) {
+    this.notes.add(note);
+  }
+
   public List<Note> getNotes() {
     return this.notes;
   }
 
   protected void setVoiceLength(int cantusLength) {
     this.notes = new ArrayList<>(cantusLength);
+  }
+
+  protected Note getUltimate() {
+    //TODO
+    return null;
   }
 }

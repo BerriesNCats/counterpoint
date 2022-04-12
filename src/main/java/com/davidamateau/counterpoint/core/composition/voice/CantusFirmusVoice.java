@@ -151,41 +151,12 @@ public class CantusFirmusVoice extends Voice {
   }
 
   /**
-   * Adds the pen ultimate note to a cantus.
-   *
-   * @param penUltimate the pen ultimate note.
-   * @param secondToLastIndexInCantus the index of the pen ultimate note.
-   */
-  public void addPenUltimate(Note penUltimate, int secondToLastIndexInCantus) {
-    this.notes.add(secondToLastIndexInCantus, penUltimate);
-  }
-
-  /**
-   * Adds the ultimate note to the cantus.
-   *
-   * @param ultimate the ultimate note.
-   * @param lastIndexInCantus the index of the ultimate.
-   */
-  public void addUltimate(Note ultimate, int lastIndexInCantus) {
-    this.notes.add(lastIndexInCantus, ultimate);
-  }
-
-  /**
    * Adds the tonic note to the cantus
    *
    * @param tonic the tonic tone.
    */
   public void addTonic(Note tonic) {
     this.notes.add(0, tonic);
-  }
-
-  /**
-   * Adds a given note to the cantus.
-   *
-   * @param note the given note.
-   */
-  public void addNote(Note note) {
-    this.notes.add(note);
   }
 
   /**

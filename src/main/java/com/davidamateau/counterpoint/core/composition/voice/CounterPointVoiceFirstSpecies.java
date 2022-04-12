@@ -5,6 +5,9 @@ import com.davidamateau.counterpoint.core.entity.note.Note;
 
 import java.util.List;
 
+/**
+ * A first species contrapuntal voice to a given cantus.
+ */
 public class CounterPointVoiceFirstSpecies extends Voice {
 
   private final CantusFirmusVoice cantusFirmusVoice;
@@ -16,43 +19,39 @@ public class CounterPointVoiceFirstSpecies extends Voice {
 
   public static CounterPointVoiceFirstSpecies createNewCounterpoint(CantusFirmusVoice cantus, int octave) {
     // TODO implement create counterpoint || also refactor some add methods to VOICE
+    int counterPointLength = cantus.notes.size() - 1;
     CounterPointVoiceFirstSpecies counterPoint = new CounterPointVoiceFirstSpecies(cantus, cantus.key);
-    counterPoint.setVoiceLength(cantus.notes.size() - 1);
+    counterPoint.setVoiceLength(counterPointLength);
 
     counterPoint.addNote(counterPoint.generateFirstNote(cantus.key, octave));
-    for (int index = 1; index < counterPoint.getNotes().size() - 3; index++) {
+    for (int index = 1; index < counterPointLength - 2; index++) {
       counterPoint.addNote(counterPoint.generateBodyNote(cantus.key, counterPoint.getNotes(), octave, index));
     }
-    counterPoint.addPenUltimate(counterPoint.generatePenUltimate(octave), counterPoint.getNotes().size() - 2);
-    counterPoint.addUltimate(counterPoint.generateUltimate(cantus.key, octave));
-
+    counterPoint.addPenUltimate(counterPoint.generatePenUltimate(octave), counterPointLength - 1);
+    counterPoint.addUltimate(counterPoint.generateUltimate(cantus.key, octave), counterPointLength);
 
     return counterPoint;
   }
 
-  public void addUltimate(Object generateUltimate) {
-
-  }
-
-  public void addNote(Object generateBodyNote) {
-  }
-
-  public Object generateUltimate(Key key, int octave) {
+  public Note generateUltimate(Key key, int octave) {
     return null;
   }
 
-  public void addPenUltimate(Object generatePenUltimate, int i) {
+  public Note generatePenUltimate(int octave) {
+    if (this.cantusFirmusVoice.getUltimate().equals(this.key.getLeadingTone())) {
+      return new Note(key.getSuperTonic(), octave);
+    } else {
+      return new Note(key.getLeadingTone(), octave);
+    }
   }
 
-  public Object generatePenUltimate(int octave) {
+  public Note generateBodyNote(Key key, List<Note> notes, int octave, int index) {
     return null;
   }
 
-  public Object generateBodyNote(Key key, List<Note> notes, int octave, int index) {
-    return null;
-  }
-
-  public Object generateFirstNote(Key key, int octave) {
+  public Note generateFirstNote(Key key, int octave) {
+    // TODO return switch randomly on OCTAVE, FIFTH, UNISON & THIRD
+    // COULD use PERFECT CONSONANCE HERE
     return null;
   }
 }
