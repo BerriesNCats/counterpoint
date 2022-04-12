@@ -61,11 +61,9 @@ public class Pitch implements Comparable<Pitch> {
     if (this == other) {
       return true;
     }
-    if (!(other instanceof Pitch)) {
+    if (!(other instanceof Pitch otherPitch)) {
       return false;
     }
-
-    Pitch otherPitch = (Pitch) other;
 
     if (this.getOctave() != otherPitch.getOctave()) {
       return false;

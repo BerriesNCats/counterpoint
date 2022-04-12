@@ -29,7 +29,7 @@ public class PitchClass {
   }
 
   public static HashMap<String, Integer> loadPitchNumbers() {
-    return new HashMap<String, Integer>() {
+    return new HashMap<>() {
       {
         put(C.name() + FLAT.getAccidental(), -1);
         put(C.name() + NATURAL.getAccidental(), 0);

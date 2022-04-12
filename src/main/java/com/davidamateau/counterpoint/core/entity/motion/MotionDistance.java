@@ -40,8 +40,6 @@ public enum MotionDistance {
         default -> NONE;
       };
     }
-
-
   }
 }
 

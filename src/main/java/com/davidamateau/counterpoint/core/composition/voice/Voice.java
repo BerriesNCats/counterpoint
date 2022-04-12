@@ -2,7 +2,6 @@ package com.davidamateau.counterpoint.core.composition.voice;
 
 import static com.davidamateau.counterpoint.core.entity.key.ScaleDegree.*;
 
-import com.davidamateau.counterpoint.core.entity.motion.MotionDistance;
 import com.davidamateau.counterpoint.core.entity.note.Note;
 
 import com.davidamateau.counterpoint.core.entity.key.Key;
@@ -16,7 +15,7 @@ public class Voice {
 
   protected List<Note> notes;
   protected final Key key;
-  protected final HashMap<ScaleDegree, PitchClass> pitchClassByScaleDegree;
+  protected final HashMap<ScaleDegree, PitchClass> scaleDegreesToPitchClass;
 
   public Voice(Key key) {
     this(key, new ArrayList<>());
@@ -25,11 +24,7 @@ public class Voice {
   public Voice(Key key, List<Note> notes) {
     this.key = key;
     this.notes = notes;
-    this.pitchClassByScaleDegree = loadScaleDegrees();
-  }
-
-  public PitchClass getScaleDegree(ScaleDegree scaleDegree) {
-    return pitchClassByScaleDegree.get(scaleDegree);
+    this.scaleDegreesToPitchClass = loadScaleDegrees();
   }
 
   private HashMap<ScaleDegree, PitchClass> loadScaleDegrees() {

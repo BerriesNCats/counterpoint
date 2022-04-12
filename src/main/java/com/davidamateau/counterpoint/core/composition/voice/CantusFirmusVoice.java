@@ -92,8 +92,8 @@ public class CantusFirmusVoice extends Voice {
     // TODO Might Need to Adjust for different octaves so there aren't unexpected leaps when they
     // need to be steps
     PitchClass previousPitchClass = this.getNotes().get(this.notes.size() - 3).getPitchClass();
-    PitchClass superTonic = pitchClassByScaleDegree.get(SUPER_TONIC);
-    PitchClass leadingTone = pitchClassByScaleDegree.get(SUPER_TONIC);
+    PitchClass superTonic = scaleDegreesToPitchClass.get(SUPER_TONIC);
+    PitchClass leadingTone = scaleDegreesToPitchClass.get(SUPER_TONIC);
 
     if (previousPitchClass.equals(superTonic) || previousPitchClass.equals(leadingTone)) {
       throw new IllegalArgumentException(
@@ -102,7 +102,7 @@ public class CantusFirmusVoice extends Voice {
               + "must not be the super tonic or leading tone. ");
     }
 
-    if (previousPitchClass.equals(pitchClassByScaleDegree.get(SUB_DOMINANT))) {
+    if (previousPitchClass.equals(scaleDegreesToPitchClass.get(SUB_DOMINANT))) {
       return new Note(superTonic, octave);
     }
     // If not the super tonic, leading tone or sub dominant return randomly.
@@ -120,10 +120,7 @@ public class CantusFirmusVoice extends Voice {
    * @return a suitable random note based on it's position in the cantus.
    */
   public static Note generateNote(Key key, List<Note> previousNotes, int octave, int index) {
-    // TODO separate method for second note as previous note will be out of bounds
     Note previousNote = previousNotes.get(index - 2);
-    //ScaleDegree degree = findScaleDegree(previousNote); Maybe something like this to help with creating the next note?
-    // getScaleDegreeByIntervalRelationship()?????
     Note currentNote = previousNotes.get(index - 1);
     Note generatedNote;
     List<Note> previousTwoNotes = new ArrayList<>();
