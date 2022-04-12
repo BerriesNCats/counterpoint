@@ -23,11 +23,34 @@ public class Note {
   }
 
   public static Note createNewNoteByMotion(
-      Key key, Note previousNote, MotionDistance distance, MotionDirection direction) {
+      Key key, Note previousNote, int octave, MotionDistance distance, MotionDirection direction) {
     PitchClass previousNotePitchClass = previousNote.getPitchClass();
     int previousNoteIndexInKey = key.findPitchClassIndex(previousNotePitchClass);
-
-    //TODO IN THE WAY
+    Note newNote;
+    int indexOfNewNoteInKey = 0;
+    if (distance == MotionDistance.STEP) {
+      if (direction == MotionDirection.UP) {
+        indexOfNewNoteInKey = previousNoteIndexInKey + 1;
+      } else if (direction == MotionDirection.DOWN) {
+        indexOfNewNoteInKey = previousNoteIndexInKey - 1;
+      }
+    } else if (distance == MotionDistance.LEAP_THIRD) {
+      if (direction == MotionDirection.UP) {
+        indexOfNewNoteInKey = previousNoteIndexInKey + 2;
+      } else if (direction == MotionDirection.DOWN) {
+        indexOfNewNoteInKey = previousNoteIndexInKey - 2;
+      }
+    } else if (distance == MotionDistance.LEAP_FOURTH) {
+      if (direction == MotionDirection.UP) {
+        indexOfNewNoteInKey = previousNoteIndexInKey + 3;
+      } else if (direction == MotionDirection.DOWN) {
+        indexOfNewNoteInKey = previousNoteIndexInKey - 3;
+      }
+    }
+    if (indexOfNewNoteInKey > 8) indexOfNewNoteInKey -= 8;
+    if (indexOfNewNoteInKey < 0) indexOfNewNoteInKey += 8;
+    newNote = new Note(key.getScale().get(indexOfNewNoteInKey), octave);
+    // TODO IN THE WAY
     // What do you need to create a Note
     // -- Pitch -- PitchClass(Note Letter/Accidental) & Octave
 

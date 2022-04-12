@@ -51,7 +51,7 @@ public class CantusFirmusVoice extends Voice {
     cantusFirmus.addTonic(tonic);
     cantusFirmus.addNote(cantusFirmus.generateSecondNote(key, octave));
     for (int index = 2; index < cantusLength - 2; index++) {
-      cantusFirmus.addNote(generateNote(key, cantusFirmus.getNotes(), index));
+      cantusFirmus.addNote(generateNote(key, cantusFirmus.getNotes(), octave, index));
     }
     cantusFirmus.addPenUltimate(cantusFirmus.generatePenUltimate(octave), cantusLength - 2);
     cantusFirmus.addUltimate(tonic, cantusLength - 1);
@@ -120,7 +120,7 @@ public class CantusFirmusVoice extends Voice {
    * @param index the index of the note to be generated
    * @return a suitable random note based on it's position in the cantus.
    */
-  public static Note generateNote(Key key, List<Note> previousNotes, int index) {
+  public static Note generateNote(Key key, List<Note> previousNotes, int octave, int index) {
     // TODO separate method for second note as previous note will be out of bounds
     Note previousNote = previousNotes.get(index - 2);
     //ScaleDegree degree = findScaleDegree(previousNote); Maybe something like this to help with creating the next note?
@@ -139,12 +139,12 @@ public class CantusFirmusVoice extends Voice {
       if (previousMotion.findMotionDirection() == MotionDirection.UP) {
         generatedNote =
             Note.createNewNoteByMotion(
-                key, previousNote, MotionDistance.STEP, MotionDirection.DOWN);
+                key, previousNote, octave, MotionDistance.STEP, MotionDirection.DOWN);
       }
     } // TODO more distinct rule cases before completely random return
     MotionDistance distance = MotionDistance.getRandomDistance(true);
     MotionDirection direction = MotionDirection.getRandomDirection(true);
-    generatedNote = Note.createNewNoteByMotion(key, previousNote, distance, direction);
+    generatedNote = Note.createNewNoteByMotion(key, previousNote, octave, distance, direction);
 
     // if previous motion is leap greater than 3rd, change direction with step
     // Each previous note should inform the new note according to melodic rules
