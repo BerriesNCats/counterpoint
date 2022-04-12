@@ -25,7 +25,7 @@ public class NoteAgainstNote {
     this(
         key,
         new CantusFirmusVoice(key),
-        CounterPointVoiceFirstSpecies.createNewCounterpoint(key, DEFAULT_OCTAVE));
+        null);
   }
 
   public NoteAgainstNote(
@@ -34,7 +34,7 @@ public class NoteAgainstNote {
       CounterPointVoiceFirstSpecies counterPointVoice) {
     this.key = key;
     this.cantusFirmusVoice = cantusFirmusVoice;
-    this.counterPointVoice = counterPointVoice;
+    this.counterPointVoice = CounterPointVoiceFirstSpecies.createNewCounterpoint(cantusFirmusVoice, DEFAULT_OCTAVE);
     this.intervals = createIntervals();
   }
 

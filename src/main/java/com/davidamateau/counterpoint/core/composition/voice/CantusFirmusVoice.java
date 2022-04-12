@@ -49,7 +49,7 @@ public class CantusFirmusVoice extends Voice {
     cantusFirmus.setVoiceLength(cantusLength);
     cantusFirmus.addTonic(tonic);
     cantusFirmus.addNote(cantusFirmus.generateSecondNote(key, octave));
-    for (int index = 2; index < cantusLength - 2; index++) {
+    for (int index = 2; index < cantusLength - 3; index++) {
       cantusFirmus.addNote(generateNote(key, cantusFirmus.getNotes(), octave, index));
     }
     cantusFirmus.addPenUltimate(cantusFirmus.generatePenUltimate(octave), cantusLength - 2);
