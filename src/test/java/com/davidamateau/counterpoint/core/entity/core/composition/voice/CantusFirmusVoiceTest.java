@@ -11,7 +11,8 @@ class CantusFirmusVoiceTest {
 
   @Test
   public void createNewCantus() {
-    CantusFirmusVoice cantus = CantusFirmusVoice.createNewCantus(new Key(KeyName.C_MAJOR), DEFAULT_OCTAVE);
+    CantusFirmusVoice cantusInC = CantusFirmusVoice.createNewCantus(new Key(KeyName.C_MAJOR), DEFAULT_OCTAVE);
+    CantusFirmusVoice cantusInEFlat = CantusFirmusVoice.createNewCantus(new Key(KeyName.E_FLAT_MAJOR), DEFAULT_OCTAVE);
 
   }
 

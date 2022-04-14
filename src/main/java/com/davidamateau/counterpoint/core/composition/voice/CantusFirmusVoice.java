@@ -10,16 +10,22 @@ import com.davidamateau.counterpoint.core.entity.motion.Motion;
 import com.davidamateau.counterpoint.core.entity.motion.MotionDirection;
 import com.davidamateau.counterpoint.core.entity.motion.MotionDistance;
 import com.davidamateau.counterpoint.core.entity.note.Note;
+import com.davidamateau.counterpoint.core.entity.note.NoteLetter;
 import com.davidamateau.counterpoint.core.entity.note.PitchClass;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 /**
  * A Cantus Firmus is a group of notes adhering to the rules of counterpoint that serves as the
  * basis for a polyphonic composition.
  */
 public class CantusFirmusVoice extends Voice {
+  //TODO Adjust everywhere for OCTAVE changes when crossing C, might need to always pass previous note
+  //so have octave in return
+  Logger log = LoggerFactory.getLogger(CantusFirmusVoice.class);
 
   public static final int MAX_RANGE_OF_CANTUS_VOICE = 10;
   public static final int MAX_CANTUS_LENGTH = 15;
@@ -49,11 +55,12 @@ public class CantusFirmusVoice extends Voice {
     cantusFirmus.setVoiceLength(cantusLength);
     cantusFirmus.addTonic(tonic);
     cantusFirmus.addNote(cantusFirmus.generateSecondNote(key, octave));
-    for (int index = 2; index < cantusLength - 3; index++) {
-      cantusFirmus.addNote(generateNote(key, cantusFirmus.getNotes(), octave, index));
+    int index;
+    for (index = 2; index < cantusLength - 2; index++) {
+      cantusFirmus.addNote(generateNote(key, cantusFirmus.getNotes(), index));
     }
-    cantusFirmus.addPenUltimate(cantusFirmus.generatePenUltimate(octave), cantusLength - 2);
-    cantusFirmus.addUltimate(tonic, cantusLength - 1);
+    cantusFirmus.addPenUltimate(cantusFirmus.generatePenUltimate(octave), index++);
+    cantusFirmus.addUltimate(tonic, index);
 
     return cantusFirmus;
   }
@@ -66,20 +73,22 @@ public class CantusFirmusVoice extends Voice {
    * @return the newly generated second note.
    */
   public Note generateSecondNote(Key key, int octave) {
-    return switch (new Random().nextInt(12)) {
-      case 0 -> new Note(key.getSuperTonic(), octave);
-      case 1 -> new Note(key.getMediant(), octave);
-      case 2 -> new Note(key.getSubDominant(), octave);
-      case 3 -> new Note(key.getDominant(), octave);
-      case 4 -> new Note(key.getSubMediant(), octave);
-      case 5 -> new Note(key.getLeadingTone(), octave);
-      case 6 -> new Note(key.getSuperTonic(), octave - 1);
-      case 7 -> new Note(key.getMediant(), octave - 1);
-      case 8 -> new Note(key.getSubDominant(), octave - 1);
-      case 9 -> new Note(key.getDominant(), octave - 1);
-      case 10 -> new Note(key.getSubMediant(), octave - 1);
-      default -> new Note(key.getLeadingTone(), octave - 1);
+    PitchClass secondPitchClass;
+
+    switch (new Random().nextInt(6)) {
+      case 0 -> secondPitchClass = key.getSuperTonic();
+      case 1 -> secondPitchClass = key.getMediant();
+      case 2 -> secondPitchClass = key.getSubDominant();
+      case 3 -> secondPitchClass = key.getDominant();
+      case 4 -> secondPitchClass = key.getSubMediant();
+      default -> secondPitchClass = key.getLeadingTone();
     };
+
+    if (secondPitchClass.getNoteLetter() == NoteLetter.B || new Random().nextBoolean()) {
+      octave--;
+    }
+
+    return new Note(secondPitchClass, octave);
   }
 
   /**
@@ -96,10 +105,9 @@ public class CantusFirmusVoice extends Voice {
     PitchClass leadingTone = scaleDegreesToPitchClass.get(SUPER_TONIC);
 
     if (previousPitchClass.equals(superTonic) || previousPitchClass.equals(leadingTone)) {
-      throw new IllegalArgumentException(
-          "A cantus must stay in continuous motion and the penultimate note must be of either the "
-              + "super tonic or leading tone and therefore the note preceding the pen ultimate note "
-              + "must not be the super tonic or leading tone. ");
+      log.error("A cantus must stay in continuous motion and the penultimate note must be of either the "
+          + "super tonic or leading tone and therefore the note preceding the pen ultimate note "
+          + "must not be the super tonic or leading tone. ");
     }
 
     if (previousPitchClass.equals(scaleDegreesToPitchClass.get(SUB_DOMINANT))) {
@@ -119,10 +127,11 @@ public class CantusFirmusVoice extends Voice {
    * @param index the index of the note to be generated
    * @return a suitable random note based on it's position in the cantus.
    */
-  public static Note generateNote(Key key, List<Note> previousNotes, int octave, int index) {
+  public static Note generateNote(Key key, List<Note> previousNotes, int index) {
     Note previousNote = previousNotes.get(index - 2);
     Note currentNote = previousNotes.get(index - 1);
     Note generatedNote;
+    int octave = currentNote.getOctave();
     List<Note> previousTwoNotes = new ArrayList<>();
     previousTwoNotes.add(previousNote);
     previousTwoNotes.add(currentNote);
@@ -179,5 +188,17 @@ public class CantusFirmusVoice extends Voice {
    */
   public boolean isValidCantusInterval(IntervalType quality) {
     return VALID_CANTUS_INTERVALS.contains(quality);
+  }
+
+  @Override
+  public String toString() {
+    StringBuilder string = new StringBuilder();
+
+    for (Note note : this.notes) {
+      string
+          .append(note.toString())
+          .append(", ");
+    }
+    return string.toString();
   }
 }

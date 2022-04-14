@@ -90,7 +90,7 @@ public class Note {
 
   @Override
   public String toString() {
-    return this.pitch.getPitchClass().toString();
+    return this.pitch.toString();
   }
 
   @Override
