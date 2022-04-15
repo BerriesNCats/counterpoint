@@ -1,9 +1,6 @@
 package com.davidamateau.counterpoint.core.composition.voice;
 
-import static com.davidamateau.counterpoint.core.entity.Utilities.VALID_CANTUS_INTERVALS;
-import static com.davidamateau.counterpoint.core.entity.key.ScaleDegree.SUB_DOMINANT;
-import static com.davidamateau.counterpoint.core.entity.key.ScaleDegree.SUPER_TONIC;
-
+import com.davidamateau.counterpoint.core.entity.interval.Interval;
 import com.davidamateau.counterpoint.core.entity.interval.IntervalType;
 import com.davidamateau.counterpoint.core.entity.key.Key;
 import com.davidamateau.counterpoint.core.entity.motion.Motion;
@@ -12,11 +9,16 @@ import com.davidamateau.counterpoint.core.entity.motion.MotionDistance;
 import com.davidamateau.counterpoint.core.entity.note.Note;
 import com.davidamateau.counterpoint.core.entity.note.NoteLetter;
 import com.davidamateau.counterpoint.core.entity.note.PitchClass;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+
+import static com.davidamateau.counterpoint.core.entity.Utilities.VALID_CANTUS_INTERVALS;
+import static com.davidamateau.counterpoint.core.entity.key.ScaleDegree.SUB_DOMINANT;
+import static com.davidamateau.counterpoint.core.entity.key.ScaleDegree.SUPER_TONIC;
 
 /**
  * A Cantus Firmus is a group of notes adhering to the rules of counterpoint that serves as the
@@ -49,20 +51,33 @@ public class CantusFirmusVoice extends Voice {
   public static CantusFirmusVoice createNewCantus(Key key, int octave) {
     int cantusLength =
         new Random().nextInt(MAX_CANTUS_LENGTH - MIN_CANTUS_LENGTH) + MIN_CANTUS_LENGTH;
-    CantusFirmusVoice cantusFirmus = new CantusFirmusVoice(key);
+    CantusFirmusVoice cantus = new CantusFirmusVoice(key);
     Note tonic = new Note(key.getTonic(), octave);
+    cantus.setVoiceLength(cantusLength);
 
-    cantusFirmus.setVoiceLength(cantusLength);
-    cantusFirmus.addTonic(tonic);
-    cantusFirmus.addNote(cantusFirmus.generateSecondNote(key, octave));
+    cantus.addTonic(tonic);
+    cantus.addNote(cantus.generateSecondNote(key, octave));
     int index;
     for (index = 2; index < cantusLength - 2; index++) {
-      cantusFirmus.addNote(generateNote(key, cantusFirmus.getNotes(), index));
-    }
-    cantusFirmus.addPenUltimate(cantusFirmus.generatePenUltimate(octave), index++);
-    cantusFirmus.addUltimate(tonic, index);
+      Note generatedNote = generateNote(key, cantus.getNotes(), index);
+      // If appears too many times in cantus or is previous pitch class, try again
+      //TODO debug repeating notes
+      if (cantus.pitchClassAppearance.containsKey(generatedNote.getPitchClass())) {
+        if (cantus.pitchClassAppearance.get(generatedNote.getPitchClass()) > 3) {
+          --index;
+          continue;
+        }
+      } else if (generatedNote.equals(cantus.getNotes().get(index - 1))) {
+        --index;
+        continue;
+      }
 
-    return cantusFirmus;
+      cantus.addNote(generatedNote);
+    }
+    cantus.addPenUltimate(cantus.generatePenUltimate(octave), index++);
+    cantus.addUltimate(tonic, index);
+
+    return cantus;
   }
 
   /**
@@ -82,7 +97,7 @@ public class CantusFirmusVoice extends Voice {
       case 3 -> secondPitchClass = key.getDominant();
       case 4 -> secondPitchClass = key.getSubMediant();
       default -> secondPitchClass = key.getLeadingTone();
-    };
+    }
 
     if (secondPitchClass.getNoteLetter() == NoteLetter.B || new Random().nextBoolean()) {
       octave--;
@@ -136,15 +151,14 @@ public class CantusFirmusVoice extends Voice {
     previousTwoNotes.add(previousNote);
     previousTwoNotes.add(currentNote);
     Motion previousMotion = new Motion(previousTwoNotes);
-//    Interval previousInterval =
-//        new Interval(previousNote, currentNote);
-//    int octave = currentNote.getOctave();
+    Interval previousInterval = new Interval(previousNote, currentNote);
 
     if (previousMotion.findMotionDistance() != MotionDistance.STEP) {
       if (previousMotion.findMotionDirection() == MotionDirection.UP) {
         generatedNote =
             Note.createNewNoteByMotion(
                 key, previousNote, octave, MotionDistance.STEP, MotionDirection.DOWN);
+        return generatedNote;
       }
     } // TODO more distinct rule cases before completely random return
     MotionDistance distance = MotionDistance.getRandomDistance(true);
@@ -165,6 +179,7 @@ public class CantusFirmusVoice extends Voice {
    * @param tonic the tonic tone.
    */
   public void addTonic(Note tonic) {
+    addToAppearanceMap(tonic.getPitchClass());
     this.notes.add(0, tonic);
   }
 
